@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Opt.ClosenessModel</name>
+    </assembly>
+    <members>
+        <member name="F:Opt.ClosenessModel.Vertex`1.prev">
+            <summary>
+            Ссылка на предыдущий узел в тройке.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.cros">
+            <summary>
+            Ссылка на перекрёстный узел.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.next">
+            <summary>
+            Ссылка на следующий узел в тройке.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.data">
+            <summary>
+            Ссылка на объект.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.somes">
+            <summary>
+            Ссылка на дополнительные данные.
+            </summary>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.#ctor(`0,`0,`0)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="data_prev"></param>
+            <param name="data_curr"></param>
+            <param name="data_next"></param>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.SetCros(Opt.ClosenessModel.Vertex{`0})">
+            <summary>
+            Установление связи с перекрёстным узлом (и наоборот).
+            </summary>
+            <param name="cros">Ссылка на перекрёстный узел.</param>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.BreakCrosBy(`0)">
+            <summary>
+            Разбиение противоположного ребра (вставка двух новых троек).
+            </summary>
+            <param name="data">Вставляемый объект.</param>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.Rebuild">
+            <summary>
+            Переразбиение смежных троек.
+            </summary>
+        </member>
+        <member name="M:Opt.ClosenessModel.Vertex`1.CreateClosenessModel(`0,`0,`0)">
+            <summary>
+            Создание модели близости по трём объектам.
+            </summary>
+            <param name="data_prev">Предыдущий объект в тройке.</param>
+            <param name="data_curr">Текущий объект в тройке.</param>
+            <param name="data_next">Следующий объект в тройке.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.Prev">
+            <summary>
+            Возвращает ссылку на предыдущую вершину в тройке.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.Cros">
+            <summary>
+            Возвращает ссылку на перекрёстную вершину.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.Next">
+            <summary>
+            Возвращает ссылку на следующую вершину в тройке.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.DataInNode">
+            <summary>
+            Устанавливает ссылку на объект для узла.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.DataInVertex">
+            <summary>
+            Возвращает или устанавливает ссылку на объект.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.Somes">
+            <summary>
+            Возвращает ссылку на дополнительные данные.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.Enumerator">
+            <summary>
+            Возвращает перечислитель.
+            </summary>
+        </member>
+        <member name="T:Opt.ClosenessModel.Vertex`1.SomesClass">
+            <summary>
+            Класс вспомогательных данных для вершины модели близости.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.SomesClass.vertex">
+            <summary>
+            Вершина, связанная со вспомогательными данными.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.SomesClass.circle_delone">
+            <summary>
+            Круг Делоне.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.SomesClass.last_checked">
+            <summary>
+            Отметка-время вершины.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.SomesClass.Vertex">
+            <summary>
+            Получает связанную вершину.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.SomesClass.CircleDelone">
+            <summary>
+            Задаёт и получает круг Делоне.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.SomesClass.LastChecked">
+            <summary>
+            Задаёт или получает отметку-время вершины.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.start">
+            <summary>
+            Начальная вершина.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.current">
+            <summary>
+            Текущая вершина.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.EnumeratorClass.Current">
+            <summary>
+            Получить и текущую вершину.
+            </summary>
+        </member>
+    </members>
+</doc>

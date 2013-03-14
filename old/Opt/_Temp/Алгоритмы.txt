@@ -1,0 +1,167 @@
+        //private bool IsChecked(Circle circle, Point pole, StripRegion strip_region)
+        //{
+        //    //return (point.Y + circle.Radius <= height) && (point.X - circle.Radius >= 0) && (point.Y - circle.Radius >= 0); //!!! Необходимо учитывать погрешность.
+        //    throw new NotImplementedException();
+        //}
+        //private bool IsChecked(Circle circle, Point pole, List<Circle> circle_list)
+        //{
+        //    //for (int i = 0; i < circles.Count; i++)
+        //    //    if (CircleExt.Расширенное_расстояние(circle, circles[i]) < -eps) // !!! Необходимо учитывать погрешность?
+        //    //        return false;
+        //    //return true; ;
+        //    throw new NotImplementedException();
+        //}
+
+        //private void Step(List<Circle> circle_list, StripRegion strip_region)
+        //{
+        //    List<Circle> circle_list_placed = new List<Circle>();
+
+        //    #region Для каждого размещаемого Circle...
+        //    for (int i = 0; i < circle_list.Count; i++)
+        //    {
+        //        #region Шаг-1. Предварительная проверка размера Circle относительно StripRegion.
+        //        bool is_checked = true;
+        //        for (int i = 1; i <= 2; i++)
+        //            is_checked = is_checked && circle.Radius <= strip_region.Size[i];
+        //        if (!is_checked)
+        //            return false;
+        //        #endregion
+        //        #region Шаг-2. Создание списка точек возможных размещений и добавление начальных точек.
+        //        List<Point> poles = new List<Point>();
+        //        poles.Add(new Point { X = circle.Radius, Y = circle.Radius }); // А как для 3D варианта?
+        //        poles.Add(new Point { X = circle.Radius, Y = strip_region.Size.Y - circle.Radius }); // А как для 3D варианта?
+        //        #endregion
+        //        #region Шаг-3. Создание и заполнение списка годографов.
+        //        List<Circle> godographs = new List<Circle>(circle_list_placed.Count);
+        //        #endregion
+        //        #region Шаг-4. Поиск точек пересечения Circle с StripRegion.
+        //        for (int i = 0; i < godographs.Count; i++)
+        //        {
+        //            #region Шаг-4.1. Поиск точек пересечения круга с верхней, левой и нижней границей полосы.
+        //            for (int j = 0; j < strip_region.Count; j++)
+        //            {
+        //            }
+        //            #endregion
+        //        }
+        //        #endregion
+        //        #region Шаг-5. Поиск точек пересечения годографов.
+        //        for (int i = 0; i < godographs.Count - 1; i++)
+        //            for (int j = i + 1; j < godographs.Count; j++)
+        //            {
+        //                Point point;
+
+        //                //point = GeometricExt.Точка_пересечения_границ(godographs[i], godographs[j]);
+        //                //if (point != null && IsChecked(circles[current_index], point, strip))
+        //                //    points.Add(point); // Заменить на "Добавить в отсортированный набор данных". Лучше всего использовать бинарное взвешенное дерево.
+
+        //                //point = GeometricExt.Точка_пересечения_границ(godographs[j], godographs[i]);
+        //                //if (point != null && IsChecked(circles[current_index], point, strip))
+        //                //    points.Add(point); // Заменить на "Добавить в отсортированный набор данных". Лучше всего использовать бинарное взвешенное дерево.
+        //            }
+        //        #endregion
+        //        #region Шаг-6. Сортировка набора точек возможного размещения.!!! Данная часть не нужна, если использовать сортировку при вставке точек в набор данных.
+        //        //for (int i = 0; i < points.Count - 1; i++)
+        //        //    for (int j = i + 1; j < points.Count; j++)
+        //        //        if (points[i].X > points[j].X || (points[i].X == points[j].X && points[i].Y > points[j].Y))
+        //        //        {
+        //        //            Point temp_point = points[i];
+        //        //            points[i] = points[j];
+        //        //            points[j] = temp_point;
+        //        //        }
+        //        #endregion
+        //        #region Шаг-7. Выбор наилучшей точки размещения, при которой не возникает пересечение кругов и размещение круга.
+        //        //int p = -1;
+        //        //do
+        //        //{
+        //        //    p++;
+        //        //    circles[current_index].Pole.Copy = points[p];
+        //        //} while (!IsChecked(circles[current_index], null, placed_circles));
+        //        #endregion
+        //        #region Шаг-8. Пересчёт ширины занятой части полосы.
+        //        //length = Math.Max(length, circles[current_index].Pole.X + circles[current_index].Radius);
+        //        #endregion
+        //    }
+        //}
+
+        //private bool IsChecked(Rectangle rectangle, Point pole, List<Rectangle> rectangle_list)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //private void Steps(List<Rectangle> rectangle_list, StripRegion region)
+        //{
+        //    List<Rectangle> rectangle_placed_list = new List<Rectangle>();
+
+        //    #region Шаг-0. Создание списка точек возможных размещений и добавление начальных точек.
+        //    poles = new List<Point>();
+        //    poles.Add(new Point());
+        //    #endregion
+
+        //    #region Шаг-1. Для каждого размещаемого Rectangle...
+        //    for (int i = 0; i < rectangle_list.Count; i++)
+        //        Step(rectangle_list[i], region, rectangle_placed_list);
+        //    #endregion
+        //}
+
+        //private bool IsNotIntersect(Rectangle rectangle, Point pole, List<Rectangle> rectangle_list)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //private bool Step(Rectangle rectangle, StripRegion strip_region, List<Rectangle> rectangle_placed_list)
+        //{
+        //    #region Шаг-1.1. Если размеры Rectangle меньше размеров StripRegion, то...
+        //    if (strip_region.IsCanContain(rectangle))
+        //    {
+        //        #region Шаг-1.1.1. Установка начального значения точки размещения текущего Rectangle.
+        //        rectangle.Pole = new Point();
+        //        for (int j = 1; j <= rectangle.Pole.Dim; j++)
+        //            rectangle.Pole[j] = double.PositiveInfinity;
+        //        #endregion
+
+        //        #region Шаг-1.1.2. Для каждой точки размещения...
+        //        for (int i = 0; i < poles.Count; i++)
+        //            #region Шаг-1.1.2.1. Проверка попадания текущего объекта размещения в текущей точке размещения в область размещения.
+        //            if (strip_region.IsContain(rectangle, poles[i]))
+        //                #region Шаг-1.1.2.1.1. Проверка непересечения текущего объекта размещения в текущей точке размещения со всеми размещёнными объектами.
+        //                if (IsNotIntersect(rectangle, poles[i], rectangle_placed_list))
+        //                    #region Шаг-1.1.2.1.1.1. Если текущая точка размещения лучше оптимальной, то изменяем оптимальную точку размещения.
+        //                    rectangle.Pole.Copy = strip_region.OptPole(rectangle.Pole, poles[i]);
+        //                    #endregion
+        //                #endregion
+        //            #endregion
+        //        #endregion
+
+        //        #region Шаг-1.1.3. Если Rectangle установлен, то...
+        //        bool is_optimal_exist = true;
+        //        for (int i = 0; i < rectangle.Pole.Dim && is_optimal_exist; i++)
+        //            is_optimal_exist = !double.IsInfinity(rectangle.Pole[i]);
+        //        if (is_optimal_exist)
+        //        {
+        //            #region Добавление объекта в список размещённых объектов.
+        //            rectangle_placed_list.Add(rectangle);
+        //            #endregion
+
+        //            #region Оперделение и добавление новых точек размещения.
+        //            #region Точки по области.
+        //            //poles.Add(new Point { X = 0, Y = point.Y + size.Y });
+        //            //poles.Add(new Point { X = point.X + size.X, Y = 0 });
+        //            #endregion
+        //            #region Точки по размещённым объектам.
+        //            //for (int j = 0; j < objects_busy_numbers.Count - 1; j++)
+        //            //{
+        //            //    poles.Add(new Point { X = point.X + size.X, Y = objects_busy_points[j].Y + objects_sizes[sort[j]].Y });
+        //            //    poles.Add(new Point { X = objects_busy_points[j].X + objects_sizes[sort[j]].X, Y = point.Y + size.Y });
+        //            //}
+        //            #endregion
+        //            #endregion
+
+        //            return true;
+        //        }
+        //        else
+        //            return false;
+        //        #endregion
+        //    }
+        //    else
+        //        return false;
+        //    #endregion
+        //}
