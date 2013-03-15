@@ -38,57 +38,37 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="3d\Geometric3d.cs" />
-    <Compile Include="3d\GeometricWithPole3d.cs" />
-    <Compile Include="3d\IGeometricWithPole3d.cs" />
-    <Compile Include="3d\Parallelepiped3d.cs" />
-    <Compile Include="3d\Point3d.cs" />
-    <Compile Include="3d\Sphera3d.cs" />
-    <Compile Include="3d\Vector3d.cs" />
-    <Compile Include="Classes\Geometric.cs" />
-    <Compile Include="Classes\Vector.cs" />
-    <Compile Include="Classes\Point.cs" />
-    <Compile Include="Classes\GeometricWithPole.cs" />
-    <Compile Include="Classes\IGeometricWithPole.cs" />
-    <Compile Include="Classes\Circle.cs" />
-    <Compile Include="Classes\Plane.cs" />
-    <Compile Include="Classes\Rectangle.cs" />
-    <Compile Include="Classes\StripLine.cs" />
-    <Compile Include="Classes\GeometricWithList.cs" />
-    <Compile Include="Classes\IGeometricWithList.cs" />
-    <Compile Include="Classes\Polygon.cs" />
-    <Compile Include="Classes\GeometricExt.cs" />
-    <Compile Include="Classes\VectorExt.cs" />
-    <Compile Include="Classes\PointExt.cs" />
-    <Compile Include="Classes\CircleExt.cs" />
-    <Compile Include="Classes\PlaneExt.cs" />
-    <Compile Include="Classes\RectangleExt.cs" />
-    <Compile Include="Classes\PolygonExt.cs" />
-    <Compile Include="Generics\Geometric.cs" />
-    <Compile Include="Generics\GeometricWithPole.cs" />
-    <Compile Include="Generics\IVector.cs" />
-    <Compile Include="Generics\Point.cs" />
-    <Compile Include="Generics\Rectangle.cs" />
-    <Compile Include="Generics\Vector.cs" />
-    <Compile Include="Generics\Vector2d.cs" />
-    <Compile Include="Generics\Vector2d_.cs" />
-    <Compile Include="Generics\Vector3d.cs" />
-    <Compile Include="Generics\Vector3d_.cs" />
+    <Compile Include="Geometrics2d\Geometric2d.cs" />
+    <Compile Include="Geometrics2d\Vector2d.cs" />
+    <Compile Include="Geometrics3d\Geometric3d.cs" />
+    <Compile Include="Geometrics3d\Geometric3dWithId.cs" />
+    <Compile Include="Geometrics3d\Geometric3dWithPole.cs" />
+    <Compile Include="Geometrics3d\Geometric3dWithPoleVector.cs" />
+    <Compile Include="Geometrics3d\Point3d.cs" />
+    <Compile Include="Geometrics3d\Geometric3dWithPoleValue.cs" />
+    <Compile Include="Geometrics3d\Vector3d.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithId.cs" />
+    <Compile Include="Geometrics2d\Point2d.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithPole.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithPoleValue.cs" />
+    <Compile Include="Temp\Plane.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithPoleVector.cs" />
+    <Compile Include="Temp\StripLine.cs" />
+    <Compile Include="Temp\GeometricWithList.cs" />
+    <Compile Include="Temp\Polygon.cs" />
+    <Compile Include="Temp\GeometricExt.cs" />
+    <Compile Include="Geometrics2d\Vector2dExt.cs" />
+    <Compile Include="Temp\PointExt.cs" />
+    <Compile Include="Temp\CircleExt.cs" />
+    <Compile Include="Temp\PlaneExt.cs" />
+    <Compile Include="Temp\RectangleExt.cs" />
+    <Compile Include="Temp\PolygonExt.cs" />
+    <Compile Include="Geometrics\Geometric.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\CircleDelone.cs" />
-    <Compile Include="Classes\PlaneDividing.cs" />
-    <Compile Include="Structs\Point2d.cs" />
-    <Compile Include="Structs\Point2d_.cs" />
-    <Compile Include="Structs\Point3d.cs" />
-    <Compile Include="Structs\Point3d_.cs" />
-    <Compile Include="Structs\Vector2d.cs" />
-    <Compile Include="Structs\Vector2d_.cs" />
-    <Compile Include="Structs\Vector3d.cs" />
-    <Compile Include="Structs\Vector3d_.cs" />
+    <Compile Include="Temp\CircleDelone.cs" />
+    <Compile Include="Temp\PlaneDividing.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="2d\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,1495 +4,52 @@
         <name>Opt.Geometrics</name>
     </assembly>
     <members>
-        <member name="T:Opt.Geometrics_.Generic.Vector2d">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithId">
             <summary>
-            Вектор-класс в двухмерном пространстве (альтернативный вариант).
+            Геометрический объект в двухмерном пространстве с идентификатором.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Generic.Vector2d">
-            <summary>
-            Вектор-класс в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.Vector">
-            <summary>
-            Вектор-класс.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector._Add(Opt.Geometrics.Generic.Vector)">
-            <summary>
-            Добавить вектор к текущему.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector._Deduct(Opt.Geometrics.Generic.Vector)">
-            <summary>
-            Вычесть вектор из текущего.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector._Multiply(System.Double)">
-            <summary>
-            Умножить текущий вектор на скаляр.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан геометрический объект.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.Vector2d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.Vector2d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d._Add(Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Добавить вектор к текущему.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d._Deduct(Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Вычесть вектор из текущего.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d._Multiply(System.Double)">
-            <summary>
-            Умножить текущий вектор на скаляр.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.op_Multiply(System.Double,Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является произведением вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.op_Division(Opt.Geometrics.Generic.Vector2d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор.</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.op_Addition(Opt.Geometrics.Generic.Vector2d,Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.op_Subtraction(Opt.Geometrics.Generic.Vector2d,Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.op_Multiply(Opt.Geometrics.Generic.Vector2d,Opt.Geometrics.Generic.Vector2d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector2d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector2d.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан геометрический объект.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector2d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector2d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector2d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.op_Multiply(System.Double,Opt.Geometrics_.Generic.Vector2d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор (изменяется).</param>
-            <returns>Вектор, который является произведением вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.op_Division(Opt.Geometrics_.Generic.Vector2d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор (изменяется).</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.op_Addition(Opt.Geometrics_.Generic.Vector2d,Opt.Geometrics_.Generic.Vector2d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.op_Subtraction(Opt.Geometrics_.Generic.Vector2d,Opt.Geometrics_.Generic.Vector2d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector2d.op_Multiply(Opt.Geometrics_.Generic.Vector2d,Opt.Geometrics_.Generic.Vector2d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Generic.Vector2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.IVector._Add(Opt.Geometrics.Generic.IVector)">
-            <summary>
-            Добавить вектор к текущему.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.IVector._Deduct(Opt.Geometrics.Generic.IVector)">
-            <summary>
-            Вычесть вектор из текущего.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.IVector._Multiply(System.Double)">
-            <summary>
-            Умножить текущий вектор на скаляр.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.IVector.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан вектор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.IVector.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.Vector3d">
-            <summary>
-            Вектор-класс в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.Vector3d.z">
-            <summary>
-            Координата Z.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d._Add(Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Добавить вектор к текущему.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d._Deduct(Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Вычесть вектор из текущего.
-            </summary>
-            <param name="vector">Вектор.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d._Multiply(System.Double)">
-            <summary>
-            Умножить текущий вектор на скаляр.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.op_Multiply(System.Double,Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является произведением вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.op_Division(Opt.Geometrics.Generic.Vector3d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор.</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.op_Addition(Opt.Geometrics.Generic.Vector3d,Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.op_Subtraction(Opt.Geometrics.Generic.Vector3d,Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.op_Multiply(Opt.Geometrics.Generic.Vector3d,Opt.Geometrics.Generic.Vector3d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Vector3d.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns>Строка-информация об объекте.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector3d.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан геометрический объект.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Vector3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics_.Generic.Vector3d">
-            <summary>
-            Вектор-класс в трёхмерном пространстве (альтернативный вариант).
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.op_Multiply(System.Double,Opt.Geometrics_.Generic.Vector3d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор (изменяется).</param>
-            <returns>Вектор, который является произведением вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.op_Division(Opt.Geometrics_.Generic.Vector3d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор (изменяется).</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.op_Addition(Opt.Geometrics_.Generic.Vector3d,Opt.Geometrics_.Generic.Vector3d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.op_Subtraction(Opt.Geometrics_.Generic.Vector3d,Opt.Geometrics_.Generic.Vector3d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Generic.Vector3d.op_Multiply(Opt.Geometrics_.Generic.Vector3d,Opt.Geometrics_.Generic.Vector3d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Generic.Vector3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.Geometric">
-            <summary>
-            Геометрический объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.Point`1">
-            <summary>
-            Точка-класс.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.Point`1.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Point`1.#ctor">
-            <summary>
-            Создание точки с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Point`1.op_Addition(Opt.Geometrics.Generic.Point{`0},`0)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Point`1.op_Subtraction(Opt.Geometrics.Generic.Point{`0},`0)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Point`1.op_Subtraction(Opt.Geometrics.Generic.Point{`0},Opt.Geometrics.Generic.Point{`0})">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Point`1.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Point`1.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Point`1.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.GeometricWithPole`1">
-            <summary>
-            Геометрический объект с полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.GeometricWithPole`1.pole">
-            <summary>
-            Получить или установить полюс.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.GeometricWithPole`1.#ctor">
-            <summary>
-            Создание геометрического объекта с полюсом, координаты которого равны нулю.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.GeometricWithPole`1.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Generic.Rectangle`1">
-            <summary>
-            Прямоугольник.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Generic.Rectangle`1.size">
-            <summary>
-            Размер.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Rectangle`1.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Generic.Rectangle`1.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Rectangle`1.Size">
-            <summary>
-            Получает или задаёт размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Generic.Rectangle`1.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Struct.Vector2d">
-            <summary>
-            Вектор-структура в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Vector2d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Vector2d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.op_Multiply(System.Double,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является произведением вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.op_Division(Opt.Geometrics.Struct.Vector2d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор.</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.op_Addition(Opt.Geometrics.Struct.Vector2d,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.op_Subtraction(Opt.Geometrics.Struct.Vector2d,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.op_Multiply(Opt.Geometrics.Struct.Vector2d,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector2d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector2d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector2d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector2d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Struct.Vector3d">
-            <summary>
-            Вектор-структура в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Vector3d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Vector3d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Vector3d.z">
-            <summary>
-            Координата Z.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.op_Multiply(System.Double,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является произведением вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.op_Division(Opt.Geometrics.Struct.Vector3d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор.</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.op_Addition(Opt.Geometrics.Struct.Vector3d,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.op_Subtraction(Opt.Geometrics.Struct.Vector3d,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.op_Multiply(Opt.Geometrics.Struct.Vector3d,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Vector3d.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns>Строка-информация об объекте.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Vector3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics_.Struct.Vector3d">
-            <summary>
-            Вектор-класс в трёхмерном пространстве (альтернативная версия).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Vector3d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Vector3d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Vector3d.z">
-            <summary>
-            Координата Z.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.op_Multiply(System.Double,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор (изменяется).</param>
-            <returns>Вектор, который является произведением вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.op_Division(Opt.Geometrics_.Struct.Vector3d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор (изменяется).</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.op_Addition(Opt.Geometrics_.Struct.Vector3d,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.op_Subtraction(Opt.Geometrics_.Struct.Vector3d,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.op_Multiply(Opt.Geometrics_.Struct.Vector3d,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector3d.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns>Строка-информация об объекте.</returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics_.Struct.Vector2d">
-            <summary>
-            Вектор-структура в двухмерном пространстве (альтернативная версия).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Vector2d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Vector2d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.op_Multiply(System.Double,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Произведение скаляра на вектор.
-            </summary>
-            <param name="scalar">Скаляр.</param>
-            <param name="vector">Вектор (изменяется).</param>
-            <returns>Вектор, который является произведением вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.op_Division(Opt.Geometrics_.Struct.Vector2d,System.Double)">
-            <summary>
-            Деление вектора на скаляр.
-            </summary>
-            <param name="vector">Вектор (изменяется).</param>
-            <param name="scalar">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на скаляр.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.op_Addition(Opt.Geometrics_.Struct.Vector2d,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.op_Subtraction(Opt.Geometrics_.Struct.Vector2d,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="vector_this">Вектор (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.op_Multiply(Opt.Geometrics_.Struct.Vector2d,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Vector2d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector2d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector2d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector2d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Vector2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Struct.Point3d">
-            <summary>
-            Точка-структура в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Point3d.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point3d.op_Addition(Opt.Geometrics.Struct.Point3d,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point3d.op_Subtraction(Opt.Geometrics.Struct.Point3d,Opt.Geometrics.Struct.Vector3d)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point3d.op_Subtraction(Opt.Geometrics.Struct.Point3d,Opt.Geometrics.Struct.Point3d)">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point3d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics_.Struct.Point3d">
-            <summary>
-            Точка-структура в трёхмерном пространстве (альтернативный вариант).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Point3d.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point3d.op_Addition(Opt.Geometrics_.Struct.Point3d,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="point">Точка (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point3d.op_Subtraction(Opt.Geometrics_.Struct.Point3d,Opt.Geometrics_.Struct.Vector3d)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="point">Точка (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point3d.op_Subtraction(Opt.Geometrics_.Struct.Point3d,Opt.Geometrics_.Struct.Point3d)">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point3d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics_.Struct.Point2d">
-            <summary>
-            Точка-структура в двухмерном пространстве (альтернативный вариант).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics_.Struct.Point2d.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point2d.op_Addition(Opt.Geometrics_.Struct.Point2d,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="point">Точка (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point2d.op_Subtraction(Opt.Geometrics_.Struct.Point2d,Opt.Geometrics_.Struct.Vector2d)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="point">Точка (изменяется).</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point2d.op_Subtraction(Opt.Geometrics_.Struct.Point2d,Opt.Geometrics_.Struct.Point2d)">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics_.Struct.Point2d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point2d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point2d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point2d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point2d.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics_.Struct.Point2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Struct.Point2d">
-            <summary>
-            Точка-структура в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Struct.Point2d.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point2d.op_Addition(Opt.Geometrics.Struct.Point2d,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point2d.op_Subtraction(Opt.Geometrics.Struct.Point2d,Opt.Geometrics.Struct.Vector2d)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="point">Точка.</param>
-            <param name="vector">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки (начальная точка не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point2d.op_Subtraction(Opt.Geometrics.Struct.Point2d,Opt.Geometrics.Struct.Point2d)">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Struct.Point2d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point2d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point2d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point2d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point2d.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Struct.Point2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.Geometric3d">
-            <summary>
-            Геометрический объект в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.Vector3d">
-            <summary>
-            Вектор в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Vector3d.x">
-            <summary>
-            Координата X.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Vector3d.y">
-            <summary>
-            Координата Y.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Vector3d.z">
-            <summary>
-            Координата Z.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.op_Addition(Opt.Geometrics3d.Vector3d,Opt.Geometrics3d.Vector3d)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.op_Subtraction(Opt.Geometrics3d.Vector3d,Opt.Geometrics3d.Vector3d)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.op_Multiply(Opt.Geometrics3d.Vector3d,Opt.Geometrics3d.Vector3d)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.op_Multiply(Opt.Geometrics3d.Vector3d,System.Double)">
-            <summary>
-            Произведение вектора на число.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Скаляр.</param>
-            <returns>Вектор, который является произведением вектора на число (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.op_Division(Opt.Geometrics3d.Vector3d,System.Double)">
-            <summary>
-            Деление вектора на число.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на число (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Vector3d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics3d.Vector3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Vector3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Vector3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Vector3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Vector3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.Point3d">
-            <summary>
-            Точка в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Point3d.vector">
-            <summary>
-            Вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Point3d.#ctor">
-            <summary>
-            Создание точки с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Point3d.op_Addition(Opt.Geometrics3d.Point3d,Opt.Geometrics3d.Vector3d)">
-            <summary>
-            Сложение точки и вектора.
-            </summary>
-            <param name="left">Точка.</param>
-            <param name="right">Вектор.</param>
-            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор.</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Point3d.op_Subtraction(Opt.Geometrics3d.Point3d,Opt.Geometrics3d.Vector3d)">
-            <summary>
-            Вычитание вектора из точки.
-            </summary>
-            <param name="left">Точка.</param>
-            <param name="right">Вектор.</param>
-            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Point3d.op_Subtraction(Opt.Geometrics3d.Point3d,Opt.Geometrics3d.Point3d)">
-            <summary>
-            Вычитание двух точек.
-            </summary>
-            <param name="left">Точка.</param>
-            <param name="right">Точка.</param>
-            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
-        </member>
-        <member name="M:Opt.Geometrics3d.Point3d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.Z">
-            <summary>
-            Получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.Vector">
-            <summary>
-            Получить или установить вектор, задающий точку.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Point3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.IGeometricWithPole">
-            <summary>
-            Интерфейс для геометрического объекта с полюсом.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.IGeometricWithPole.Pole">
-            <summary>
-            Получает или задаёт полюс.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.GeometricWithPole3d">
-            <summary>
-            Геометрический объект с полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.GeometricWithPole3d.pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.GeometricWithPole3d.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.Sphera3d">
-            <summary>
-            Сфера в трёхмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Sphera3d.radius">
-            <summary>
-            Радиус.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Sphera3d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Sphera3d.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics3d.Sphera3d.Radius">
-            <summary>
-            Получает или задаёт радиус.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Sphera3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics3d.Parallelepiped3d">
-            <summary>
-            Прямоугольник в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics3d.Parallelepiped3d.size">
-            <summary>
-            Размер.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics3d.Parallelepiped3d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Parallelepiped3d.Size">
-            <summary>
-            Получает или задаёт размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics3d.Parallelepiped3d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometric">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2d">
             <summary>
             Геометрический объект в двухмерном пространстве.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Geometric.id">
-            <summary>
-            Некоторый идентификатор геометрического объекта.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometric.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns>Строка.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometric.Dim">
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2d.Dim">
             <summary>
             Возвращает размерность пространства, в котором задан геометрический объект.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Geometric.ID">
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithId.id">
+            <summary>
+            Некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithId.Id">
             <summary>
             Возвращает и устанавливает некоторый идентификатор геометрического объекта.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Vector">
+        <member name="T:Opt.Geometrics.Geometrics3d.Point3d">
             <summary>
-            Вектор в двухмерном пространстве.
+            Точка в трёхмерном пространстве.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Vector.x">
+        <member name="T:Opt.Geometrics.Geometrics3d.Geometric3d">
             <summary>
-            Координата X.
+            Геометрический объект в трёхмерном пространстве.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Vector.y">
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3d.Dim">
             <summary>
-            Координата Y.
+            Возвращает размерность пространства, в котором задан геометрический объект.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Vector.#ctor">
-            <summary>
-            Создание вектора с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.op_Addition(Opt.Geometrics.Vector,Opt.Geometrics.Vector)">
-            <summary>
-            Суммирование двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.op_Subtraction(Opt.Geometrics.Vector,Opt.Geometrics.Vector)">
-            <summary>
-            Разница двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.op_Multiply(Opt.Geometrics.Vector,Opt.Geometrics.Vector)">
-            <summary>
-            Вычисление скалярного произведения двух векторов.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Вектор.</param>
-            <returns>Скалярное произведение двух векторов.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.op_Multiply(Opt.Geometrics.Vector,System.Double)">
-            <summary>
-            Произведение вектора на число.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Скаляр.</param>
-            <returns>Вектор, который является произведением вектора на число (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.op_Division(Opt.Geometrics.Vector,System.Double)">
-            <summary>
-            Деление вектора на число.
-            </summary>
-            <param name="left">Вектор.</param>
-            <param name="right">Скаляр.</param>
-            <returns>Вектор, который является результатом деления вектора на число (начальный вектор не изменяется).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Vector.ToString">
-            <summary>
-            Возвращает строку-информаицю об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Vector.X">
-            <summary>
-            Получает или задаёт координату X.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Vector.Y">
-            <summary>
-            Получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Vector.Item(System.Int32)">
-            <summary>
-            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Vector.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Point">
-            <summary>
-            Точка в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Point.vector">
+        <member name="F:Opt.Geometrics.Geometrics3d.Point3d.vector">
             <summary>
             Вектор, задающий точку.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Point.#ctor">
-            <summary>
-            Создание точки с нулевыми координатами.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Point.op_Addition(Opt.Geometrics.Point,Opt.Geometrics.Vector)">
+        <member name="M:Opt.Geometrics.Geometrics3d.Point3d.op_Addition(Opt.Geometrics.Geometrics3d.Point3d,Opt.Geometrics.Geometrics3d.Vector3d)">
             <summary>
             Сложение точки и вектора.
             </summary>
@@ -1500,7 +57,7 @@
             <param name="right">Вектор.</param>
             <returns>Точка, которая является результатом сложения заданной точки на заданный вектор.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Point.op_Subtraction(Opt.Geometrics.Point,Opt.Geometrics.Vector)">
+        <member name="M:Opt.Geometrics.Geometrics3d.Point3d.op_Subtraction(Opt.Geometrics.Geometrics3d.Point3d,Opt.Geometrics.Geometrics3d.Vector3d)">
             <summary>
             Вычитание вектора из точки.
             </summary>
@@ -1508,7 +65,7 @@
             <param name="right">Вектор.</param>
             <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Point.op_Subtraction(Opt.Geometrics.Point,Opt.Geometrics.Point)">
+        <member name="M:Opt.Geometrics.Geometrics3d.Point3d.op_Subtraction(Opt.Geometrics.Geometrics3d.Point3d,Opt.Geometrics.Geometrics3d.Point3d)">
             <summary>
             Вычитание двух точек.
             </summary>
@@ -1516,172 +73,45 @@
             <param name="right">Точка.</param>
             <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Point.ToString">
+        <member name="M:Opt.Geometrics.Geometrics3d.Point3d.ToString">
             <summary>
             Возвращает строку-информаицю об объекте.
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Opt.Geometrics.Point.X">
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.X">
             <summary>
             Получает или задаёт координату X.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Point.Y">
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.Y">
             <summary>
             Получает или задаёт координату Y.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Point.Item(System.Int32)">
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.Z">
             <summary>
-            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
+            Получает или задаёт координату Z.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Point.Vector">
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.Item(System.Int32)">
+            <summary>
+            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.Vector">
             <summary>
             Получить или установить вектор, задающий точку.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Point.Copy">
+        <member name="P:Opt.Geometrics.Geometrics3d.Point3d.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.IGeometricWithPole">
+        <member name="T:Opt.Geometrics.SpecialGeometrics.PlaneDividing">
             <summary>
-            Интерфейс для геометрического объекта с полюсом.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.IGeometricWithPole.Pole">
-            <summary>
-            Получает или задаёт полюс.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.GeometricWithPole">
-            <summary>
-            Геометрический объект с полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.GeometricWithPole.pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.GeometricWithPole.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.StripLine">
-            <summary>
-            Прямая линия.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.StripLine.vector">
-            <summary>
-            Вектор направления.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.StripLine.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.StripLine.Vector">
-            <summary>
-            Установить или получить вектор направления.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.StripLine.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Plane">
-            <summary>
-            Полуплоскость в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Plane.normal">
-            <summary>
-            Вектор нормали.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Plane.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Plane.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Plane.Normal">
-            <summary>
-            Получает или задаёт вектор нормали.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Plane.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Circle">
-            <summary>
-            Круг в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Circle.radius">
-            <summary>
-            Радиус.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Circle.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Circle.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Circle.Radius">
-            <summary>
-            Получает или задаёт радиус.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Circle.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Rectangle">
-            <summary>
-            Прямоугольник в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Rectangle.size">
-            <summary>
-            Размер.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Rectangle.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Rectangle.Size">
-            <summary>
-            Получает или задаёт размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Rectangle.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            Разделяющая в двухмерном пространстве.
             </summary>
         </member>
         <member name="T:Opt.Geometrics.IGeometricWithList`1">
@@ -1708,138 +138,436 @@
             Возвращает количество элементов, которые содержаться в контейнере. Возвращает -1, если контейнер пуст.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.GeometricsWithList`1">
+        <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithId">
+            <summary>
+            Геометрический объект в двухмерном пространстве с идентификатором.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics3d.Geometric3dWithId.id">
+            <summary>
+            Некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithId.Id">
+            <summary>
+            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
             <summary>
             Кольцевой список, основаный на List.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.GeometricsWithList`1.list_elements">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPole">
+            <summary>
+            Геометрический объект с полюсом (начало связанной системы координат).
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.Pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.list_elements">
             <summary>
             Список элементов, которые содержит кольцевой список.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.GeometricsWithList`1.CheckedIndex(System.Int32@)">
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.CheckedIndex(System.Int32@)">
             <summary>
             Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
             </summary>
             <param name="index">Индекс.</param>
         </member>
-        <member name="M:Opt.Geometrics.GeometricsWithList`1.#ctor">
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.#ctor">
             <summary>
             Конструктор.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.GeometricsWithList`1.Add(`0)">
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Add(`0)">
             <summary>
             Добавляет элемент в контайнер.
             </summary>
             <param name="element">Элемент.</param>
         </member>
-        <member name="P:Opt.Geometrics.GeometricsWithList`1.Item(System.Int32)">
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Item(System.Int32)">
             <summary>
             Получает или устанавливает элемент кольцевого списка по индексу.
             </summary>
             <param name="index">Индекс.</param>
             <returns>Элемент кольцевого списка с заданным индексом.</returns>
         </member>
-        <member name="P:Opt.Geometrics.GeometricsWithList`1.Count">
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
             <summary>
             Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Polygon">
+        <member name="T:Opt.Geometrics.Extentions.PointExt">
             <summary>
-            Многоугольник в двухмерном пространстве.
+            Расширения для полуплоскости.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Polygon.#ctor">
+        <member name="M:Opt.Geometrics.Extentions.PointExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Point2d)">
+            <summary>
+            Получить расширенное расстояние от точки до точки.
+            </summary>
+            <param name="point_this">Точка.</param>
+            <param name="point">Точка.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.StripLine2d">
+            <summary>
+            Прямая линия.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.StripLine2d.vector">
+            <summary>
+            Вектор направления.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.StripLine2d.#ctor">
             <summary>
             Конструктор.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Polygon.Copy">
+        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Vector">
+            <summary>
+            Установить или получить вектор направления.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Polygon.Iterator">
+        <member name="T:Opt.Geometrics.Geometric">
             <summary>
-            Класс, который хранит информацию о определённом многоугольнике и определённой вершине.
+            Геометрический объект.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Polygon.Iterator.polygon">
+        <member name="T:Opt.Geometrics.Extentions.PlaneExt">
             <summary>
-            Многоугольник, с которым связан итератор. 
+            Расширения для точки.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Polygon.Iterator.index">
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Point2d)">
             <summary>
-            Индекс вершины, с которой связан итератор.
+            Получить расширенное расстояние от полуплоскости до точки.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="point">Точка.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
+            <summary>
+            Получить расширенное расстояние от полуплоскости до круга.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="circle">Круг.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить расширенное расстояние от полуплоскости до полуплоскости.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="plane">Полуплоскость.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
+            <summary>
+            Получить годограф функции плотного размещения круга возле полуплоскости.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="circle">Круг.</param>
+            <returns>Годограф функции плотного размещения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
+            <summary>
+            Получить точку пересечения границ полуплоскости и круга.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить точку пересечения полуплоскости и полуплоскости.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
+            <summary>
+            Получить серединную полуплоскость полуплоскости и круга.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить серединную полуплоскость полуплоскости и полуплоскости.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics3d.Vector3d">
+            <summary>
+            Вектор в трёхмерном пространстве.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Polygon.Iterator.#ctor(System.Int32,Opt.Geometrics.Polygon,System.Int32)">
+        <member name="T:Opt.Geometrics.Geometrics2d.Vector2d">
             <summary>
-            Конструктор.
-            </summary>
-            <param name="polygon">Многоугольник, с которым связан итератор. Многоугольник не может иметь значение null!</param>
-            <param name="index">Многоугольник.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Polygon.Iterator.Move(System.Int32)">
-            <summary>
-            Операция сдвига итератора на определённое количество элементов.
-            </summary>
-            <param name="cor">Количество элементов (может быть отрицательным).</param>
-        </member>
-        <member name="M:Opt.Geometrics.Polygon.Iterator.Point(System.Int32)">
-            <summary>
-            Получить значение точки многоугольника, с которым связан итератор. Значение координат точки в глобальной системе координат.
-            </summary>
-            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
-            <returns>Точка.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Polygon.Iterator.Plane(System.Int32)">
-            <summary>
-            Получить значение полуплоскости многоугольника, с которым связан итератор. Значение координат полуплоскости в глобальной системе координат.
-            </summary>
-            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
-            <returns>Полуплоскость (вектор нормали направлен от многоугольника).</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Polygon.Iterator.Index">
-            <summary>
-            Возвращает индекс, с которым связан итератор.
+            Вектор в трёхмерном пространстве.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Polygon.Iterator.Polygon">
+        <member name="F:Opt.Geometrics.Geometrics2d.Vector2d.x">
             <summary>
-            Возвращает многоугольник, с которым связан итератор.
+            Координата X.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Polygon.Iterator.Count">
+        <member name="F:Opt.Geometrics.Geometrics2d.Vector2d.y">
             <summary>
-            Возвращает количество элементов в многоугольнике, с которым связан итератор.
+            Координата Y.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.SpecialGeometrics.PlaneDividing">
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d._Add(Opt.Geometrics.Geometrics2d.Vector2d)">
             <summary>
-            Разделяющая в двухмерном пространстве.
+            Добавить вектор к текущему.
+            </summary>
+            <param name="vector">Вектор.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d._Deduct(Opt.Geometrics.Geometrics2d.Vector2d)">
+            <summary>
+            Вычесть вектор из текущего.
+            </summary>
+            <param name="vector">Вектор.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d._Multiply(System.Double)">
+            <summary>
+            Умножить текущий вектор на скаляр.
+            </summary>
+            <param name="scalar">Скаляр.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d._Divide(System.Double)">
+            <summary>
+            Разделить текущий вектор на скаляр.
+            </summary>
+            <param name="scalar">Скаляр.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.op_Addition(Opt.Geometrics.Geometrics2d.Vector2d,Opt.Geometrics.Geometrics2d.Vector2d)">
+            <summary>
+            Суммирование двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.op_Subtraction(Opt.Geometrics.Geometrics2d.Vector2d,Opt.Geometrics.Geometrics2d.Vector2d)">
+            <summary>
+            Разница двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.op_Multiply(Opt.Geometrics.Geometrics2d.Vector2d,Opt.Geometrics.Geometrics2d.Vector2d)">
+            <summary>
+            Вычисление скалярного произведения двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Скалярное произведение двух векторов.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.op_Multiply(Opt.Geometrics.Geometrics2d.Vector2d,System.Double)">
+            <summary>
+            Произведение вектора на число.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Скаляр.</param>
+            <returns>Вектор, который является произведением вектора на число (начальный вектор не изменяется).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.op_Division(Opt.Geometrics.Geometrics2d.Vector2d,System.Double)">
+            <summary>
+            Деление вектора на число.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Скаляр.</param>
+            <returns>Вектор, который является результатом деления вектора на число (начальный вектор не изменяется).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Vector2d.ToString">
+            <summary>
+            Возвращает строку-информаицю об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Vector2d.X">
+            <summary>
+            Получает или задаёт координату X.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.SpecialGeometrics.CircleDelone">
+        <member name="P:Opt.Geometrics.Geometrics2d.Vector2d.Y">
             <summary>
-            Круг Делоне в двухмерном пространстве.
+            Получает или задаёт координату Y.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.SpecialGeometrics.CircleDelone.normal">
+        <member name="P:Opt.Geometrics.Geometrics2d.Vector2d.Item(System.Int32)">
+            <summary>
+            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Vector2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics3d.Vector3d.z">
+            <summary>
+            Координата Z.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d._Add(Opt.Geometrics.Geometrics3d.Vector3d)">
+            <summary>
+            Добавить вектор к текущему.
+            </summary>
+            <param name="vector">Вектор.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d._Deduct(Opt.Geometrics.Geometrics3d.Vector3d)">
+            <summary>
+            Вычесть вектор из текущего.
+            </summary>
+            <param name="vector">Вектор.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d._Multiply(System.Double)">
+            <summary>
+            Умножить текущий вектор на скаляр.
+            </summary>
+            <param name="scalar">Скаляр.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d._Divide(System.Double)">
+            <summary>
+            Разделить текущий вектор на скаляр.
+            </summary>
+            <param name="scalar">Скаляр.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.op_Addition(Opt.Geometrics.Geometrics3d.Vector3d,Opt.Geometrics.Geometrics3d.Vector3d)">
+            <summary>
+            Суммирование двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Вектор, который является суммой двух векторов (начальные вектора не изменяются).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.op_Subtraction(Opt.Geometrics.Geometrics3d.Vector3d,Opt.Geometrics.Geometrics3d.Vector3d)">
+            <summary>
+            Разница двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Вектор, который является разницой двух векторов (начальные вектора не изменяются).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.op_Multiply(Opt.Geometrics.Geometrics3d.Vector3d,Opt.Geometrics.Geometrics3d.Vector3d)">
+            <summary>
+            Вычисление скалярного произведения двух векторов.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Вектор.</param>
+            <returns>Скалярное произведение двух векторов.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.op_Multiply(Opt.Geometrics.Geometrics3d.Vector3d,System.Double)">
+            <summary>
+            Произведение вектора на число.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Скаляр.</param>
+            <returns>Вектор, который является произведением вектора на число (начальный вектор не изменяется).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.op_Division(Opt.Geometrics.Geometrics3d.Vector3d,System.Double)">
+            <summary>
+            Деление вектора на число.
+            </summary>
+            <param name="left">Вектор.</param>
+            <param name="right">Скаляр.</param>
+            <returns>Вектор, который является результатом деления вектора на число (начальный вектор не изменяется).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Vector3d.ToString">
+            <summary>
+            Возвращает строку-информаицю об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Vector3d.Z">
+            <summary>
+            Получает или задаёт координату Z.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Vector3d.Item(System.Int32)">
+            <summary>
+            Получает или задаёт координаты вектора по их номеру. Нулевая координата возвращает 0, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y, третья координата получает или задаёт координату Z
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Vector3d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Plane2d">
+            <summary>
+            Полуплоскость в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Plane2d.normal">
             <summary>
             Вектор нормали.
             </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.ToString">
+            <summary>
+            Возвращает строку-информацию об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Normal">
+            <summary>
+            Получает или задаёт вектор нормали.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Extentions.PolygonExt">
+            <summary>
+            Расширения для многоугольника в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.PolygonExt.ToRectangle(Opt.Geometrics.Geometrics2d.Polygon2d)">
+            <summary>
+            Преобразование многоугольника в прямоугольник.
+            </summary>
+            <param name="polygon">Многоугольник.</param>
+            <returns>Прямоугольник.</returns>
         </member>
         <member name="T:Opt.Geometrics.Extentions.GeometricExt">
             <summary>
             Расширения для геометрического объекта.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Расширенное_расстояние(Opt.Geometrics.Geometric,Opt.Geometrics.Geometric)">
+        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
             <summary>
             Получить расширенное расстояние от геометрического объекта до геометрического объекта.
             </summary>
@@ -1847,7 +575,7 @@
             <param name="geometric">Геометрический объект.</param>
             <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometric,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить годограф функции плотного размещения круга и геометрического объекта.
             </summary>
@@ -1855,7 +583,7 @@
             <param name="circle">Круг.</param>
             <returns>Годограф функции плотного размещения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_пересечения_границ(Opt.Geometrics.Geometric,Opt.Geometrics.Geometric)">
+        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
             <summary>
             Получить точку пересечения геометрического объекта и геометрического объекта.
             </summary>
@@ -1863,7 +591,7 @@
             <param name="geometric_next">Геометрический объект.</param>
             <returns>Точка пересечения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_близости_второго_рода(Opt.Geometrics.Circle,Opt.Geometrics.Geometric,Opt.Geometrics.Geometric)">
+        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
             <summary>
             Получить точку близости второго рода для круга и множества (геометрический объект, геометрический объект).
             </summary>
@@ -1872,7 +600,7 @@
             <param name="geometric_next">Геометрический объект.</param>
             <returns>Точка близости.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Серединная_полуплоскость(Opt.Geometrics.Geometric,Opt.Geometrics.Geometric)">
+        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
             <summary>
             Получить серединную полуплоскость геометрического объекта и геометрического объекта.
             </summary>
@@ -1880,107 +608,113 @@
             <param name="geometric_next">Геометрический объект.</param>
             <returns>Серединная полуплоскость.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Extentions.VectorExt">
+        <member name="T:Opt.Geometrics.Geometrics2d.Point2d">
             <summary>
-            Расширения для вектора.
+            Точка в двухмерном пространстве.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.VectorExt._I_(Opt.Geometrics.Vector,System.Boolean)">
+        <member name="F:Opt.Geometrics.Geometrics2d.Point2d.vector">
             <summary>
-            Получить перпендикулярный вектор.
-            </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="по_часовой_стрелке">true - если происходит поворот по часовой стрелке и fakse - если против.</param>
-            <returns>Перпендикулярный вектор.</returns>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.PointExt">
-            <summary>
-            Расширения для полуплоскости.
+            Вектор, задающий точку.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PointExt.Расширенное_расстояние(Opt.Geometrics.Point,Opt.Geometrics.Point)">
+        <member name="M:Opt.Geometrics.Geometrics2d.Point2d.op_Addition(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Vector2d)">
             <summary>
-            Получить расширенное расстояние от точки до точки.
+            Сложение точки и вектора.
             </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Расширенное расстояние.</returns>
+            <param name="left">Точка.</param>
+            <param name="right">Вектор.</param>
+            <returns>Точка, которая является результатом сложения заданной точки на заданный вектор.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Extentions.PlaneExt">
+        <member name="M:Opt.Geometrics.Geometrics2d.Point2d.op_Subtraction(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Vector2d)">
             <summary>
-            Расширения для точки.
+            Вычитание вектора из точки.
+            </summary>
+            <param name="left">Точка.</param>
+            <param name="right">Вектор.</param>
+            <returns>Точка, которая является результатом вычитание заданного вектора из заданной точки.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Point2d.op_Subtraction(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Point2d)">
+            <summary>
+            Вычитание двух точек.
+            </summary>
+            <param name="left">Точка.</param>
+            <param name="right">Точка.</param>
+            <returns>Вектор, который является результатом вычитания заданной точки из заданной точки.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Point2d.ToString">
+            <summary>
+            Возвращает строку-информаицю об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Point2d.X">
+            <summary>
+            Получает или задаёт координату X.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Plane,Opt.Geometrics.Point)">
+        <member name="P:Opt.Geometrics.Geometrics2d.Point2d.Y">
             <summary>
-            Получить расширенное расстояние от полуплоскости до точки.
+            Получает или задаёт координату Y.
             </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="point">Точка.</param>
-            <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Plane,Opt.Geometrics.Circle)">
+        <member name="P:Opt.Geometrics.Geometrics2d.Point2d.Item(System.Int32)">
             <summary>
-            Получить расширенное расстояние от полуплоскости до круга.
+            Получает или задаёт координаты точки по их номеру. Нулевая координата возвращает 1, первая координата получает или задаёт координату X, вторая координата получает или задаёт координату Y.
             </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="circle">Круг.</param>
-            <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Plane,Opt.Geometrics.Plane)">
+        <member name="P:Opt.Geometrics.Geometrics2d.Point2d.Vector">
             <summary>
-            Получить расширенное расстояние от полуплоскости до полуплоскости.
+            Получить или установить вектор, задающий точку.
             </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="plane">Полуплоскость.</param>
-            <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Plane,Opt.Geometrics.Circle)">
+        <member name="P:Opt.Geometrics.Geometrics2d.Point2d.Copy">
             <summary>
-            Получить годограф функции плотного размещения круга возле полуплоскости.
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="circle">Круг.</param>
-            <returns>Годограф функции плотного размещения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Plane,Opt.Geometrics.Circle)">
+        <member name="T:Opt.Geometrics.SpecialGeometrics.CircleDelone2d">
             <summary>
-            Получить точку пересечения границ полуплоскости и круга.
+            Круг Делоне в двухмерном пространстве.
             </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Точка пересечения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Plane,Opt.Geometrics.Plane)">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue">
             <summary>
-            Получить точку пересечения полуплоскости и полуплоскости.
+            Сфера (круг) в двухмерном пространстве.
             </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Точка пересечения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Plane,Opt.Geometrics.Circle)">
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.value">
             <summary>
-            Получить серединную полуплоскость полуплоскости и круга.
+            Радиус.
             </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Серединная полуплоскость.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Plane,Opt.Geometrics.Plane)">
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.ToString">
             <summary>
-            Получить серединную полуплоскость полуплоскости и полуплоскости.
+            Возвращает строку-информацию об объекте.
             </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Серединная полуплоскость.</returns>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.Value">
+            <summary>
+            Получает или задаёт радиус.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.SpecialGeometrics.CircleDelone2d.normal">
+            <summary>
+            Вектор нормали.
+            </summary>
         </member>
         <member name="T:Opt.Geometrics.Extentions.CircleExt">
             <summary>
             Расширения для круга.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Circle,Opt.Geometrics.Point)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Point2d)">
             <summary>
             Получить расширенное расстояние от круга до точки.
             </summary>
@@ -1988,7 +722,7 @@
             <param name="point">Точка.</param>
             <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Circle,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить расширенное расстояние от круга до круга.
             </summary>
@@ -1996,7 +730,7 @@
             <param name="circle">Круг.</param>
             <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Circle,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить годограф функции плотного размещения круга возле круга.
             </summary>
@@ -2004,7 +738,7 @@
             <param name="circle">Круг.</param>
             <returns>Годограф функции плотного размещения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Circle,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить точку пересечения границ круга и круга.
             </summary>
@@ -2012,7 +746,7 @@
             <param name="circle_next">Круг.</param>
             <returns>Точка пересечения (одна из двух).</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Circle,Opt.Geometrics.Plane)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
             <summary>
             Получить точку пересечения границ круга и полуплоскости.
             </summary>
@@ -2020,7 +754,7 @@
             <param name="plane_next">Полуплоскость.</param>
             <returns>Точка пересечения.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Circle,Opt.Geometrics.Circle,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить точку близости второго рода для круга и множества (круг, круг).
             </summary>
@@ -2029,7 +763,7 @@
             <param name="circle_next">Круг.</param>
             <returns>Точка близости (одна из двух).</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Circle,Opt.Geometrics.Circle,Opt.Geometrics.Plane)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
             <summary>
             Получить точку близости второго рода для круга и множества (полуплоскость, круг).
             </summary>
@@ -2038,7 +772,7 @@
             <param name="plane_next">Полуплоскость.</param>
             <returns>Точка близости (одна из двух).</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Circle,Opt.Geometrics.Plane,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить точку близости второго рода для круга и множества (полуплоскость, круг).
             </summary>
@@ -2047,7 +781,7 @@
             <param name="circle_next">Круг.</param>
             <returns>Точка близости (одна из двух).</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Circle,Opt.Geometrics.Plane,Opt.Geometrics.Plane)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
             <summary>
             Получить точку близости второго рода для круга и множества (полуплоскость, полуплоскость).
             </summary>
@@ -2056,7 +790,7 @@
             <param name="plane_next">Полуплоскость.</param>
             <returns>Точка близости.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Circle,Opt.Geometrics.Circle)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
             <summary>
             Получить серединную полуплоскость круга и круга.
             </summary>
@@ -2064,7 +798,7 @@
             <param name="circle_next">Круг.</param>
             <returns>Серединная полуплоскость.</returns>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Circle,Opt.Geometrics.Plane)">
+        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
             <summary>
             Получить серединную полуплоскость круга и полуплоскости.
             </summary>
@@ -2072,29 +806,183 @@
             <param name="plane_next">Полуплоскость.</param>
             <returns>Серединная полуплоскость.</returns>
         </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d">
+            <summary>
+            Многоугольник в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator">
+            <summary>
+            Класс, который хранит информацию о определённом многоугольнике и определённой вершине.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.polygon">
+            <summary>
+            Многоугольник, с которым связан итератор. 
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.index">
+            <summary>
+            Индекс вершины, с которой связан итератор.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.#ctor(System.Int32,Opt.Geometrics.Geometrics2d.Polygon2d,System.Int32)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="polygon">Многоугольник, с которым связан итератор. Многоугольник не может иметь значение null!</param>
+            <param name="index">Многоугольник.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Move(System.Int32)">
+            <summary>
+            Операция сдвига итератора на определённое количество элементов.
+            </summary>
+            <param name="cor">Количество элементов (может быть отрицательным).</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Point(System.Int32)">
+            <summary>
+            Получить значение точки многоугольника, с которым связан итератор. Значение координат точки в глобальной системе координат.
+            </summary>
+            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
+            <returns>Точка.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Plane(System.Int32)">
+            <summary>
+            Получить значение полуплоскости многоугольника, с которым связан итератор. Значение координат полуплоскости в глобальной системе координат.
+            </summary>
+            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
+            <returns>Полуплоскость (вектор нормали направлен от многоугольника).</returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Index">
+            <summary>
+            Возвращает индекс, с которым связан итератор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Polygon">
+            <summary>
+            Возвращает многоугольник, с которым связан итератор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Count">
+            <summary>
+            Возвращает количество элементов в многоугольнике, с которым связан итератор.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Extentions.RectangleExt">
             <summary>
             Расширения для прямоугольника в двухмерном пространстве.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.RectangleExt.ToPolygon(Opt.Geometrics.Rectangle)">
+        <member name="M:Opt.Geometrics.Extentions.RectangleExt.ToPolygon(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector)">
             <summary>
             Преобразование прямоугольника в многоугольник.
             </summary>
             <param name="rectangle"></param>
             <returns></returns>
         </member>
-        <member name="T:Opt.Geometrics.Extentions.PolygonExt">
+        <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithPole">
             <summary>
-            Расширения для многоугольника в двухмерном пространстве.
+            Геометрический объект с полюсом (начало связанной системы координат).
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.PolygonExt.ToRectangle(Opt.Geometrics.Polygon)">
+        <member name="F:Opt.Geometrics.Geometrics3d.Geometric3dWithPole.pole">
             <summary>
-            Преобразование многоугольника в прямоугольник.
+            Хранит значение полюса (начала связанной системы координат).
             </summary>
-            <param name="polygon">Многоугольник.</param>
-            <returns>Прямоугольник.</returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPole.Pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector">
+            <summary>
+            Параллелепипед в трёхмерном пространстве.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.vector">
+            <summary>
+            Размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Vector">
+            <summary>
+            Получает или задаёт размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector">
+            <summary>
+            Прямоугольник в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.vector">
+            <summary>
+            Размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Vector">
+            <summary>
+            Получает или задаёт размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleValue">
+            <summary>
+            Сфера в трёхмерном пространстве.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleValue.value">
+            <summary>
+            Радиус.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleValue.ToString">
+            <summary>
+            Возвращает строку-информаицю об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleValue.Value">
+            <summary>
+            Получает или задаёт радиус.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleValue.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Extentions.Vector2dExt">
+            <summary>
+            Расширения для вектора.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Extentions.Vector2dExt._I_(Opt.Geometrics.Geometrics2d.Vector2d,System.Boolean)">
+            <summary>
+            Получить перпендикулярный вектор.
+            </summary>
+            <param name="vector_this">Вектор.</param>
+            <param name="isRight">true - если происходит поворот по часовой стрелке и false - если против.</param>
+            <returns>Перпендикулярный вектор.</returns>
         </member>
     </members>
 </doc>
