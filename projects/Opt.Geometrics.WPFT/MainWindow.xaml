@@ -1,0 +1,87 @@
+﻿<Window x:Class="Opt.Geometrics.WPFT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Opt.Geometrics.WPFT"
+        xmlns:opt="clr-namespace:Opt.Geometrics.Geometrics2d;assembly=Opt.Geometrics"
+        Title="Программа размещения выпуклых многоугольников" Height="350" Width="525">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type opt:Point2d}">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="PointCoor"/>
+                        <ColumnDefinition SharedSizeGroup="PointCoor"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding Path=X}" Padding="2"/>
+                    <TextBox Grid.Column="1" Text="{Binding Path=Y}" Padding="2"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PolygonShell}">
+            <Border BorderThickness="1" BorderBrush="Black" Padding="2">
+                <Grid Grid.IsSharedSizeScope="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Полюс:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Label Content="{Binding Path=Pole}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+                    <TextBlock Text="Вершины:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                    <WrapPanel Grid.Row="1" Grid.Column="1">
+                        <ListView ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                        <Button Content="Add" Tag="{Binding}" VerticalAlignment="Center" Click="AddPoint_Click"/>
+                    </WrapPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Очистить" Click="Clear_Click"/>
+                <Separator/>
+                <MenuItem Header="Загрузить..." Click="Load_Click"/>
+                <MenuItem Header="Сохранить..." Click="Save_Click"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Методы">
+                <MenuItem Header="Метод барьеров" Click="Barriers_Click"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Name="panel_for_strip" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Размер полосы:" VerticalAlignment="Center" Padding="2"/>
+            <TextBlock Name="strip_length" Text="0" VerticalAlignment="Center" Padding="2"/>
+            <TextBox Name="strip_width" Text="0" VerticalAlignment="Center" Padding="2"/>
+        </StackPanel>
+        <Expander Grid.Row="2">
+            <StackPanel>
+                <Button Content="Добавить многоугольник.." Click="AddPolygon_Click" Grid.Row="3" VerticalAlignment="Top"/>
+                <Button Content="Нарисовать многоугольники.." Click="DrawPolygon_Click" Grid.Row="4" VerticalAlignment="Top"/>
+                <ListView Name="list_view" HorizontalContentAlignment="Stretch" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  MaxHeight="500"/>
+            </StackPanel>
+        </Expander>
+        <Grid Name="grid" Grid.Row="5">
+            <Canvas/>
+            <Rectangle Name="strip" Width="{Binding ElementName=strip_length, Path=Text, UpdateSourceTrigger=PropertyChanged}" Height="{Binding ElementName=strip_width, Path=Text, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#50ffffff"/>
+        </Grid>
+    </Grid>
+</Window>
