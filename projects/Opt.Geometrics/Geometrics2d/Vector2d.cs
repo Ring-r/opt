@@ -6,7 +6,7 @@ namespace Opt.Geometrics.Geometrics2d
     /// Вектор в трёхмерном пространстве.
     /// </summary>
     [Serializable]
-    public class Vector2d
+    public class Vector2d : Geometric2d
     {
         #region Скрытые поля и свойства.
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Opt.Geometrics;
+using Opt.Geometrics.Geometrics2d;
 using Opt.Geometrics.Extentions;
+
+using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector;
 
 namespace Opt.Algorithms
 {
@@ -13,26 +15,26 @@ namespace Opt.Algorithms
         public bool IsCanContain(Rectangle rectangle)
         {
             bool is_checked = true;
-            for (int j = 1; j <= Size.Dim && is_checked; j++)
-                is_checked = rectangle.Size[j] <= Size[j];
+            for (int j = 1; j <= this.vector.Dim && is_checked; j++)
+                is_checked = rectangle.Vector[j] <= this.vector[j];
             return is_checked;
         }
-        public bool IsContain(Rectangle rectangle, Point pole)
+        public bool IsContain(Rectangle rectangle, Point2d pole)
         {
-            Point pole_temp = rectangle.Pole;
+            Point2d pole_temp = rectangle.Pole;
             rectangle.Pole = pole;
             bool is_checked = true;
-            for (int j = 1; j <= Size.Dim && is_checked; j++)
+            for (int j = 1; j <= this.vector.Dim && is_checked; j++)
             {
-                double coor = rectangle.Pole[j] + rectangle.Size[j];
-                is_checked = 0 <= coor && coor <= Size[j];
+                double coor = rectangle.Pole[j] + rectangle.Vector[j];
+                is_checked = 0 <= coor && coor <= this.vector[j];
             }
             rectangle.Pole = pole_temp;
 
             return is_checked;
         }
 
-        public Point OptPole(Point opt_pole, Point pole)
+        public Point2d OptPole(Point2d opt_pole, Point2d pole)
         {
             if (pole.X < opt_pole.X)
                 return pole;
@@ -51,11 +53,11 @@ namespace Opt.Algorithms
 
     public class Algorithm
     {
-        private List<Point> poles;
+        private List<Point2d> poles;
 
-        private void Steps(List<Polygon> polygon_list, StripRegion region)
+        private void Steps(List<Polygon2d> polygon_list, StripRegion region)
         {
-            List<Polygon> polygon_placed_list = new List<Polygon>();
+            List<Polygon2d> polygon_placed_list = new List<Polygon2d>();
 
             #region Шаг-1. Для каждого размещаемого Polygon...
             for (int i = 0; i < polygon_list.Count; i++)
@@ -64,33 +66,33 @@ namespace Opt.Algorithms
             #endregion
         }
 
-        private Polygon Годораф_функции_плотного_размещения(Polygon polygon, StripRegion region)
+        private Polygon2d Годораф_функции_плотного_размещения(Polygon2d polygon, StripRegion region)
         {
             throw new NotImplementedException();
         } // Пролесковский.
-        private Polygon Годораф_функции_плотного_размещения(Polygon polygon_i, Polygon polygon_j)
+        private Polygon2d Годораф_функции_плотного_размещения(Polygon2d polygon_i, Polygon2d polygon_j)
         {
             throw new NotImplementedException();
         }  // Пролесковский.
-        private List<Point> Точки_пересечения_многоугольников(Polygon polygon_i, Polygon polygon_j)
+        private List<Point2d> Точки_пересечения_многоугольников(Polygon2d polygon_i, Polygon2d polygon_j)
         {
             throw new NotImplementedException();
         } // Кузовлев.
-        private bool Точка_принадлежит_многоугольнику(Point point, Polygon polygon)
+        private bool Точка_принадлежит_многоугольнику(Point2d point, Polygon2d polygon)
         {
             throw new NotImplementedException();
         } // Харин, Пудло
 
-        private bool Step(Polygon polygon, StripRegion strip_region, List<Polygon> polygon_placed_list)
+        private bool Step(Polygon2d polygon, StripRegion strip_region, List<Polygon2d> polygon_placed_list)
         {
             #region Шаг-1. Установка начального значения (бесконечность) точки размещения текущего Polygon.
-            polygon.Pole = new Point();
+            polygon.Pole = new Point2d();
             for (int j = 1; j <= polygon.Pole.Dim; j++)
                 polygon.Pole[j] = double.PositiveInfinity;
             #endregion
 
             #region Шаг-2. Построение всех годофов функции плотного размещения.
-            List<Polygon> polygon_godograph_list = new List<Polygon>(); // Установить Capacity.
+            List<Polygon2d> polygon_godograph_list = new List<Polygon2d>(); // Установить Capacity.
             #region Шаг-2.1. Годораф функции плотного размещения по полосе.
             polygon_godograph_list.Add(Годораф_функции_плотного_размещения(polygon, strip_region));
             #endregion
@@ -101,7 +103,7 @@ namespace Opt.Algorithms
             #endregion
 
             #region Шаг-3. Создание списка возможных точек размещения.
-            poles = new List<Point>();
+            poles = new List<Point2d>();
             #endregion
 
             #region Шаг-4. Добавляем точки пересечения сторон полосы.
