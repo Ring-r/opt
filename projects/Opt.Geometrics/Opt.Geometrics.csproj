@@ -36,6 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Geometrics2d\Geometric2d.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithIdPole.cs" />
+    <Compile Include="Geometrics2d\Geometric2dWithIdPoleValue.cs" />
     <Compile Include="Geometrics2d\Vector2d.cs" />
     <Compile Include="Geometrics3d\Geometric3d.cs" />
     <Compile Include="Geometrics3d\Geometric3dWithId.cs" />
@@ -65,7 +67,6 @@
     <Compile Include="Temp\CircleDelone.cs" />
     <Compile Include="Temp\PlaneDividing.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

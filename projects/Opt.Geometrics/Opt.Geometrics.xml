@@ -4,6 +4,67 @@
         <name>Opt.Geometrics</name>
     </assembly>
     <members>
+        <member name="T:Opt.Geometrics.Geometrics2d.Plane2d">
+            <summary>
+            Полуплоскость в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPole">
+            <summary>
+            Геометрический объект с полюсом (начало связанной системы координат).
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2d">
+            <summary>
+            Геометрический объект в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometric">
+            <summary>
+            Геометрический объект.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2d.Dim">
+            <summary>
+            Возвращает размерность пространства, в котором задан геометрический объект.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.Pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Plane2d.normal">
+            <summary>
+            Вектор нормали.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.ToString">
+            <summary>
+            Возвращает строку-информацию об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Normal">
+            <summary>
+            Получает или задаёт вектор нормали.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithId">
             <summary>
             Геометрический объект в двухмерном пространстве с идентификатором.
@@ -385,31 +446,6 @@
             Сфера (круг) в двухмерном пространстве.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPole">
-            <summary>
-            Геометрический объект с полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2d">
-            <summary>
-            Геометрический объект в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2d.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан геометрический объект.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
         <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.value">
             <summary>
             Радиус.
@@ -429,6 +465,36 @@
         <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole">
+            <summary>
+            Геометрический объект с идентификатором и полюсом (начало связанной системы координат).
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithId">
+            <summary>
+            Геометрический объект в двухмерном пространстве с идентификатором.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithId.id">
+            <summary>
+            Некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithId.Id">
+            <summary>
+            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole.pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole.Pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
             </summary>
         </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Point2d">
@@ -542,6 +608,11 @@
             <param name="geometric_next">Геометрический объект.</param>
             <returns>Серединная полуплоскость.</returns>
         </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d">
+            <summary>
+            Многоугольник в двухмерном пространстве.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
             <summary>
             Кольцевой список, основаный на List.
@@ -574,6 +645,73 @@
         <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
             <summary>
             Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator">
+            <summary>
+            Класс, который хранит информацию о определённом многоугольнике и определённой вершине.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.polygon">
+            <summary>
+            Многоугольник, с которым связан итератор. 
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.index">
+            <summary>
+            Индекс вершины, с которой связан итератор.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.#ctor(System.Int32,Opt.Geometrics.Geometrics2d.Polygon2d,System.Int32)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="polygon">Многоугольник, с которым связан итератор. Многоугольник не может иметь значение null!</param>
+            <param name="index">Многоугольник.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Move(System.Int32)">
+            <summary>
+            Операция сдвига итератора на определённое количество элементов.
+            </summary>
+            <param name="cor">Количество элементов (может быть отрицательным).</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Point(System.Int32)">
+            <summary>
+            Получить значение точки многоугольника, с которым связан итератор. Значение координат точки в глобальной системе координат.
+            </summary>
+            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
+            <returns>Точка.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Plane(System.Int32)">
+            <summary>
+            Получить значение полуплоскости многоугольника, с которым связан итератор. Значение координат полуплоскости в глобальной системе координат.
+            </summary>
+            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
+            <returns>Полуплоскость (вектор нормали направлен от многоугольника).</returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Index">
+            <summary>
+            Возвращает индекс, с которым связан итератор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Polygon">
+            <summary>
+            Возвращает многоугольник, с которым связан итератор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Count">
+            <summary>
+            Возвращает количество элементов в многоугольнике, с которым связан итератор.
             </summary>
         </member>
         <member name="T:Opt.Geometrics.Geometrics2d.StripLine2d">
@@ -628,11 +766,6 @@
             <param name="polygon">Многоугольник.</param>
             <returns>Прямоугольник.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Geometric">
-            <summary>
-            Геометрический объект.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Extentions.RectangleExt">
             <summary>
             Расширения для прямоугольника в двухмерном пространстве.
@@ -658,19 +791,30 @@
             <param name="point">Точка.</param>
             <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithId">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue">
             <summary>
-            Геометрический объект в двухмерном пространстве с идентификатором.
+            Сфера (круг) в двухмерном пространстве.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithId.id">
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.value">
             <summary>
-            Некоторый идентификатор геометрического объекта.
+            Радиус.
             </summary>
         </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithId.Id">
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.ToString">
             <summary>
-            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+            Возвращает строку-информацию об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.Value">
+            <summary>
+            Получает или задаёт радиус.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Point3d">
@@ -848,109 +992,6 @@
             </summary>
         </member>
         <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d">
-            <summary>
-            Многоугольник в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator">
-            <summary>
-            Класс, который хранит информацию о определённом многоугольнике и определённой вершине.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.polygon">
-            <summary>
-            Многоугольник, с которым связан итератор. 
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.index">
-            <summary>
-            Индекс вершины, с которой связан итератор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.#ctor(System.Int32,Opt.Geometrics.Geometrics2d.Polygon2d,System.Int32)">
-            <summary>
-            Конструктор.
-            </summary>
-            <param name="polygon">Многоугольник, с которым связан итератор. Многоугольник не может иметь значение null!</param>
-            <param name="index">Многоугольник.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Move(System.Int32)">
-            <summary>
-            Операция сдвига итератора на определённое количество элементов.
-            </summary>
-            <param name="cor">Количество элементов (может быть отрицательным).</param>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Point(System.Int32)">
-            <summary>
-            Получить значение точки многоугольника, с которым связан итератор. Значение координат точки в глобальной системе координат.
-            </summary>
-            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
-            <returns>Точка.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Plane(System.Int32)">
-            <summary>
-            Получить значение полуплоскости многоугольника, с которым связан итератор. Значение координат полуплоскости в глобальной системе координат.
-            </summary>
-            <param name="cor">Относительный сдвиг индекса относительно текущего положения.</param>
-            <returns>Полуплоскость (вектор нормали направлен от многоугольника).</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Index">
-            <summary>
-            Возвращает индекс, с которым связан итератор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Polygon">
-            <summary>
-            Возвращает многоугольник, с которым связан итератор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.Count">
-            <summary>
-            Возвращает количество элементов в многоугольнике, с которым связан итератор.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Plane2d">
-            <summary>
-            Полуплоскость в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Plane2d.normal">
-            <summary>
-            Вектор нормали.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Normal">
-            <summary>
-            Получает или задаёт вектор нормали.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>

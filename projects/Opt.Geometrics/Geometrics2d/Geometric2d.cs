@@ -6,7 +6,7 @@ namespace Opt.Geometrics.Geometrics2d
     /// Геометрический объект в двухмерном пространстве.
     /// </summary>
     [Serializable]
-    public abstract class Geometric2d
+    public abstract class Geometric2d : Geometric
     {
         /// <summary>
         /// Возвращает размерность пространства, в котором задан геометрический объект.

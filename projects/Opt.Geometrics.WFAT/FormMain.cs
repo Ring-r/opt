@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Drawing;
 using System.Windows.Forms;
-
 using Opt.Geometrics.Extentions;
 using Opt.Geometrics.Extentions.WFA;
-using Opt.Geometrics.SpecialGeometrics;
 using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.SpecialGeometrics;
 
 namespace Opt.Geometrics.WFAT
 {
@@ -36,7 +34,7 @@ namespace Opt.Geometrics.WFAT
             polygon_list.Add(polygon_temp);
 
             polygon_temp = new Polygon2d { Pole = new Point2d { X = 150, Y = 90 } };
-            polygon_temp.Add(new Point2d { X = 0, Y = 0 });
+            polygon_temp.Add(new Point2d { X = 50, Y = 0 });
             polygon_temp.Add(new Point2d { X = 100, Y = 50 });
             polygon_temp.Add(new Point2d { X = 50, Y = 150 });
             polygon_temp.Add(new Point2d { X = 0, Y = 50 });
@@ -165,95 +163,36 @@ namespace Opt.Geometrics.WFAT
             region.Add(new Point2d { X = ClientSize.Width, Y = ClientSize.Height });
             region.Add(new Point2d { Y = ClientSize.Height });
             System.Drawing.Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(100, 100, 100, 100));
-            //if (plane_dividing_list.Count > 0)
-            //{
-            //    for (int i = 0; i < plane_dividing_list.Count; i++)
-            //    {
-            //        Plane plane = plane_dividing_list[i].IteratorPlane.Plane(0);
-            //        Point2d pole_temp = plane.Pole;
-            //        plane.Pole += pole.Vector2d;
-
-            //        e.Graphics.FillAndDraw(region, brush, System.Drawing.Pens.Black, plane);
-
-            //        plane.Pole = pole_temp;
-            //    }
-            //}
-            if (godograph_list.Count > 0)
+            if (plane_dividing_list.Count > 0)
             {
-                for (int i = 0; i < godograph_list.Count; i++)
+                for (int i = 0; i < plane_dividing_list.Count; i++)
                 {
-                    Polygon2d pol = godograph_list[i];
-                    Point2d pole_temp = pol.Pole;
-                    pol.Pole += pole.Vector;
+                    Plane2d plane = plane_dividing_list[i].IteratorPlane.Plane(0);
+                    Point2d pole_temp = plane.Pole;
+                    plane.Pole += pole.Vector;
 
-                    e.Graphics.FillAndDraw(brush, System.Drawing.Pens.Black, pol);
+                    e.Graphics.FillAndDraw(region, brush, System.Drawing.Pens.Black, plane);
 
-                    pol.Pole = pole_temp;
+                    plane.Pole = pole_temp;
                 }
             }
         }
 
-        //private List<PlaneDividing> plane_dividing_list = new List<PlaneDividing>();
-        private List<Polygon2d> godograph_list = new List<Polygon2d>();
-
-        private static int Compare(Vector2d a, Vector2d b)	//Функция сравнения векторов для построения годографа
-        {
-            double am = Math.Sqrt(a * a);
-            double bm = Math.Sqrt(b * b);
-            if (a.Y >= 0)
-                am = -a.X / am;
-            else
-                am = 2 + a.X / am;
-            if (b.Y >= 0)
-                bm = -b.X / bm;
-            else
-                bm = 2 + b.X / bm;
-            return am.CompareTo(bm);
-        } // Мне не понятно, что здесь происходит!!!
-
-        private Polygon2d Годораф_функции_плотного_размещения(Polygon2d A, Polygon2d B)
-        {
-            Polygon2d H = new Polygon2d();      					//godograph
-            List<Vector2d> service = new List<Vector2d>();			//список векторов годографа
-            for (int i = 0; i < A.Count; i++)
-                service.Add(A[i + 1] - A[i]);
-            for (int i = 0; i < B.Count; i++)
-                service.Add(B[i + 1] - B[i]);
-
-            service.Sort(Compare);
-            H.Add(new Point2d());
-            for (int i = 1; i <= service.Count; i++)
-                H.Add(H[i - 1] + service[i - 1]);
-            return H;
-        } // Пролесковский
-
+        private List<PlaneDividing> plane_dividing_list = new List<PlaneDividing>();
         private void toolStripMenuItemCreateDividePlane_Click(object sender, EventArgs e)
         {
-            //if (plane_dividing_list.Count == 0)
-            //    for (int i = 0; i < polygon_list.Count - 1; i++)
-            //    {
-            //        for (int j = i + 1; j < polygon_list.Count; j++)
-            //        {
-            //            PlaneDividing plane_dividing = new PlaneDividing(new Polygon2d.Iterator(polygon_list[i], 0), new Polygon2d.Iterator(polygon_list[j], 0));
-            //            plane_dividing.Find();
-            //            plane_dividing_list.Add(plane_dividing);
-            //        }
-            //    }
-            //else
-            //    plane_dividing_list.Clear();
-
-            if (godograph_list.Count == 0)
-            {
+            if (plane_dividing_list.Count == 0)
                 for (int i = 0; i < polygon_list.Count - 1; i++)
                 {
                     for (int j = i + 1; j < polygon_list.Count; j++)
                     {
-                        godograph_list.Add(Годораф_функции_плотного_размещения(polygon_list[i], polygon_list[j]));
+                        PlaneDividing plane_dividing = new PlaneDividing(new Polygon2d.Iterator(0, polygon_list[i], 0), new Polygon2d.Iterator(0, polygon_list[j], 0));
+                        plane_dividing.Find();
+                        plane_dividing_list.Add(plane_dividing);
                     }
                 }
-            }
             else
-                godograph_list.Clear();
+                plane_dividing_list.Clear();
 
             Invalidate();
         }
