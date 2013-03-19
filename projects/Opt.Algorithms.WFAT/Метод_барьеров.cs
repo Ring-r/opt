@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Opt.ClosenessModel;
-using Opt.Geometrics;
 using Opt.Geometrics.Extentions;
-
-using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.Метод_барьеров
 {
@@ -552,17 +550,17 @@ namespace Opt.Algorithms.Метод_барьеров
 
     public class PlacingOptWithCloseModel : PlacingOpt, Opt.Algorithms.IWithClosenessModel
     {        
-        protected Vertex<Geometric> vertex;
-        public Vertex<Geometric> Vertex
+        protected Vertex<Geometric2d> vertex;
+        public Vertex<Geometric2d> Vertex
         {
             get
             {
                 return vertex;
             }
         }
-        protected List<Vertex<Geometric>> triples;
+        protected List<Vertex<Geometric2d>> triples;
 
-        public PlacingOptWithCloseModel(double height, double length, Circle[] circles, Vertex<Geometric> vertex, double mu, double beta, double eps)
+        public PlacingOptWithCloseModel(double height, double length, Circle[] circles, Vertex<Geometric2d> vertex, double mu, double beta, double eps)
             : base(height, length, circles, mu, beta, eps)
         {
             this.vertex = vertex;
@@ -585,7 +583,7 @@ namespace Opt.Algorithms.Метод_барьеров
             DateTime data = DateTime.Now;
             for (int t = 0; t < triples.Count; t++)
             {
-                Vertex<Geometric> vertex = triples[t];
+                Vertex<Geometric2d> vertex = triples[t];
                 for (int k = 0; k < 3; k++)
                 {
                     if (vertex.Cros.Somes.LastChecked != data)
@@ -595,8 +593,8 @@ namespace Opt.Algorithms.Метод_барьеров
                         int j = 0;
                         if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Circle))
                         {
-                            i = vertex.Next.DataInVertex.ID;
-                            j = vertex.Prev.DataInVertex.ID;
+                            i = vertex.Next.DataInVertex.Id;
+                            j = vertex.Prev.DataInVertex.Id;
                             #region Ограничения для пары кругов.
                             double x = X[2 * i] - X[2 * j];
                             double y = X[2 * i + 1] - X[2 * j + 1];
@@ -610,16 +608,16 @@ namespace Opt.Algorithms.Метод_барьеров
                         }
                         else
                         {
-                            if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Plane))
+                            if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Plane2d))
                             {
-                                i = vertex.Next.DataInVertex.ID;
-                                j = vertex.Prev.DataInVertex.ID;
+                                i = vertex.Next.DataInVertex.Id;
+                                j = vertex.Prev.DataInVertex.Id;
                                 is_right = true;
                             }
                             if ((vertex.Next.DataInVertex is Plane) && (vertex.Prev.DataInVertex is Circle))
                             {
-                                i = vertex.Prev.DataInVertex.ID;
-                                j = vertex.Next.DataInVertex.ID;
+                                i = vertex.Prev.DataInVertex.Id;
+                                j = vertex.Next.DataInVertex.Id;
                                 is_right = true;
                             }
                             if (is_right)
@@ -722,7 +720,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
             //for (int i = 0; i < triples.Count; i++) // проверяем и суммируем ограничения между кругами
             //{
-            //    Vertex<Geometric> vertex_temp = triples[i];
+            //    Vertex<Geometric2d> vertex_temp = triples[i];
             //    do
             //    {
             //        if (vertex_temp.Cros.Somes.LastChecked != date)
@@ -778,7 +776,7 @@ namespace Opt.Algorithms.Метод_барьеров
             DateTime data = DateTime.Now;
             for (int t = 0; t < triples.Count; t++)
             {
-                Vertex<Geometric> vertex = triples[t];
+                Vertex<Geometric2d> vertex = triples[t];
                 for (int k = 0; k < 3; k++)
                 {
                     if (vertex.Cros.Somes.LastChecked != data)
@@ -788,8 +786,8 @@ namespace Opt.Algorithms.Метод_барьеров
                         int j = 0;
                         if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Circle))
                         {
-                            i = vertex.Next.DataInVertex.ID;
-                            j = vertex.Prev.DataInVertex.ID;
+                            i = vertex.Next.DataInVertex.Id;
+                            j = vertex.Prev.DataInVertex.Id;
                             #region Ограничения для пары кругов.
                             double x = X[2 * i] - X[2 * j];
                             double y = X[2 * i + 1] - X[2 * j + 1];
@@ -808,16 +806,16 @@ namespace Opt.Algorithms.Метод_барьеров
                         }
                         else
                         {
-                            if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Plane))
+                            if ((vertex.Next.DataInVertex is Circle) && (vertex.Prev.DataInVertex is Plane2d))
                             {
-                                i = vertex.Next.DataInVertex.ID;
-                                j = vertex.Prev.DataInVertex.ID;
+                                i = vertex.Next.DataInVertex.Id;
+                                j = vertex.Prev.DataInVertex.Id;
                                 is_right = true;
                             }
-                            if ((vertex.Next.DataInVertex is Plane) && (vertex.Prev.DataInVertex is Circle))
+                            if ((vertex.Next.DataInVertex is Plane2d) && (vertex.Prev.DataInVertex is Circle))
                             {
-                                i = vertex.Prev.DataInVertex.ID;
-                                j = vertex.Next.DataInVertex.ID;
+                                i = vertex.Prev.DataInVertex.Id;
+                                j = vertex.Next.DataInVertex.Id;
                                 is_right = true;
                             }
                             if (is_right)
@@ -907,7 +905,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
             //for (int i = 0; i < triples.Count; i++) // проверяем и суммируем ограничения между кругами
             //{
-            //    Vertex<Geometric> vertex_temp = triples[i];
+            //    Vertex<Geometric2d> vertex_temp = triples[i];
             //    do
             //    {
             //        if (vertex_temp.Cros.Somes.LastChecked != date)
@@ -1056,7 +1054,7 @@ namespace Opt.Algorithms.Метод_барьеров
                         #region Перестроение триангуляции. Переделать!
                         for (int i = 0; i < triples.Count; i++)
                         {
-                            Vertex<Geometric> vertex_temp = triples[i];
+                            Vertex<Geometric2d> vertex_temp = triples[i];
                             vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
                         }
 
@@ -1064,7 +1062,7 @@ namespace Opt.Algorithms.Метод_барьеров
                         {
                             for (int i = 0; i < triples.Count; i++)
                             {
-                                Vertex<Geometric> vertex_temp = triples[i];
+                                Vertex<Geometric2d> vertex_temp = triples[i];
                                 do
                                 {
                                     while (GeometricExt.Расширенное_расстояние(vertex_temp.DataInVertex, vertex_temp.Cros.Somes.CircleDelone) < 0)
@@ -1081,7 +1079,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                             for (int i = 0; i < triples.Count; i++)
                             {
-                                Vertex<Geometric> vertex_temp = triples[i];
+                                Vertex<Geometric2d> vertex_temp = triples[i];
                                 vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
                             }
                         }
@@ -1107,13 +1105,13 @@ namespace Opt.Algorithms.Метод_барьеров
         {
             base.CalculateStart();
 
-            (this.vertex.DataInVertex as Plane).Pole.X = length;
+            (this.vertex.DataInVertex as Plane2d).Pole.X = length;
             this.vertex.Somes.CircleDelone.Pole.X = length - height / 2;
 
             #region Перестроение триангуляции. Переделать!
             for (int i = 0; i < triples.Count; i++)
             {
-                Vertex<Geometric> vertex_temp = triples[i];
+                Vertex<Geometric2d> vertex_temp = triples[i];
                 vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
             }
 
@@ -1122,7 +1120,7 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 for (int i = 0; i < triples.Count; i++)
                 {
-                    Vertex<Geometric> vertex_temp = triples[i];
+                    Vertex<Geometric2d> vertex_temp = triples[i];
                     do
                     {
                         //if (vertex_temp.DataInVertex is Circle)
@@ -1140,7 +1138,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                 //for (int i = 0; i < triples.Count; i++)
                 //{
-                //    Vertex<Geometric> vertex_temp = triples[i];
+                //    Vertex<Geometric2d> vertex_temp = triples[i];
                 //    vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
                 //}
             }

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Opt.ClosenessModel;
-using Opt.Geometrics;
-using Opt.Geometrics.Geometrics2d;
 using Opt.Geometrics.Extentions;
-
-using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.Метод_последовательного_одиночного_размещения
 {
@@ -175,29 +172,29 @@ namespace Opt.Algorithms.Метод_последовательного_один�
 
     public class PlacingWithCloseModel : Opt.Algorithms.Placing, Opt.Algorithms.IWithClosenessModel
     {
-        protected Vertex<Geometric> vertex;
-        public Vertex<Geometric> Vertex
+        protected Vertex<Geometric2d> vertex;
+        public Vertex<Geometric2d> Vertex
         {
             get
             {
                 return vertex;
             }
         }
-        protected List<Vertex<Geometric>> triples;
+        protected List<Vertex<Geometric2d>> triples;
 
         public PlacingWithCloseModel(double height, Circle[] circles, double eps)
             : base(height, 0, circles, eps)
         {
             length = 2 * height;
 
-            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника. !!!Потом переделать на полосу!!!            
-            Geometric border_1 = new Plane { ID = -1, Pole = new Point2d { X = 0, Y = 2 * height / 2 }, Normal = new Vector { X = 0, Y = -1 } };
-            Geometric border_2 = new Plane { ID = -2, Pole = new Point2d { X = 0, Y = 1 * height / 2 }, Normal = new Vector { X = 1, Y = 0 } };
-            Geometric border_3 = new Plane { ID = -3, Pole = new Point2d { X = 0, Y = 0 * height / 2 }, Normal = new Vector { X = 0, Y = +1 } };
+            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника. !!!Потом переделать на полосу!!!
+            Geometric2d border_1 = new Plane2d { Id = -1, Pole = new Point2d { X = 0, Y = 2 * height / 2 }, Normal = new Vector2d { X = 0, Y = -1 } };
+            Geometric2d border_2 = new Plane2d { Id = -2, Pole = new Point2d { X = 0, Y = 1 * height / 2 }, Normal = new Vector2d { X = 1, Y = 0 } };
+            Geometric2d border_3 = new Plane2d { Id = -3, Pole = new Point2d { X = 0, Y = 0 * height / 2 }, Normal = new Vector2d { X = 0, Y = +1 } };
 
-            Geometric border_4 = new Plane { ID = -4, Pole = new Point2d { X = length, Y = height / 2 }, Normal = new Vector { X = -1, Y = 0 } };
+            Geometric2d border_4 = new Plane2d { Id = -4, Pole = new Point2d { X = length, Y = height / 2 }, Normal = new Vector2d { X = -1, Y = 0 } };
 
-            vertex = Vertex<Geometric>.CreateClosenessModel(border_1, border_2, border_3);
+            vertex = Vertex<Geometric2d>.CreateClosenessModel(border_1, border_2, border_3);
             vertex.BreakCrosBy(border_4);
             #endregion
 
@@ -206,7 +203,7 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             vertex.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = length - height / 2, Y = height / 2 }, Value = height / 2 });
 
             vertex.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = -height / 2, Y = height / 2 }, Value = 0 });
-            vertex.Cros.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X =double.PositiveInfinity /*length + height / 2*/, Y = height / 2 }, Value = 0 });
+            vertex.Cros.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = double.PositiveInfinity /*length + height / 2*/, Y = height / 2 }, Value = 0 });
             #endregion
 
             length = 0;
@@ -217,14 +214,14 @@ namespace Opt.Algorithms.Метод_последовательного_один�
         }
 
 
-        private bool Функция_расширенного_расстояния_на_отрезке_монотонна(Vertex<Geometric> vertex)
+        private bool Функция_расширенного_расстояния_на_отрезке_монотонна(Vertex<Geometric2d> vertex)
         {
-            if (vertex.Next.DataInVertex is Plane && vertex.Prev.DataInVertex is Plane)
+            if (vertex.Next.DataInVertex is Plane2d && vertex.Prev.DataInVertex is Plane2d)
                 return true;
-            Plane plane = GeometricExt.Серединная_полуплоскость(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
+            Plane2d plane = GeometricExt.Серединная_полуплоскость(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
             return PlaneExt.Расширенное_расстояние(plane, vertex.Somes.CircleDelone.Pole) * PlaneExt.Расширенное_расстояние(plane, vertex.Cros.Somes.CircleDelone.Pole) > 0;
         }
-        private bool Существует_точка_плотного_размещения_второго_рода(Circle circle, Vertex<Geometric> vertex)
+        private bool Существует_точка_плотного_размещения_второго_рода(Circle circle, Vertex<Geometric2d> vertex)
         {
             if (circle.Value > vertex.Somes.CircleDelone.Value)
                 return false;
@@ -245,18 +242,18 @@ namespace Opt.Algorithms.Метод_последовательного_один�
         protected override void Calculate()
         {
             #region Шаг 1. Метод последовательного одиночного размещения. Для каждого круга...
-            for (int i=0; i < circles.Length; i++)
+            for (int i = 0; i < circles.Length; i++)
             {
                 System.Threading.Thread.Sleep(15);
                 #region Шаг 1.1. Устанавливаем начальное значение для точки размещения текущего объекта и связанной с ней вершиной.
                 Point2d point_global = new Point2d { X = double.PositiveInfinity };
-                Vertex<Geometric> vertex_global = null;
+                Vertex<Geometric2d> vertex_global = null;
                 #endregion
                 #region Шаг 1.2. Для каждой тройки выполняем следующее...
                 for (int j = 0; j < triples.Count; j++)
                 {
                     #region Шаг 1.2.1. Для каждой вершины выполняем следующее...
-                    Vertex<Geometric> vertex_local = triples[j];
+                    Vertex<Geometric2d> vertex_local = triples[j];
                     do
                     {
                         #region Шаг 1.2.1.1. Если выполняются все условия существования точки плотного размещения второго рода, то находим её.
@@ -288,7 +285,7 @@ namespace Opt.Algorithms.Метод_последовательного_один�
                 vertex_global = vertex_global.Cros;
                 #endregion
                 #region Шаг 1.5. Проверяем и переразбиваем модель вокруг вершины, связанной со вставленным объектом.
-                Vertex<Geometric> vertex_temp = vertex_global;
+                Vertex<Geometric2d> vertex_temp = vertex_global;
                 do
                 {
                     while (CircleExt.Расширенное_расстояние(vertex_temp.DataInVertex as Circle, vertex_temp.Cros.Somes.CircleDelone) < 0)
@@ -306,9 +303,9 @@ namespace Opt.Algorithms.Метод_последовательного_один�
 
                 #region Шаг 1.7. Пересчёт ширины занятой части полосы.
                 length = Math.Max(length, circles[i].Pole.X + circles[i].Value);
-                if (((Plane)(this.vertex.DataInVertex)).Pole.X < length + 2 * height)
+                if (((Plane2d)(this.vertex.DataInVertex)).Pole.X < length + 2 * height)
                 {
-                    (this.vertex.DataInVertex as Plane).Pole.X = length + 2 * height;
+                    (this.vertex.DataInVertex as Plane2d).Pole.X = length + 2 * height;
                     this.vertex.Next.Cros.Next.Somes.CircleDelone.Pole.X = length + 2 * height - height / 2;
                 }
                 #endregion
@@ -316,10 +313,10 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #endregion
 
             #region Шаг 2. Изменение расположения полуплоскости, которая определяет правую границу полосы.
-            (this.vertex.DataInVertex as Plane).Pole.X = length;
+            (this.vertex.DataInVertex as Plane2d).Pole.X = length;
             this.vertex.Next.Cros.Next.Somes.CircleDelone.Pole.X = length - height / 2;
 
-            Vertex<Geometric> vertex_t = this.vertex;
+            Vertex<Geometric2d> vertex_t = this.vertex;
 
             do
             {

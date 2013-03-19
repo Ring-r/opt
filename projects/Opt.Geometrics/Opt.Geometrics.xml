@@ -467,36 +467,6 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole">
-            <summary>
-            Геометрический объект с идентификатором и полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithId">
-            <summary>
-            Геометрический объект в двухмерном пространстве с идентификатором.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithId.id">
-            <summary>
-            Некоторый идентификатор геометрического объекта.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithId.Id">
-            <summary>
-            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole.pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPole.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Point2d">
             <summary>
             Точка в двухмерном пространстве.
@@ -791,32 +761,6 @@
             <param name="point">Точка.</param>
             <returns>Расширенное расстояние.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue">
-            <summary>
-            Сфера (круг) в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.value">
-            <summary>
-            Радиус.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.Value">
-            <summary>
-            Получает или задаёт радиус.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Point3d">
             <summary>
             Точка в трёхмерном пространстве.
@@ -994,6 +938,11 @@
         <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics.IGeometricWithId.Id">
+            <summary>
+            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
             </summary>
         </member>
     </members>

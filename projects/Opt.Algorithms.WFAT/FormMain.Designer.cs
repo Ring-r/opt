@@ -64,7 +64,7 @@
             this.файлToolStripMenuItem,
             this.задачаToolStripMenuItem,
             this.задачаToolStripMenuItem1});
-            this.menuStrip.Location = new System.Drawing.Point2d(0, 0);
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(584, 24);
             this.menuStrip.TabIndex = 1;

@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Opt.ClosenessModel;
-using Opt.Geometrics;
-
-using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms
 {
     public static class VertexExtention
     {
-        public static void SetCircleDelone(this Vertex<Geometric> vertex, Circle circle_delone)
+        public static void SetCircleDelone(this Vertex<Geometric2d> vertex, Circle circle_delone)
         {
             vertex.Prev.Somes.CircleDelone = circle_delone;
             vertex.Somes.CircleDelone = circle_delone;
-            vertex.Next.Somes.CircleDelone = circle_delone;            
+            vertex.Next.Somes.CircleDelone = circle_delone;
         }
-        public static List<Vertex<Geometric>> GetTriples(this Vertex<Geometric> vertex)
+        public static List<Vertex<Geometric2d>> GetTriples(this Vertex<Geometric2d> vertex)
         {
             // Поиск всех троек в триангуляции.
             DateTime dt = DateTime.Now;
-            List<Vertex<Geometric>> list = new List<Vertex<Geometric>>();
+            List<Vertex<Geometric2d>> list = new List<Vertex<Geometric2d>>();
 
             vertex.Prev.Somes.LastChecked = dt;
             vertex.Somes.LastChecked = dt;
@@ -30,7 +28,7 @@ namespace Opt.Algorithms
             GetTriples(list, vertex.Cros, dt);
             return list;
         }
-        private static void GetTriples(List<Vertex<Geometric>> list, Vertex<Geometric> vertex, DateTime dt)
+        private static void GetTriples(List<Vertex<Geometric2d>> list, Vertex<Geometric2d> vertex, DateTime dt)
         {
             if (vertex.Somes.LastChecked != dt)
             {
@@ -39,7 +37,7 @@ namespace Opt.Algorithms
                     list.Add(vertex);
 
                 // Отмечем все тройки.
-                Vertex<Geometric> vertex_temp = vertex;
+                Vertex<Geometric2d> vertex_temp = vertex;
                 do
                 {
                     vertex_temp.Somes.LastChecked = dt;

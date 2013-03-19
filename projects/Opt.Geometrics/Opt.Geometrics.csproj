@@ -36,8 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Geometrics2d\Geometric2d.cs" />
-    <Compile Include="Geometrics2d\Geometric2dWithIdPole.cs" />
-    <Compile Include="Geometrics2d\Geometric2dWithIdPoleValue.cs" />
     <Compile Include="Geometrics2d\Vector2d.cs" />
     <Compile Include="Geometrics3d\Geometric3d.cs" />
     <Compile Include="Geometrics3d\Geometric3dWithId.cs" />
@@ -46,10 +44,10 @@
     <Compile Include="Geometrics3d\Point3d.cs" />
     <Compile Include="Geometrics3d\Geometric3dWithPoleValue.cs" />
     <Compile Include="Geometrics3d\Vector3d.cs" />
-    <Compile Include="Geometrics2d\Geometric2dWithId.cs" />
     <Compile Include="Geometrics2d\Point2d.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPole.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPoleValue.cs" />
+    <Compile Include="Geometrics\GeometricWithId.cs" />
     <Compile Include="Temp\Plane2d.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPoleVector.cs" />
     <Compile Include="Temp\StripLine.cs" />

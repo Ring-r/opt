@@ -10,7 +10,7 @@ using Opt.Geometrics.Geometrics2d;
 using Opt.Geometrics.Extentions;
 using Opt.ClosenessModel;
 
-using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithIdPoleValue;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
 {
@@ -167,14 +167,14 @@ namespace Opt.Algorithms.WFAT
             if (thread != null && !thread.IsAlive)
             {
                 #region Рисование модели близости.
-                Vertex<Geometric> vertex = null;
+                Vertex<Geometric2d> vertex = null;
                 if (placing is Opt.Algorithms.IWithClosenessModel)
                 {
                     vertex = (placing as Opt.Algorithms.IWithClosenessModel).Vertex;
                 }
                 if (vertex != null)
                 {
-                    List<Vertex<Geometric>> triples = VertexExtention.GetTriples(vertex);
+                    List<Vertex<Geometric2d>> triples = VertexExtention.GetTriples(vertex);
 
                     for (int i = 0; i < triples.Count; i++)
                     {
@@ -183,7 +183,7 @@ namespace Opt.Algorithms.WFAT
 
                     for (int i = 0; i < triples.Count; i++)
                     {
-                        Vertex<Geometric> vertex_temp = triples[i];
+                        Vertex<Geometric2d> vertex_temp = triples[i];
                         do
                         {
                             //if (vertex_temp.DataInVertex is Circle)
@@ -307,7 +307,7 @@ namespace Opt.Algorithms.WFAT
         {
             if (thread == null || !thread.IsAlive)
             {
-                Vertex<Geometric> vertex = null;
+                Vertex<Geometric2d> vertex = null;
                 if (placing is Opt.Algorithms.IWithClosenessModel)
                 {
                     vertex = (placing as Opt.Algorithms.IWithClosenessModel).Vertex;
@@ -533,7 +533,7 @@ namespace Opt.Algorithms.WFAT
         public static void FillAndDraw(this Plane2d plane, System.Drawing.Graphics graphics, System.Drawing.Color color_brush, System.Drawing.Color color_pen)
         {
             //graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.R), (float)(circle.Pole.Y - circle.R), (float)(2 * circle.R), (float)(2 * circle.R));
-            Vector vector = new Vector() { X = -plane.Normal.Y, Y = plane.Normal.X };
+            Vector2d vector = new Vector2d() { X = -plane.Normal.Y, Y = plane.Normal.X };
             Point2d point_prev = plane.Pole - vector * 1000;
             Point2d point_next = plane.Pole + vector * 1000;
             graphics.DrawLine(new System.Drawing.Pen(color_pen), (float)(point_prev.X), (float)(point_prev.Y), (float)(point_next.X), (float)(point_next.Y));
@@ -544,8 +544,8 @@ namespace Opt.Algorithms.WFAT
     {
         public static Polygon2d Отрезок(Circle circle_this, Circle circle)
         {
-            Polygon polygon = new Polygon();
-            Vector vector = circle.Pole - circle_this.Pole;
+            Polygon2d polygon = new Polygon2d();
+            Vector2d vector = circle.Pole - circle_this.Pole;
             double length = Math.Sqrt(vector * vector);
             vector /= length;
             polygon.Add(circle_this.Pole + vector * circle_this.Value);
@@ -554,30 +554,30 @@ namespace Opt.Algorithms.WFAT
         }
         public static Polygon2d Отрезок(Circle circle_this, Plane2d plane)
         {
-            Polygon polygon = new Polygon();
+            Polygon2d polygon = new Polygon2d();
             polygon.Add(circle_this.Pole - plane.Normal * circle_this.Value);
             polygon.Add(circle_this.Pole - plane.Normal * (circle_this.Value + PlaneExt.Расширенное_расстояние(plane, circle_this)));
             return polygon;
         }
 
-        public static Polygon2d Отрезок_(Geometric geometric_this, Geometric geometric)
+        public static Polygon2d Отрезок_(Geometric2d geometric_this, Geometric2d geometric)
         {
             if (geometric_this is Circle)
             {
                 if (geometric is Circle)
                     return Отрезок(geometric_this as Circle, geometric as Circle);
-                if (geometric is Plane)
-                    return Отрезок(geometric_this as Circle, geometric as Plane);
+                if (geometric is Plane2d)
+                    return Отрезок(geometric_this as Circle, geometric as Plane2d);
             }
-            if (geometric_this is Plane)
+            if (geometric_this is Plane2d)
             {
                 if (geometric is Circle)
-                    return Отрезок(geometric as Circle, geometric_this as Plane);
+                    return Отрезок(geometric as Circle, geometric_this as Plane2d);
             }
-            return new Polygon();
+            return new Polygon2d();
         }
 
-        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric> vertex)
+        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric2d> vertex)
         {
             List<System.Drawing.PointF> points = new List<System.Drawing.PointF>();
             double ed = CircleExt.Расширенное_расстояние(vertex.Somes.CircleDelone, vertex.Cros.Somes.CircleDelone) / 2;
