@@ -1,7 +1,5 @@
 ﻿using System;
-
-using Opt.Geometrics;
-using Opt.Geometrics.SpecialGeometrics;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
 {
@@ -47,7 +45,7 @@ namespace Opt.Algorithms.WFAT
 
             #region Временный код.
             for (int i = 0; i < circles.Length; i++)
-                circles[i].Radius -= 1;
+                circles[i].Value -= 1;
             #endregion
 
             int n = circles.Length;
@@ -108,28 +106,28 @@ namespace Opt.Algorithms.WFAT
             {
                 #region Шаг 1.1. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius;
+                value = X[2 * i] - circles[i].Value;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius;
+                value = X[2 * i + 1] - circles[i].Value;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height;
+                value = -X[2 * i + 1] - circles[i].Value + height;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip];
+                value = -X[2 * i] - circles[i].Value + X[index_strip];
                 if (value > 0)
                     res += 1 / value;
                 else
@@ -145,7 +143,7 @@ namespace Opt.Algorithms.WFAT
                     #region Шаг 2.1. Проверяем и суммируем ограничение между кругами.
                     double x = X[2 * j] - X[2 * i];
                     double y = X[2 * j + 1] - X[2 * i + 1];
-                    double r = circles[i].Radius + circles[j].Radius;
+                    double r = circles[i].Value + circles[j].Value;
                     //value = x * x + y * y - r * r;
                     value = Math.Sqrt(x * x + y * y) - r;
                     if (value > 0)
@@ -175,22 +173,22 @@ namespace Opt.Algorithms.WFAT
                 // TODO: Здесь ошибка! Найти и исправить!
                 #region Шаг 1.1.1.2. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1.2.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius;
+                value = X[2 * i] - circles[i].Value;
                 value = 1 / (value * value);
                 res[2 * i] += value;
                 #endregion
                 #region Шаг 1.1.1.2.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius;
+                value = X[2 * i + 1] - circles[i].Value;
                 value = 1 / (value * value);
                 res[2 * i + 1] += value;
                 #endregion
                 #region Шаг 1.1.1.2.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height;
+                value = -X[2 * i + 1] - circles[i].Value + height;
                 value = 1 / (value * value);
                 res[2 * i + 1] += -value;
                 #endregion
                 #region Шаг 1.1.1.2.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip];
+                value = -X[2 * i] - circles[i].Value + X[index_strip];
                 value = 1 / (value * value);
                 res[2 * i + 1] += -value;
                 res[index_strip] += value;
@@ -205,7 +203,7 @@ namespace Opt.Algorithms.WFAT
                     #region Шаг 1.1.1.2.1. Проверяем и суммируем ограничение между кругами.
                     double x = X[2 * j] - X[2 * i];
                     double y = X[2 * j + 1] - X[2 * i + 1];
-                    double r = circles[i].Radius + circles[j].Radius;
+                    double r = circles[i].Value + circles[j].Value;
                     //value = x * x + y * y - r * r;
                     value = Math.Sqrt(x * x + y * y) - r;
                     value = 1 / (value * value);

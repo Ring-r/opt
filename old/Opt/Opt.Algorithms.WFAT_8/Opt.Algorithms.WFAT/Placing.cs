@@ -24,16 +24,6 @@ namespace Opt.Algorithms
         }
         protected Circle[] circles;
 
-        protected DateTime time_0;
-        protected DateTime time_1;
-        public TimeSpan Time
-        {
-            get
-            {
-                return time_1 - time_0;
-            }
-        }
-
         protected double eps;
 
         public Placing(double height, double length, Circle[] circles, double eps)

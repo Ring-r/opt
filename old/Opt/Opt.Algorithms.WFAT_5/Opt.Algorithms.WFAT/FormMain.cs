@@ -1,13 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Threading;
-
+using System.Windows.Forms;
+using Opt.ClosenessModel;
 using Opt.Geometrics;
 using Opt.Geometrics.Extentions;
-using Opt.ClosenessModel;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
 {
@@ -21,8 +22,8 @@ namespace Opt.Algorithms.WFAT
         private List<Circle> placed_circles = new List<Circle>();
         private int current_index;
 
-        private Vertex<Geometric> vertex;
-        private List<Vertex<Geometric>> triples;
+        private Vertex<Geometric2d> vertex;
+        private List<Vertex<Geometric2d>> triples;
 
         public FormMain()
         {
@@ -59,21 +60,21 @@ namespace Opt.Algorithms.WFAT
             height = double.Parse(sr.ReadLine());
             int n = int.Parse(sr.ReadLine());
             for (int i = 0; i < n; i++)
-                circles.Add(new Circle { Radius = double.Parse(sr.ReadLine()) });
+                circles.Add(new Circle { Value = double.Parse(sr.ReadLine()) });
 
             #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоуольника. !!!Потом переделать на полосу!!!
-            List<Geometric> borders = new List<Geometric>();
-            borders.Add(new Plane { Pole = new Point { X = ClientRectangle.Width / 2, Y = height }, Normal = new Vector { X = 0, Y = -1 } });
-            borders.Add(new Plane { Pole = new Point { X = 0, Y = height / 2 }, Normal = new Vector { X = 1, Y = 0 } });
-            borders.Add(new Plane { Pole = new Point { X = ClientRectangle.Width / 2, Y = 0 }, Normal = new Vector { X = 0, Y = 1 } });
+            List<Geometric2d> borders = new List<Geometric2d>();
+            borders.Add(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width / 2, Y = height }, Normal = new Vector2d { X = 0, Y = -1 } });
+            borders.Add(new Plane2d { Pole = new Point2d { X = 0, Y = height / 2 }, Normal = new Vector2d { X = 1, Y = 0 } });
+            borders.Add(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width / 2, Y = 0 }, Normal = new Vector2d { X = 0, Y = 1 } });
 
-            vertex = Vertex<Geometric>.CreateClosenessModel(borders[0], borders[1], borders[2]);
-            vertex.BreakCrosBy(new Plane { Pole = new Point { X = ClientRectangle.Width, Y = height / 2 }, Normal = new Vector { X = -1, Y = 0 } }); // Добавить четвёртую сторону.
+            vertex = Vertex<Geometric2d>.CreateClosenessModel(borders[0], borders[1], borders[2]);
+            vertex.BreakCrosBy(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width, Y = height / 2 }, Normal = new Vector2d { X = -1, Y = 0 } }); // Добавить четвёртую сторону.
             #endregion
 
             #region Шаг 2. Устанавливаем для полученных троек круги Делоне. !!Нужно ли автоматизировать!!
-            vertex.SetCircleDelone(new Circle { Pole = new Point { X = height / 2, Y = height / 2 }, Radius = height / 2 });
-            vertex.Cros.SetCircleDelone(new Circle { Pole = new Point { X = ClientRectangle.Width - height / 2, Y = height / 2 }, Radius = height / 2 });
+            vertex.SetCircleDelone(new Circle { Pole = new Point2d { X = height / 2, Y = height / 2 }, Value = height / 2 });
+            vertex.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = ClientRectangle.Width - height / 2, Y = height / 2 }, Value = height / 2 });
 
             vertex.Prev.Cros.SetCircleDelone(new Circle());
             vertex.Cros.Prev.Cros.SetCircleDelone(new Circle());
@@ -91,7 +92,7 @@ namespace Opt.Algorithms.WFAT
             sw.WriteLine(height);
             sw.WriteLine(circles.Count);
             for (int i = 0; i < circles.Count; i++)
-                sw.WriteLine(circles[i].Radius);
+                sw.WriteLine(circles[i].Value);
             sw.Close();
 
             //foreach (Circle circle in placed_circles)
@@ -142,18 +143,18 @@ namespace Opt.Algorithms.WFAT
             }
 
             #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоуольника. !!!Потом переделать на полосу!!!
-            List<Geometric> borders = new List<Geometric>();
-            borders.Add(new Plane { Pole = new Point { X = ClientRectangle.Width / 2, Y = height }, Normal = new Vector { X = 0, Y = -1 } });
-            borders.Add(new Plane { Pole = new Point { X = 0, Y = height / 2 }, Normal = new Vector { X = 1, Y = 0 } });
-            borders.Add(new Plane { Pole = new Point { X = ClientRectangle.Width / 2, Y = 0 }, Normal = new Vector { X = 0, Y = 1 } });
+            List<Geometric2d> borders = new List<Geometric2d>();
+            borders.Add(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width / 2, Y = height }, Normal = new Vector2d { X = 0, Y = -1 } });
+            borders.Add(new Plane2d { Pole = new Point2d { X = 0, Y = height / 2 }, Normal = new Vector2d { X = 1, Y = 0 } });
+            borders.Add(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width / 2, Y = 0 }, Normal = new Vector2d { X = 0, Y = 1 } });
 
-            vertex = Vertex<Geometric>.CreateClosenessModel(borders[0], borders[1], borders[2]);
-            vertex.BreakCrosBy(new Plane { Pole = new Point { X = ClientRectangle.Width, Y = height / 2 }, Normal = new Vector { X = -1, Y = 0 } }); // Добавить четвёртую сторону.
+            vertex = Vertex<Geometric2d>.CreateClosenessModel(borders[0], borders[1], borders[2]);
+            vertex.BreakCrosBy(new Plane2d { Pole = new Point2d { X = ClientRectangle.Width, Y = height / 2 }, Normal = new Vector2d { X = -1, Y = 0 } }); // Добавить четвёртую сторону.
             #endregion
 
             #region Шаг 2. Устанавливаем для полученных троек круги Делоне. !!Нужно ли автоматизировать!!
-            vertex.SetCircleDelone(new Circle { Pole = new Point { X = height / 2, Y = height / 2 }, Radius = height / 2 });
-            vertex.Cros.SetCircleDelone(new Circle { Pole = new Point { X = ClientRectangle.Width - height / 2, Y = height / 2 }, Radius = height / 2 });
+            vertex.SetCircleDelone(new Circle { Pole = new Point2d { X = height / 2, Y = height / 2 }, Value = height / 2 });
+            vertex.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = ClientRectangle.Width - height / 2, Y = height / 2 }, Value = height / 2 });
 
             vertex.Prev.Cros.SetCircleDelone(new Circle());
             vertex.Cros.Prev.Cros.SetCircleDelone(new Circle());
@@ -170,7 +171,7 @@ namespace Opt.Algorithms.WFAT
             ft.ShowDialog(this);
             try
             {
-                circles.Add(new Circle { Radius = double.Parse(ft.Info) });
+                circles.Add(new Circle { Value = double.Parse(ft.Info) });
             }
             catch
             {
@@ -188,7 +189,7 @@ namespace Opt.Algorithms.WFAT
                 double min = double.Parse(s[1]);
                 double max = double.Parse(s[2]);
                 for (int i = 0; i < n; i++)
-                    circles.Add(new Circle { Radius = min + (max - min) * rand.NextDouble() });
+                    circles.Add(new Circle { Value = min + (max - min) * rand.NextDouble() });
             }
             catch
             {
@@ -199,13 +200,13 @@ namespace Opt.Algorithms.WFAT
         private bool Step()
         {
             #region Шаг-1. Проверка размера круга относительно полосы.
-            if (2 * circles[current_index].Radius > height)
+            if (2 * circles[current_index].Value > height)
                 return false;
             #endregion
             #region Шаг-2. Создание списка точек возможных размещений и добавление двух начальных точек.
-            List<Point> points = new List<Point>();
-            points.Add(new Point { X = circles[current_index].Radius, Y = circles[current_index].Radius });
-            points.Add(new Point { X = circles[current_index].Radius, Y = height - circles[current_index].Radius });
+            List<Point2d> points = new List<Point2d>();
+            points.Add(new Point2d { X = circles[current_index].Value, Y = circles[current_index].Value });
+            points.Add(new Point2d { X = circles[current_index].Value, Y = height - circles[current_index].Value });
             #endregion
             #region Шаг-3. Создание и заполнение списка годографов.
             List<Circle> godographs = new List<Circle>(circles.Count);
@@ -216,43 +217,43 @@ namespace Opt.Algorithms.WFAT
             for (int i = 0; i < godographs.Count; i++)
             {
                 #region Шаг-4.1. Поиск точек пересечения круга с левой границей полосы.
-                if (godographs[i].Pole.X - godographs[i].Radius < circles[current_index].Radius)
+                if (godographs[i].Pole.X - godographs[i].Value < circles[current_index].Value)
                 {
-                    double x = circles[current_index].Radius - godographs[i].Pole.X;
-                    double y = Math.Sqrt(godographs[i].Radius * godographs[i].Radius - x * x);
-                    Point point;
-                    point = new Point { X = circles[current_index].Radius, Y = godographs[i].Pole.Y - y };
+                    double x = circles[current_index].Value - godographs[i].Pole.X;
+                    double y = Math.Sqrt(godographs[i].Value * godographs[i].Value - x * x);
+                    Point2d point;
+                    point = new Point2d { X = circles[current_index].Value, Y = godographs[i].Pole.Y - y };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
-                    point = new Point { X = circles[current_index].Radius, Y = godographs[i].Pole.Y + y };
+                    point = new Point2d { X = circles[current_index].Value, Y = godographs[i].Pole.Y + y };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
                 }
                 #endregion
                 #region Шаг-4.2. Поиск точек пересечения круга с нижней границей полосы.
-                if (godographs[i].Pole.Y - godographs[i].Radius < circles[current_index].Radius)
+                if (godographs[i].Pole.Y - godographs[i].Value < circles[current_index].Value)
                 {
-                    double y = circles[current_index].Radius - godographs[i].Pole.Y;
-                    double x = Math.Sqrt(godographs[i].Radius * godographs[i].Radius - y * y);
-                    Point point;
-                    point = new Point { X = godographs[i].Pole.X - x, Y = circles[current_index].Radius };
+                    double y = circles[current_index].Value - godographs[i].Pole.Y;
+                    double x = Math.Sqrt(godographs[i].Value * godographs[i].Value - y * y);
+                    Point2d point;
+                    point = new Point2d { X = godographs[i].Pole.X - x, Y = circles[current_index].Value };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
-                    point = new Point { X = godographs[i].Pole.X + x, Y = circles[current_index].Radius };
+                    point = new Point2d { X = godographs[i].Pole.X + x, Y = circles[current_index].Value };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
                 }
                 #endregion
                 #region Шаг-4.3. Поиск точек пересечения круга с верхней границей полосы.
-                if (godographs[i].Pole.Y + godographs[i].Radius > height - circles[current_index].Radius)
+                if (godographs[i].Pole.Y + godographs[i].Value > height - circles[current_index].Value)
                 {
-                    double y = height - circles[current_index].Radius - godographs[i].Pole.Y;
-                    double x = Math.Sqrt(godographs[i].Radius * godographs[i].Radius - y * y);
-                    Point point;
-                    point = new Point { X = godographs[i].Pole.X - x, Y = height - circles[current_index].Radius };
+                    double y = height - circles[current_index].Value - godographs[i].Pole.Y;
+                    double x = Math.Sqrt(godographs[i].Value * godographs[i].Value - y * y);
+                    Point2d point;
+                    point = new Point2d { X = godographs[i].Pole.X - x, Y = height - circles[current_index].Value };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
-                    point = new Point { X = godographs[i].Pole.X + x, Y = height - circles[current_index].Radius };
+                    point = new Point2d { X = godographs[i].Pole.X + x, Y = height - circles[current_index].Value };
                     if (IsCheckedStrip(point, circles[current_index], height))
                         points.Add(point);
                 }
@@ -263,7 +264,7 @@ namespace Opt.Algorithms.WFAT
             for (int i = 0; i < godographs.Count - 1; i++)
                 for (int j = i + 1; j < godographs.Count; j++)
                 {
-                    Point point;
+                    Point2d point;
 
                     point = CircleExt.Точка_пересечения_границ(godographs[i], godographs[j]);
                     if (point != null && IsCheckedStrip(point, circles[current_index], height))
@@ -279,7 +280,7 @@ namespace Opt.Algorithms.WFAT
                 for (int j = i + 1; j < points.Count; j++)
                     if (points[i].X > points[j].X || (points[i].X == points[j].X && points[i].Y > points[j].Y))
                     {
-                        Point temp_point = points[i];
+                        Point2d temp_point = points[i];
                         points[i] = points[j];
                         points[j] = temp_point;
                     }
@@ -293,7 +294,7 @@ namespace Opt.Algorithms.WFAT
             } while (!IsCheckedCircles(circles[current_index], placed_circles, 0.0001));
             #endregion
             #region Шаг-8. Пересчёт ширины занятой части полосы.
-            length = Math.Max(length, circles[current_index].Pole.X + circles[current_index].Radius);
+            length = Math.Max(length, circles[current_index].Pole.X + circles[current_index].Value);
             #endregion
             return true;
         }
@@ -312,47 +313,47 @@ namespace Opt.Algorithms.WFAT
                 current_index++;
         }
 
-        private bool Функция_расширенного_расстояния_на_отрезке_монотонна(Vertex<Geometric> vertex)
+        private bool Функция_расширенного_расстояния_на_отрезке_монотонна(Vertex<Geometric2d> vertex)
         {
-            if (vertex.Next.DataInVertex is Plane && vertex.Prev.DataInVertex is Plane)
+            if (vertex.Next.DataInVertex is Plane2d && vertex.Prev.DataInVertex is Plane2d)
                 return true;
-            Plane plane = GeometricExt.Серединная_полуплоскость(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
+            Plane2d plane = GeometricExt.Серединная_полуплоскость(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
             return PlaneExt.Расширенное_расстояние(plane, vertex.Somes.CircleDelone.Pole) * PlaneExt.Расширенное_расстояние(plane, vertex.Cros.Somes.CircleDelone.Pole) > 0;
         }
-        private bool Существует_точка_плотного_размещения_второго_рода(Circle circle, Vertex<Geometric> vertex)
+        private bool Существует_точка_плотного_размещения_второго_рода(Circle circle, Vertex<Geometric2d> vertex)
         {
-            if (circle.Radius > vertex.Somes.CircleDelone.Radius)
+            if (circle.Value > vertex.Somes.CircleDelone.Value)
                 return false;
             else
-                if (circle.Radius >= vertex.Cros.Somes.CircleDelone.Radius)
+                if (circle.Value >= vertex.Cros.Somes.CircleDelone.Value)
                     return true;
                 else
                     if (Функция_расширенного_расстояния_на_отрезке_монотонна(vertex)) // Придумать что-то другое?
                         return false;
                     else
-                        return 2 * circle.Radius >= GeometricExt.Расширенное_расстояние(vertex.Prev.DataInVertex, vertex.Next.DataInVertex);
+                        return 2 * circle.Value >= GeometricExt.Расширенное_расстояние(vertex.Prev.DataInVertex, vertex.Next.DataInVertex);
         }
 
         private bool StepUpgrade()
         {
             #region Шаг 5.1. Проверяем размер круга относительно полосы.
-            if (2 * circles[current_index].Radius > height)
+            if (2 * circles[current_index].Value > height)
                 return false;
             #endregion
             #region Шаг 5.2. Устанавливаем начальное значение для точки размещения текущего объекта и связанной с ней вершиной.
-            Point point_global = new Point { X = double.PositiveInfinity };
-            Vertex<Geometric> vertex_global = null;
+            Point2d point_global = new Point2d { X = double.PositiveInfinity };
+            Vertex<Geometric2d> vertex_global = null;
             #endregion
             #region Шаг 5.3. Для каждой вершины выполняем следующее...
             for (int i = 0; i < triples.Count; i++)
             {
-                Vertex<Geometric> vertex = triples[i];
+                Vertex<Geometric2d> vertex = triples[i];
                 do
                 {
                     #region Шаг 5.3.1. Если выполняются все условия существования точки плотного размещения второго рода, то находим её.
                     if (Существует_точка_плотного_размещения_второго_рода(circles[current_index], vertex))
                     {
-                        Point point_temp = circles[current_index].Точка_близости_второго_рода(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
+                        Point2d point_temp = circles[current_index].Точка_близости_второго_рода(vertex.Next.DataInVertex, vertex.Prev.DataInVertex);
 
                         #region Шаг 5.3.1.1. Если точка даёт меньшее приращение функции цели, то сохраняем вершину и точку размещения.
                         if (point_temp.X < point_global.X)
@@ -375,7 +376,7 @@ namespace Opt.Algorithms.WFAT
             vertex_global = vertex_global.Cros;
             #endregion
             #region Шаг 5.7. Проверяем и переразбиваем модель вокруг вершины, связанной со вставленным объектом.
-            Vertex<Geometric> vertex_temp = vertex_global;
+            Vertex<Geometric2d> vertex_temp = vertex_global;
             do
             {
                 while (CircleExt.Расширенное_расстояние(vertex_temp.DataInVertex as Circle, vertex_temp.Cros.Somes.CircleDelone) < 0)
@@ -390,7 +391,7 @@ namespace Opt.Algorithms.WFAT
             triples = this.vertex.GetTriples();
 
             #region Шаг 5.8. Пересчёт ширины занятой части полосы.
-            length = Math.Max(length, circles[current_index].Pole.X + circles[current_index].Radius);
+            length = Math.Max(length, circles[current_index].Pole.X + circles[current_index].Value);
             #endregion
             return true;
         }
@@ -453,9 +454,9 @@ namespace Opt.Algorithms.WFAT
         /// <param name="circle">Круг.</param>
         /// <param name="height">Высота полосы.</param>
         /// <returns>Возвращает True, если круг полностью лежит внутри полосы. False - в противном случае.</returns>
-        private bool IsCheckedStrip(Point point, Circle circle, double height)
+        private bool IsCheckedStrip(Point2d point, Circle circle, double height)
         {
-            return (point.Y + circle.Radius <= height) && (point.X - circle.Radius >= 0) && (point.Y - circle.Radius >= 0); //!!! Необходимо учитывать погрешность.
+            return (point.Y + circle.Value <= height) && (point.X - circle.Value >= 0) && (point.Y - circle.Value >= 0); //!!! Необходимо учитывать погрешность.
         }
         /// <summary>
         /// Проверка на непересечение круга с множеством кругов.
@@ -495,7 +496,7 @@ namespace Opt.Algorithms.WFAT
                 {
                     triples[i].Somes.CircleDelone.FillAndDraw(e.Graphics, System.Drawing.Color.FromArgb(150, 255, 255, 0), System.Drawing.Color.Gray);
 
-                    Vertex<Geometric> vertex_temp = triples[i];
+                    Vertex<Geometric2d> vertex_temp = triples[i];
                     do
                     {
                         if (vertex_temp.DataInVertex is Circle)
@@ -510,7 +511,7 @@ namespace Opt.Algorithms.WFAT
                             circle.FillAndDraw(e.Graphics, System.Drawing.Color.Silver, System.Drawing.Color.Black);
                         }
                         else
-                            (vertex_temp.DataInVertex as Plane).FillAndDraw(e.Graphics, System.Drawing.Color.Silver, System.Drawing.Color.Black);
+                            (vertex_temp.DataInVertex as Plane2d).FillAndDraw(e.Graphics, System.Drawing.Color.Silver, System.Drawing.Color.Black);
 
                         vertex_temp = vertex_temp.Next;
                     } while (vertex_temp != triples[i]);
@@ -519,7 +520,7 @@ namespace Opt.Algorithms.WFAT
             #endregion
 
             for (int i = 0; i < placed_circles.Count; i++)
-                if (placed_circles[i].Pole.X - placed_circles[i].Radius < ClientSize.Width)
+                if (placed_circles[i].Pole.X - placed_circles[i].Value < ClientSize.Width)
                 {
                     placed_circles[i].FillAndDraw(e.Graphics, System.Drawing.Color.Silver, System.Drawing.Color.Black);
                     e.Graphics.FillEllipse(System.Drawing.Brushes.Black, (float)placed_circles[i].Pole.X - 1, (float)placed_circles[i].Pole.Y - 1, 2, 2);
@@ -535,7 +536,7 @@ namespace Opt.Algorithms.WFAT
             {
                 for (int i = 0; i < triples.Count; i++)
                 {
-                    Vertex<Geometric> vertex_temp = triples[i];
+                    Vertex<Geometric2d> vertex_temp = triples[i];
                     do
                     {
                         if (vertex_temp.DataInVertex is Circle)
@@ -560,9 +561,9 @@ namespace Opt.Algorithms.WFAT
             double y = height;
             for (int i = 0; i < circles.Count && x < ClientSize.Width; i++)
             {
-                e.Graphics.DrawEllipse(System.Drawing.Pens.Black, (float)x, (float)y, 2 * (float)circles[i].Radius, 2 * (float)circles[i].Radius);
-                e.Graphics.FillEllipse(System.Drawing.Brushes.Silver, (float)x, (float)y, 2 * (float)circles[i].Radius, 2 * (float)circles[i].Radius);
-                x += 2 * circles[i].Radius;
+                e.Graphics.DrawEllipse(System.Drawing.Pens.Black, (float)x, (float)y, 2 * (float)circles[i].Value, 2 * (float)circles[i].Value);
+                e.Graphics.FillEllipse(System.Drawing.Brushes.Silver, (float)x, (float)y, 2 * (float)circles[i].Value, 2 * (float)circles[i].Value);
+                x += 2 * circles[i].Value;
             }
         }
         private void FormPlaceCircle_Resize(object sender, EventArgs e)
@@ -782,7 +783,7 @@ namespace Opt.Algorithms.WFAT
                 #region Перестроение триангуляции. Переделать!
                 for (int i = 0; i < triples.Count; i++)
                 {
-                    Vertex<Geometric> vertex_temp = triples[i];
+                    Vertex<Geometric2d> vertex_temp = triples[i];
                     vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
                 }
 
@@ -791,7 +792,7 @@ namespace Opt.Algorithms.WFAT
                 {
                     for (int i = 0; i < triples.Count; i++)
                     {
-                        Vertex<Geometric> vertex_temp = triples[i];
+                        Vertex<Geometric2d> vertex_temp = triples[i];
                         do
                         {
                             if (vertex_temp.DataInVertex is Circle)
@@ -829,33 +830,33 @@ namespace Opt.Algorithms.WFAT
         {
             if (circle != null)
             {
-                graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.Radius), (float)(circle.Pole.Y - circle.Radius), (float)(2 * circle.Radius), (float)(2 * circle.Radius));
-                graphics.DrawEllipse(new System.Drawing.Pen(color_pen), (float)(circle.Pole.X - circle.Radius), (float)(circle.Pole.Y - circle.Radius), (float)(2 * circle.Radius), (float)(2 * circle.Radius));
+                graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.Value), (float)(circle.Pole.Y - circle.Value), (float)(2 * circle.Value), (float)(2 * circle.Value));
+                graphics.DrawEllipse(new System.Drawing.Pen(color_pen), (float)(circle.Pole.X - circle.Value), (float)(circle.Pole.Y - circle.Value), (float)(2 * circle.Value), (float)(2 * circle.Value));
             }
         }
-        public static void FillAndDraw(this Plane plane, System.Drawing.Graphics graphics, System.Drawing.Color color_brush, System.Drawing.Color color_pen)
+        public static void FillAndDraw(this Plane2d plane, System.Drawing.Graphics graphics, System.Drawing.Color color_brush, System.Drawing.Color color_pen)
         {
             //graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.R), (float)(circle.Pole.Y - circle.R), (float)(2 * circle.R), (float)(2 * circle.R));
-            Vector vector = new Vector() { X = -plane.Normal.Y, Y = plane.Normal.X };
-            Point point_prev = plane.Pole - vector * 1000;
-            Point point_next = plane.Pole + vector * 1000;
+            Vector2d vector = new Vector2d() { X = -plane.Normal.Y, Y = plane.Normal.X };
+            Point2d point_prev = plane.Pole - vector * 1000;
+            Point2d point_next = plane.Pole + vector * 1000;
             graphics.DrawLine(new System.Drawing.Pen(color_pen), (float)(point_prev.X), (float)(point_prev.Y), (float)(point_next.X), (float)(point_next.Y));
         }
     }
 
     public static class VertexExtention
     {
-        public static void SetCircleDelone(this Vertex<Geometric> vertex, Circle circle_delone)
+        public static void SetCircleDelone(this Vertex<Geometric2d> vertex, Circle circle_delone)
         {
             vertex.Prev.Somes.CircleDelone = circle_delone;
             vertex.Somes.CircleDelone = circle_delone;
             vertex.Next.Somes.CircleDelone = circle_delone;
         }
-        public static List<Vertex<Geometric>> GetTriples(this Vertex<Geometric> vertex)
+        public static List<Vertex<Geometric2d>> GetTriples(this Vertex<Geometric2d> vertex)
         {
             // Поиск всех троек в триангуляции.
             DateTime dt = DateTime.Now;
-            List<Vertex<Geometric>> list = new List<Vertex<Geometric>>();
+            List<Vertex<Geometric2d>> list = new List<Vertex<Geometric2d>>();
 
             vertex.Prev.Somes.LastChecked = dt;
             vertex.Somes.LastChecked = dt;
@@ -865,16 +866,16 @@ namespace Opt.Algorithms.WFAT
             GetTriples(list, vertex.Cros, dt);
             return list;
         }
-        private static void GetTriples(List<Vertex<Geometric>> list, Vertex<Geometric> vertex, DateTime dt)
+        private static void GetTriples(List<Vertex<Geometric2d>> list, Vertex<Geometric2d> vertex, DateTime dt)
         {
             if (vertex.Somes.LastChecked != dt)
             {
                 // Добавляем вершину.
-                if (vertex.Somes.CircleDelone.Radius != 0)
+                if (vertex.Somes.CircleDelone.Value != 0)
                     list.Add(vertex);
 
                 // Отмечем все тройки.
-                Vertex<Geometric> vertex_temp = vertex;
+                Vertex<Geometric2d> vertex_temp = vertex;
                 do
                 {
                     vertex_temp.Somes.LastChecked = dt;

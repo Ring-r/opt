@@ -1,7 +1,5 @@
 ﻿using System;
-
-using Opt.Geometrics;
-using Opt.Geometrics.SpecialGeometrics;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
 {
@@ -51,8 +49,8 @@ namespace Opt.Algorithms.WFAT
 
             #region Временный код.
             for (int i = 0; i < circles.Length; i++)
-                if (circles[i].Radius > 1)
-                    circles[i].Radius -= 1;
+                if (circles[i].Value > 1)
+                    circles[i].Value -= 1;
             #endregion
 
             int n = circles.Length;
@@ -117,7 +115,7 @@ namespace Opt.Algorithms.WFAT
             {
                 double x = X[2 * j] - X[2 * i];
                 double y = X[2 * j + 1] - X[2 * i + 1];
-                double r = circles[i].Radius + circles[j].Radius - 2 * eps;
+                double r = circles[i].Value + circles[j].Value - 2 * eps;
                 //return x * x + y * y - r * r;
                 return Math.Sqrt(x * x + y * y) - r;
             }
@@ -342,21 +340,21 @@ namespace Opt.Algorithms.WFAT
                 Gs[k][0] = i;
                 Gs[k][1] = -1;
                 Gs[k][2] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.2. Ограничение по нижней границе. //  Y - R >= 0
                 Gs[k][0] = i;
                 Gs[k][1] = -1;
                 Gs[k][3] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
                 Gs[k][0] = i;
                 Gs[k][1] = -1;
                 Gs[k][3] = -1;
-                Gs[k][5] = -circles[i].Radius + height;
+                Gs[k][5] = -circles[i].Value + height;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.4. Ограничение по правой границе. //  X + R <= Z  --> -X + Z - R >= 0
@@ -364,7 +362,7 @@ namespace Opt.Algorithms.WFAT
                 Gs[k][1] = -1;
                 Gs[k][2] = -1;
                 Gs[k][4] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #endregion

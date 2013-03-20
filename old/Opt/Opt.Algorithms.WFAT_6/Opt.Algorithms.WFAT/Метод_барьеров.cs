@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Opt.ClosenessModel;
-using Opt.Geometrics;
 using Opt.Geometrics.Extentions;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.Метод_барьеров
 {
@@ -200,8 +200,8 @@ namespace Opt.Algorithms.Метод_барьеров
         {
             #region Временный код.
             for (int i = 0; i < circles.Length; i++)
-                if (circles[i].Radius > 1)
-                    circles[i].Radius -= 1;
+                if (circles[i].Value > 1)
+                    circles[i].Value -= 1;
             #endregion
         }
 
@@ -213,7 +213,7 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 double x = X[2 * j] - X[2 * i];
                 double y = X[2 * j + 1] - X[2 * i + 1];
-                double r = circles[i].Radius + circles[j].Radius - 2 * eps;
+                double r = circles[i].Value + circles[j].Value - 2 * eps;
                 //return x * x + y * y - r * r;
                 return Math.Sqrt(x * x + y * y) - r;
             }
@@ -314,21 +314,21 @@ namespace Opt.Algorithms.Метод_барьеров
                 Gs[k][0] = i;
                 Gs[k][1] = -1;
                 Gs[k][2] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.2. Ограничение по нижней границе. //  Y - R >= 0
                 Gs[k][0] = i;
                 Gs[k][1] = -2;
                 Gs[k][3] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
                 Gs[k][0] = i;
                 Gs[k][1] = -3;
                 Gs[k][3] = -1;
-                Gs[k][5] = -circles[i].Radius + height;
+                Gs[k][5] = -circles[i].Value + height;
                 k++;
                 #endregion
                 #region Шаг 3.1.1.4. Ограничение по правой границе. //  X + R <= Z  --> -X + Z - R >= 0
@@ -336,7 +336,7 @@ namespace Opt.Algorithms.Метод_барьеров
                 Gs[k][1] = -4;
                 Gs[k][2] = -1;
                 Gs[k][4] = 1;
-                Gs[k][5] = -circles[i].Radius;
+                Gs[k][5] = -circles[i].Value;
                 k++;
                 #endregion
                 #endregion
@@ -377,8 +377,8 @@ namespace Opt.Algorithms.Метод_барьеров
         {
             #region Временный код.
             for (int i = 0; i < circles.Length; i++)
-                if (circles[i].Radius > 1)
-                    circles[i].Radius -= 1;
+                if (circles[i].Value > 1)
+                    circles[i].Value -= 1;
             #endregion
         }
 
@@ -397,28 +397,28 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 #region Шаг 1.1. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius;
+                value = X[2 * i] - circles[i].Value;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius;
+                value = X[2 * i + 1] - circles[i].Value;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height;
+                value = -X[2 * i + 1] - circles[i].Value + height;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip];
+                value = -X[2 * i] - circles[i].Value + X[index_strip];
                 if (value > 0)
                     res += 1 / value;
                 else
@@ -434,7 +434,7 @@ namespace Opt.Algorithms.Метод_барьеров
                     #region Шаг 2.1. Проверяем и суммируем ограничение между кругами.
                     double x = X[2 * j] - X[2 * i];
                     double y = X[2 * j + 1] - X[2 * i + 1];
-                    double r = circles[i].Radius + circles[j].Radius;
+                    double r = circles[i].Value + circles[j].Value;
                     //value = x * x + y * y - r * r;
                     value = Math.Sqrt(x * x + y * y) - r;
                     if (value > 0)
@@ -463,22 +463,22 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 #region Шаг 1.1.1.2. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1.2.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius;
+                value = X[2 * i] - circles[i].Value;
                 value = 1 / (value * value);
                 res[2 * i] += value;
                 #endregion
                 #region Шаг 1.1.1.2.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius;
+                value = X[2 * i + 1] - circles[i].Value;
                 value = 1 / (value * value);
                 res[2 * i + 1] += value;
                 #endregion
                 #region Шаг 1.1.1.2.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height;
+                value = -X[2 * i + 1] - circles[i].Value + height;
                 value = 1 / (value * value);
                 res[2 * i + 1] += -value;
                 #endregion
                 #region Шаг 1.1.1.2.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip];
+                value = -X[2 * i] - circles[i].Value + X[index_strip];
                 value = 1 / (value * value);
                 res[2 * i] += -value;
                 res[index_strip] += value;
@@ -493,7 +493,7 @@ namespace Opt.Algorithms.Метод_барьеров
                     #region Шаг 1.1.1.2.1. Проверяем и суммируем ограничение между кругами.
                     double x = X[2 * j] - X[2 * i];
                     double y = X[2 * j + 1] - X[2 * i + 1];
-                    double r = circles[i].Radius + circles[j].Radius;
+                    double r = circles[i].Value + circles[j].Value;
                     //value = x * x + y * y - r * r;
                     value = Math.Sqrt(x * x + y * y) - r;
                     value = 1 / (value * value);
@@ -547,17 +547,17 @@ namespace Opt.Algorithms.Метод_барьеров
 
     public class PlacingOptWithCloseModel : PlacingOpt, Opt.Algorithms.IWithClosenessModel
     {
-        protected Vertex<Geometric> vertex;
-        public Vertex<Geometric> Vertex
+        protected Vertex<Geometric2d> vertex;
+        public Vertex<Geometric2d> Vertex
         {
             get
             {
                 return vertex;
             }
         }
-        protected List<Vertex<Geometric>> triples;
+        protected List<Vertex<Geometric2d>> triples;
 
-        public PlacingOptWithCloseModel(double height, double length, Circle[] circles, Vertex<Geometric> vertex, double mu, double beta, double eps)
+        public PlacingOptWithCloseModel(double height, double length, Circle[] circles, Vertex<Geometric2d> vertex, double mu, double beta, double eps)
             : base(height, length, circles, mu, beta, eps)
         {
             this.vertex = vertex;
@@ -581,28 +581,28 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 #region Шаг 1.1. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius + eps;
+                value = X[2 * i] - circles[i].Value + eps;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius + eps;
+                value = X[2 * i + 1] - circles[i].Value + eps;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height + eps;
+                value = -X[2 * i + 1] - circles[i].Value + height + eps;
                 if (value > 0)
                     res += 1 / value;
                 else
                     return double.PositiveInfinity;
                 #endregion
                 #region Шаг 1.1.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip] + eps;
+                value = -X[2 * i] - circles[i].Value + X[index_strip] + eps;
                 if (value > 0)
                     res += 1 / value;
                 else
@@ -621,7 +621,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
             DateTime data = new DateTime();
             data = DateTime.Now;//задаем точку отчета времени для проверки прошли мы вершину или нет
-            Vertex<Geometric> triple;// векшина в которой мы находимся
+            Vertex<Geometric2d> triple;// векшина в которой мы находимся
 
             for (int i = 0; i < triples.Count; i++)// проверяем и суммируем ограничения между кругами
             {
@@ -635,7 +635,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                         double x = X[2 * ID_Next] - X[2 * ID_Prev];
                         double y = X[2 * ID_Next + 1] - X[2 * ID_Prev + 1];
-                        double r = circles[ID_Prev].Radius + circles[ID_Next].Radius;
+                        double r = circles[ID_Prev].Value + circles[ID_Next].Value;
                         value = Math.Sqrt(x * x + y * y) - r;
                         if (value > 0)
                             res += 1 / value;
@@ -651,7 +651,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                         double x = X[2 * ID_Next] - X[2 * ID_Prev];
                         double y = X[2 * ID_Next + 1] - X[2 * ID_Prev + 1];
-                        double r = circles[ID_Prev].Radius + circles[ID_Next].Radius;
+                        double r = circles[ID_Prev].Value + circles[ID_Next].Value;
                         value = Math.Sqrt(x * x + y * y) - r;
                         if (value > 0)
                             res += 1 / value;
@@ -667,7 +667,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                         double x = X[2 * ID_Next] - X[2 * ID_Prev];
                         double y = X[2 * ID_Next + 1] - X[2 * ID_Prev + 1];
-                        double r = circles[ID_Prev].Radius + circles[ID_Next].Radius;
+                        double r = circles[ID_Prev].Value + circles[ID_Next].Value;
                         value = Math.Sqrt(x * x + y * y) - r;
                         if (value > 0)
                             res += 1 / value;
@@ -701,22 +701,22 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 #region Шаг 1.1.1.2. Проверяем и суммируем ограничения (G >= 0) по полосе.
                 #region Шаг 1.1.1.2.1. Ограничение по левой границе. //   X - R >= 0
-                value = X[2 * i] - circles[i].Radius + eps;
+                value = X[2 * i] - circles[i].Value + eps;
                 value = 1 / (value * value);
                 res[2 * i] += value;
                 #endregion
                 #region Шаг 1.1.1.2.2. Ограничение по нижней границе. //  Y - R >= 0
-                value = X[2 * i + 1] - circles[i].Radius + eps;
+                value = X[2 * i + 1] - circles[i].Value + eps;
                 value = 1 / (value * value);
                 res[2 * i + 1] += value;
                 #endregion
                 #region Шаг 1.1.1.2.3. Ограничение по верхней границе. // Y + R <= H  --> -Y - R + H >= 0
-                value = -X[2 * i + 1] - circles[i].Radius + height + eps;
+                value = -X[2 * i + 1] - circles[i].Value + height + eps;
                 value = 1 / (value * value);
                 res[2 * i + 1] += -value;
                 #endregion
                 #region Шаг 1.1.1.2.4. Ограничение по правой границе. //  X + R <= Z  --> -X - R + Z >= 0
-                value = -X[2 * i] - circles[i].Radius + X[index_strip] + eps;
+                value = -X[2 * i] - circles[i].Value + X[index_strip] + eps;
                 value = 1 / (value * value);
                 res[2 * i] += -value;
                 res[index_strip] += value;
@@ -731,7 +731,7 @@ namespace Opt.Algorithms.Метод_барьеров
                     #region Шаг 1.1.1.2.1. Проверяем и суммируем ограничение между кругами.
                     double x = X[2 * j] - X[2 * i];
                     double y = X[2 * j + 1] - X[2 * i + 1];
-                    double r = circles[i].Radius + circles[j].Radius - 2 * eps;
+                    double r = circles[i].Value + circles[j].Value - 2 * eps;
                     //value = x * x + y * y - r * r;
                     value = Math.Sqrt(x * x + y * y) - r;
                     value = 1 / (value * value);
@@ -754,13 +754,13 @@ namespace Opt.Algorithms.Метод_барьеров
         {
             base.CalculateStart();
 
-            (this.vertex.DataInVertex as Plane).Pole.X = length;
+            (this.vertex.DataInVertex as Plane2d).Pole.X = length;
             this.vertex.Somes.CircleDelone.Pole.X = length - height / 2;
 
             #region Перестроение триангуляции. Переделать!
             for (int i = 0; i < triples.Count; i++)
             {
-                Vertex<Geometric> vertex_temp = triples[i];
+                Vertex<Geometric2d> vertex_temp = triples[i];
                 vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
             }
 
@@ -769,7 +769,7 @@ namespace Opt.Algorithms.Метод_барьеров
             {
                 for (int i = 0; i < triples.Count; i++)
                 {
-                    Vertex<Geometric> vertex_temp = triples[i];
+                    Vertex<Geometric2d> vertex_temp = triples[i];
                     do
                     {
                         //if (vertex_temp.DataInVertex is Circle)
@@ -787,7 +787,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
                 //for (int i = 0; i < triples.Count; i++)
                 //{
-                //    Vertex<Geometric> vertex_temp = triples[i];
+                //    Vertex<Geometric2d> vertex_temp = triples[i];
                 //    vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
                 //}
             }

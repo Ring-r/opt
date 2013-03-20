@@ -214,9 +214,6 @@ namespace Opt.Algorithms.WFAT
                 #endregion
             }
 
-            if (placing != null)
-                Text = string.Format("{0}({1})", placing.Time.TotalMilliseconds, placing.Length);
-
             e.Graphics.DrawLine(System.Drawing.Pens.Green, (float)length, 0, (float)length, (float)height);
         }
         private void FormPlaceCircle_Resize(object sender, EventArgs e)

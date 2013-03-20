@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Opt.Geometrics;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms
 {

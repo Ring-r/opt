@@ -156,6 +156,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
         /// </summary>
         public override void CalculateStart()
         {
+            time_0 = DateTime.Now;
+
             #region Шаг 1. Проверка размеров размещаемых кругов относительно высоты полосы.
             for (int i = 0; i < circles.Length; i++)
             {
@@ -167,6 +169,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #region Шаг 2. Запуск метода последовательного одиночного размещения.
             Calculate();
             #endregion
+
+            time_1 = DateTime.Now;
         }
     }
 
@@ -181,8 +185,6 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             }
         }
         protected List<Vertex<Geometric>> triples;
-
-        //protected Vertex<Geometric> vt;
 
         public PlacingWithCloseModel(double height, Circle[] circles, double eps)
             : base(height, 0, circles, eps)
@@ -208,13 +210,11 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             vertex.Cros.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point { X =double.PositiveInfinity /*length + height / 2*/, Y = height / 2 }, Radius = 0 });
             #endregion
 
-            //vt = vertex.Cros.Prev.Cros.Prev;
-
             length = 0;
 
-            triples = vertex.GetTriples();
+            vertex = vertex.Cros.Next.Cros.Next;
 
-            vertex = vertex.Cros;
+            triples = vertex.GetTriples();
         }
 
 
@@ -248,7 +248,7 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #region Шаг 1. Метод последовательного одиночного размещения. Для каждого круга...
             for (int i = 0; i < circles.Length; i++)
             {
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(15);
                 #region Шаг 1.1. Устанавливаем начальное значение для точки размещения текущего объекта и связанной с ней вершиной.
                 Point point_global = new Point { X = double.PositiveInfinity };
                 Vertex<Geometric> vertex_global = null;
@@ -309,9 +309,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
                 length = Math.Max(length, circles[i].Pole.X + circles[i].Radius);
                 if (((Plane)(this.vertex.DataInVertex)).Pole.X < length + 2 * height)
                 {
-                    ((Plane)(this.vertex.DataInVertex)).Pole.X = length + 2 * height;
-                    this.vertex.Somes.CircleDelone.Pole.X = length + 2 * height - height / 2;
-                    //this.vt.Somes.CircleDelone.Pole.X = length + 2 * height + height / 2;
+                    (this.vertex.DataInVertex as Plane).Pole.X = length + 2 * height;
+                    this.vertex.Next.Cros.Next.Somes.CircleDelone.Pole.X = length + 2 * height - height / 2;
                 }
                 #endregion
             }
@@ -319,8 +318,7 @@ namespace Opt.Algorithms.Метод_последовательного_один�
 
             #region Шаг 2. Изменение расположения полуплоскости, которая определяет правую границу полосы.
             (this.vertex.DataInVertex as Plane).Pole.X = length;
-            this.vertex.Somes.CircleDelone.Pole.X = length - height / 2;
-            //this.vt.Somes.CircleDelone.Pole.X = length + height / 2;
+            this.vertex.Next.Cros.Next.Somes.CircleDelone.Pole.X = length - height / 2;
 
             Vertex<Geometric> vertex_t = this.vertex;
 
@@ -344,6 +342,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
         /// </summary>
         public override void CalculateStart()
         {
+            time_0 = DateTime.Now;
+
             #region Шаг 1. Проверка размеров размещаемых кругов относительно высоты полосы.
             for (int i = 0; i < circles.Length; i++)
             {
@@ -355,6 +355,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #region Шаг 2. Запуск метода последовательного одиночного размещения.
             Calculate();
             #endregion
+
+            time_1 = DateTime.Now;
         }
     }
 }

@@ -34,13 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Opt.ClosenessModel">
-      <HintPath>..\..\DLL\Opt.ClosenessModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Opt.Geometrics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Opt.Geometrics\Opt.Geometrics\bin\Release\Opt.Geometrics.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -64,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +77,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\projects\Opt.ClosenessModel\Opt.ClosenessModel.csproj">
+      <Project>{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}</Project>
+      <Name>Opt.ClosenessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj">
+      <Project>{890D3682-B64D-451A-8485-D61665D5EA25}</Project>
+      <Name>Opt.Geometrics</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

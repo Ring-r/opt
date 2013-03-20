@@ -1,13 +1,13 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Threading;
-
-using Opt.Geometrics;
-using Opt.Geometrics.Extentions;
+using System.Windows.Forms;
 using Opt.ClosenessModel;
+using Opt.Geometrics.Extentions;
+using Opt.Geometrics.Geometrics2d;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
 {
@@ -41,6 +41,8 @@ namespace Opt.Algorithms.WFAT
             length = 0;
             circles.Clear();
 
+            placing = null;
+
             Invalidate();
         }
         private void miLoad_Click(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace Opt.Algorithms.WFAT
             height = double.Parse(sr.ReadLine());
             int n = int.Parse(sr.ReadLine());
             for (int i = 0; i < n; i++)
-                circles.Add(new Circle { Pole = new Point { X = double.NegativeInfinity, Y = 0 }, Radius = double.Parse(sr.ReadLine()) });
+                circles.Add(new Circle { Pole = new Point2d { X = double.NegativeInfinity, Y = 0 }, Value = double.Parse(sr.ReadLine()) });
 
             Invalidate();
         }
@@ -60,7 +62,7 @@ namespace Opt.Algorithms.WFAT
             sw.WriteLine(height);
             sw.WriteLine(circles.Count);
             for (int i = 0; i < circles.Count; i++)
-                sw.WriteLine(circles[i].Radius);
+                sw.WriteLine(circles[i].Value);
             sw.Close();
         }
         private void miExit_Click(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace Opt.Algorithms.WFAT
             ft.ShowDialog(this);
             try
             {
-                circles.Add(new Circle { Pole = new Point { X = double.NegativeInfinity, Y = 0 }, Radius = double.Parse(ft.Info) });
+                circles.Add(new Circle { Pole = new Point2d { X = double.NegativeInfinity, Y = 0 }, Value = double.Parse(ft.Info) });
             }
             catch
             {
@@ -106,7 +108,7 @@ namespace Opt.Algorithms.WFAT
                 double min = double.Parse(s[1]);
                 double max = double.Parse(s[2]);
                 for (int i = 0; i < n; i++)
-                    circles.Add(new Circle { Pole = new Point { X = double.NegativeInfinity, Y = 0 }, Radius = min + (max - min) * rand.NextDouble() });
+                    circles.Add(new Circle { Pole = new Point2d { X = double.NegativeInfinity, Y = 0 }, Value = min + (max - min) * rand.NextDouble() });
             }
             catch
             {
@@ -132,7 +134,7 @@ namespace Opt.Algorithms.WFAT
             #region Рисование размещённых кругов.
             System.Drawing.Drawing2D.Matrix matrix;
             for (int i = 0; i < circles.Count; i++)
-                if (0 <= circles[i].Pole.X + circles[i].Radius && circles[i].Pole.X - circles[i].Radius < ClientSize.Width)
+                if (0 <= circles[i].Pole.X + circles[i].Value && circles[i].Pole.X - circles[i].Value < ClientSize.Width)
                 {
                     circles[i].FillAndDraw(e.Graphics, System.Drawing.Color.Silver, System.Drawing.Color.Black);
 
@@ -152,9 +154,9 @@ namespace Opt.Algorithms.WFAT
             {
                 if (double.IsNegativeInfinity(circles[i].Pole.X))
                 {
-                    e.Graphics.DrawEllipse(System.Drawing.Pens.Black, (float)x, (float)y, 2 * (float)circles[i].Radius, 2 * (float)circles[i].Radius);
-                    e.Graphics.FillEllipse(System.Drawing.Brushes.Silver, (float)x, (float)y, 2 * (float)circles[i].Radius, 2 * (float)circles[i].Radius);
-                    x += 2 * circles[i].Radius;
+                    e.Graphics.DrawEllipse(System.Drawing.Pens.Black, (float)x, (float)y, 2 * (float)circles[i].Value, 2 * (float)circles[i].Value);
+                    e.Graphics.FillEllipse(System.Drawing.Brushes.Silver, (float)x, (float)y, 2 * (float)circles[i].Value, 2 * (float)circles[i].Value);
+                    x += 2 * circles[i].Value;
                 }
             }
             #endregion
@@ -162,14 +164,14 @@ namespace Opt.Algorithms.WFAT
             if (thread != null && !thread.IsAlive)
             {
                 #region Рисование модели близости.
-                Vertex<Geometric> vertex = null;
+                Vertex<Geometric2d> vertex = null;
                 if (placing is Opt.Algorithms.IWithClosenessModel)
                 {
                     vertex = (placing as Opt.Algorithms.IWithClosenessModel).Vertex;
                 }
                 if (vertex != null)
                 {
-                    List<Vertex<Geometric>> triples = VertexExtention.GetTriples(vertex);
+                    List<Vertex<Geometric2d>> triples = VertexExtention.GetTriples(vertex);
 
                     for (int i = 0; i < triples.Count; i++)
                     {
@@ -178,7 +180,7 @@ namespace Opt.Algorithms.WFAT
 
                     for (int i = 0; i < triples.Count; i++)
                     {
-                        Vertex<Geometric> vertex_temp = triples[i];
+                        Vertex<Geometric2d> vertex_temp = triples[i];
                         do
                         {
                             //if (vertex_temp.DataInVertex is Circle)
@@ -192,7 +194,7 @@ namespace Opt.Algorithms.WFAT
                             //    }
                             //}
 
-                            if (vertex_temp.Somes.CircleDelone.Radius != 0 && vertex_temp.Cros.Somes.CircleDelone.Radius != 0)
+                            if (vertex_temp.Somes.CircleDelone.Value != 0 && vertex_temp.Cros.Somes.CircleDelone.Value != 0)
                             {
                                 System.Drawing.PointF[] points = AssistantExt.Отрезок(vertex_temp).ToArray();
                                 if (points.Length > 2)
@@ -202,6 +204,12 @@ namespace Opt.Algorithms.WFAT
                             vertex_temp = vertex_temp.Next;
                         } while (vertex_temp != triples[i]);
                     }
+                    //double[] cdr = new double[triples.Count];
+                    //for (int i = 0; i < triples.Count; i++)
+                    //    cdr[i] = triples[i].Somes.CircleDelone.Value;
+                    //Array.Sort(cdr);
+                    //for (int i = 0; i < cdr.Length; i++)
+                    //    e.Graphics.DrawLine(System.Drawing.Pens.Green, i, 0, i, (float)cdr[i]);
                 }
                 #endregion
             }
@@ -296,7 +304,7 @@ namespace Opt.Algorithms.WFAT
         {
             if (thread == null || !thread.IsAlive)
             {
-                Vertex<Geometric> vertex = null;
+                Vertex<Geometric2d> vertex = null;
                 if (placing is Opt.Algorithms.IWithClosenessModel)
                 {
                     vertex = (placing as Opt.Algorithms.IWithClosenessModel).Vertex;
@@ -514,67 +522,67 @@ namespace Opt.Algorithms.WFAT
         {
             if (circle != null)
             {
-                graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.Radius), (float)(circle.Pole.Y - circle.Radius), (float)(2 * circle.Radius), (float)(2 * circle.Radius));
-                graphics.DrawEllipse(new System.Drawing.Pen(color_pen), (float)(circle.Pole.X - circle.Radius), (float)(circle.Pole.Y - circle.Radius), (float)(2 * circle.Radius), (float)(2 * circle.Radius));
+                graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.Value), (float)(circle.Pole.Y - circle.Value), (float)(2 * circle.Value), (float)(2 * circle.Value));
+                graphics.DrawEllipse(new System.Drawing.Pen(color_pen), (float)(circle.Pole.X - circle.Value), (float)(circle.Pole.Y - circle.Value), (float)(2 * circle.Value), (float)(2 * circle.Value));
                 graphics.FillEllipse(System.Drawing.Brushes.Black, (float)circle.Pole.X - 1, (float)circle.Pole.Y - 1, 2, 2);
             }
         }
-        public static void FillAndDraw(this Plane plane, System.Drawing.Graphics graphics, System.Drawing.Color color_brush, System.Drawing.Color color_pen)
+        public static void FillAndDraw(this Plane2d plane, System.Drawing.Graphics graphics, System.Drawing.Color color_brush, System.Drawing.Color color_pen)
         {
             //graphics.FillEllipse(new System.Drawing.SolidBrush(color_brush), (float)(circle.Pole.X - circle.R), (float)(circle.Pole.Y - circle.R), (float)(2 * circle.R), (float)(2 * circle.R));
-            Vector vector = new Vector() { X = -plane.Normal.Y, Y = plane.Normal.X };
-            Point point_prev = plane.Pole - vector * 1000;
-            Point point_next = plane.Pole + vector * 1000;
+            Vector2d vector = new Vector2d() { X = -plane.Normal.Y, Y = plane.Normal.X };
+            Point2d point_prev = plane.Pole - vector * 1000;
+            Point2d point_next = plane.Pole + vector * 1000;
             graphics.DrawLine(new System.Drawing.Pen(color_pen), (float)(point_prev.X), (float)(point_prev.Y), (float)(point_next.X), (float)(point_next.Y));
         }
     }
 
     public static class AssistantExt
     {
-        public static Polygon Отрезок(Circle circle_this, Circle circle)
+        public static Polygon2d Отрезок(Circle circle_this, Circle circle)
         {
-            Polygon polygon = new Polygon();
-            Vector vector = circle.Pole - circle_this.Pole;
+            Polygon2d polygon = new Polygon2d();
+            Vector2d vector = circle.Pole - circle_this.Pole;
             double length = Math.Sqrt(vector * vector);
             vector /= length;
-            polygon.Add(circle_this.Pole + vector * circle_this.Radius);
-            polygon.Add(circle.Pole - vector * circle.Radius);
+            polygon.Add(circle_this.Pole + vector * circle_this.Value);
+            polygon.Add(circle.Pole - vector * circle.Value);
             return polygon;
         }
-        public static Polygon Отрезок(Circle circle_this, Plane plane)
+        public static Polygon2d Отрезок(Circle circle_this, Plane2d plane)
         {
-            Polygon polygon = new Polygon();
-            polygon.Add(circle_this.Pole - plane.Normal * circle_this.Radius);
-            polygon.Add(circle_this.Pole - plane.Normal * (circle_this.Radius + PlaneExt.Расширенное_расстояние(plane, circle_this)));
+            Polygon2d polygon = new Polygon2d();
+            polygon.Add(circle_this.Pole - plane.Normal * circle_this.Value);
+            polygon.Add(circle_this.Pole - plane.Normal * (circle_this.Value + PlaneExt.Расширенное_расстояние(plane, circle_this)));
             return polygon;
         }
 
-        public static Polygon Отрезок_(Geometric geometric_this, Geometric geometric)
+        public static Polygon2d Отрезок_(Geometric2d geometric_this, Geometric2d geometric)
         {
             if (geometric_this is Circle)
             {
                 if (geometric is Circle)
                     return Отрезок(geometric_this as Circle, geometric as Circle);
-                if (geometric is Plane)
-                    return Отрезок(geometric_this as Circle, geometric as Plane);
+                if (geometric is Plane2d)
+                    return Отрезок(geometric_this as Circle, geometric as Plane2d);
             }
-            if (geometric_this is Plane)
+            if (geometric_this is Plane2d)
             {
                 if (geometric is Circle)
-                    return Отрезок(geometric as Circle, geometric_this as Plane);
+                    return Отрезок(geometric as Circle, geometric_this as Plane2d);
             }
-            return new Polygon();
+            return new Polygon2d();
         }
 
-        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric> vertex)
+        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric2d> vertex)
         {
             List<System.Drawing.PointF> points = new List<System.Drawing.PointF>();
             double ed = CircleExt.Расширенное_расстояние(vertex.Somes.CircleDelone, vertex.Cros.Somes.CircleDelone) / 2;
             double k;
             int n = 100;
-            Point point;
-            Circle circle = new Circle { Pole = vertex.Somes.CircleDelone.Pole.Copy, Radius = vertex.Somes.CircleDelone.Radius + ed };
-            Circle circle_cros = new Circle { Pole = vertex.Cros.Somes.CircleDelone.Pole.Copy, Radius = vertex.Cros.Somes.CircleDelone.Radius + ed };
+            Point2d point;
+            Circle circle = new Circle { Pole = vertex.Somes.CircleDelone.Pole.Copy, Value = vertex.Somes.CircleDelone.Value + ed };
+            Circle circle_cros = new Circle { Pole = vertex.Cros.Somes.CircleDelone.Pole.Copy, Value = vertex.Cros.Somes.CircleDelone.Value + ed };
             point = CircleExt.Точка_пересечения_границ(circle, circle_cros);
             if (point != null && !double.IsNaN(point.X) && !double.IsNaN(point.Y))
                 points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
@@ -588,8 +596,8 @@ namespace Opt.Algorithms.WFAT
             k = (ed_end - ed) / n;
             for (int i = 0; i < n; i++)
             {
-                circle.Radius += k;
-                circle_cros.Radius += k;
+                circle.Value += k;
+                circle_cros.Value += k;
                 point = CircleExt.Точка_пересечения_границ(circle, circle_cros);
                 if (point != null && !double.IsNaN(point.X) && !double.IsNaN(point.Y))
                     points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
@@ -597,8 +605,8 @@ namespace Opt.Algorithms.WFAT
 
             points.Reverse();
 
-            circle.Radius = vertex.Somes.CircleDelone.Radius + ed;
-            circle_cros.Radius = vertex.Cros.Somes.CircleDelone.Radius + ed;
+            circle.Value = vertex.Somes.CircleDelone.Value + ed;
+            circle_cros.Value = vertex.Cros.Somes.CircleDelone.Value + ed;
 
             if (vertex.Next.DataInVertex is Circle)
                 ed_end = GeometricExt.Расширенное_расстояние(vertex.Somes.CircleDelone, (vertex.Next.DataInVertex as Circle).Pole) / 2;
@@ -608,8 +616,8 @@ namespace Opt.Algorithms.WFAT
             k = (ed_end - ed) / n;
             for (int i = 0; i < n; i++)
             {
-                circle.Radius += k;
-                circle_cros.Radius += k;
+                circle.Value += k;
+                circle_cros.Value += k;
                 point = CircleExt.Точка_пересечения_границ(circle_cros, circle);
                 if (point != null && !double.IsNaN(point.X) && !double.IsNaN(point.Y))
                     points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
