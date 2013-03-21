@@ -178,11 +178,6 @@
             Получает и задаёт вектор, определяющий точку.
             </summary>
         </member>
-        <member name="T:Opt.GeometricObjects.StripLine">
-            <summary>
-            Прямая линия в двухмерном пространстве.
-            </summary>
-        </member>
         <member name="T:Opt.GeometricObjects.Polygon">
             <summary>
             Многоугольник в двухмерном пространстве.
@@ -430,6 +425,11 @@
         <member name="P:Opt.GeometricObjects.Vector.PVectorRR">
             <summary>
             Получает или задаёт перпендикулярный вектор (поворот по часовой стрелке).
+            </summary>
+        </member>
+        <member name="T:Opt.GeometricObjects.StripLine">
+            <summary>
+            Прямая линия в двухмерном пространстве.
             </summary>
         </member>
     </members>

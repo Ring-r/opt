@@ -1,6 +1,4 @@
-﻿using System;
-using Opt.Geometrics.Geometrics2d;
-
+﻿using Opt.Geometrics.Geometrics2d;
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector;
 
@@ -30,7 +28,7 @@ namespace Opt.Geometrics.Extentions.WFA
                 double ed_temp = (region[i + 1] - region[i]) * plane.Normal;
                 if (ed_temp != 0)
                 {
-                    double t = -(((region[i]+ region.Pole.Vector) - plane.Pole) * plane.Normal) / ed_temp;
+                    double t = -(((region[i] + region.Pole.Vector) - plane.Pole) * plane.Normal) / ed_temp;
                     if (0 < t && t <= 1)
                         polygon.Add(region[i] + region.Pole.Vector + (region[i + 1] - region[i]) * t);
                 }

@@ -1,7 +1,4 @@
-﻿using System;
-using Opt.Geometrics;
-using Opt.Geometrics.Geometrics2d;
-
+﻿using Opt.Geometrics.Geometrics2d;
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector;
 

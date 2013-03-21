@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace Opt.GeometricObjects.Test
+namespace Opt.ClosenessModel.WFAT
 {
     static class Program
     {

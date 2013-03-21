@@ -71,15 +71,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Opt.ClosenessModel\Opt.ClosenessModel.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\projects\Opt.ClosenessModel\Opt.ClosenessModel.csproj">
       <Project>{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}</Project>
       <Name>Opt.ClosenessModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Opt.Geometrics.Extentions.WFA\Opt.Geometrics.Extentions.WFA.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\projects\Opt.Geometrics.Extentions.WFA\Opt.Geometrics.Extentions.WFA.csproj">
       <Project>{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}</Project>
       <Name>Opt.Geometrics.Extentions.WFA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Opt.Geometrics\Opt.Geometrics.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj">
       <Project>{890D3682-B64D-451A-8485-D61665D5EA25}</Project>
       <Name>Opt.Geometrics</Name>
     </ProjectReference>

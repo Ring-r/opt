@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Opt.GeometricObjects.Test")]
+[assembly: AssemblyTitle("Opt.ClosenessModel.WFAT")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Company")]
-[assembly: AssemblyProduct("Opt.GeometricObjects.Test")]
-[assembly: AssemblyCopyright("Copyright © Company 2011")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Opt.ClosenessModel.WFAT")]
+[assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("6b81aaf3-e2d4-480d-83b3-19e8818fb457")]
+[assembly: Guid("5f713ae8-241c-4068-8643-c473923a23c2")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

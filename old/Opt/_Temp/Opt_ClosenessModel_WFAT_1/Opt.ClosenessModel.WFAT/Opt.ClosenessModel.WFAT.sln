@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.ClosenessModel.WFAT", "Opt.ClosenessModel.WFAT\Opt.ClosenessModel.WFAT.csproj", "{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Geometrics", "..\..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj", "{890D3682-B64D-451A-8485-D61665D5EA25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.ClosenessModel", "..\..\..\..\..\projects\Opt.ClosenessModel\Opt.ClosenessModel.csproj", "{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Debug|x86.ActiveCfg = Debug|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Debug|x86.Build.0 = Debug|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|Any CPU.ActiveCfg = Release|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|Mixed Platforms.Build.0 = Release|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|x86.ActiveCfg = Release|x86
+		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|x86.Build.0 = Release|x86
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E4D4DEE1-A835-444D-8B2D-A9FF87EF0EE8}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

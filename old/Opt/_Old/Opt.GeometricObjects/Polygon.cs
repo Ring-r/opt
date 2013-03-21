@@ -12,7 +12,7 @@ namespace Opt
         [Serializable]
         public class Polygon : IEnumerable<Point>
         {
-            protected List<Point> points=new List<Point>(); // Минус: медленная вставка и удаление вершин. Минус: необходимость следить за границами индекса.
+            protected List<Point> points = new List<Point>(); // Минус: медленная вставка и удаление вершин. Минус: необходимость следить за границами индекса.
 
             #region Polygon(...)
             /// <summary>
@@ -60,7 +60,7 @@ namespace Opt
             /// <returns>Точка, определяющая вершину.</returns>
             /// <remarks>Так как точка является классом, то происходит возвращение (get) и изменение (set) ссылки на точку.</remarks>
             public Point this[int index]
-            {                
+            {
                 get
                 {
                     return points[index];
@@ -127,7 +127,7 @@ namespace Opt
                     else
                         points.RemoveRange(index, count);
                 }
-                
+
             } // Минус: выход индекса за границы. Минус: дополнительные проверки для реализации аналога кольцевого списка.
 
             #region Set(...)
