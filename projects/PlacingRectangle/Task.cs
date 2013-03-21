@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
-//using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
-
-using Opt.Geometrics;
+using System.IO;
+using System.Windows.Forms;
+using Opt.Geometrics.Geometrics2d;
 
 namespace PlacingRectangle
 {
@@ -39,7 +37,7 @@ namespace PlacingRectangle
             }
         }
 
-        private Vector region_size=new Vector();
+        private Vector2d region_size = new Vector2d();
         public double RegionWidth
         {
             get
@@ -71,7 +69,7 @@ namespace PlacingRectangle
             }
         }
 
-        private List<Vector> objects_sizes;
+        private List<Vector2d> objects_sizes;
         public int ObjectsCount
         {
             get
@@ -79,7 +77,7 @@ namespace PlacingRectangle
                 return objects_sizes.Count;
             }
         }
-        public void ObjectsSizesAdd(int index, Vector object_size)
+        public void ObjectsSizesAdd(int index, Vector2d object_size)
         {
             objects_sizes.Insert(index, object_size);
             Initialize();
@@ -124,7 +122,7 @@ namespace PlacingRectangle
                 region_size.Y = double.PositiveInfinity;
             }
 
-            List<Vector> objects_size_temp = new List<Vector>();
+            List<Vector2d> objects_size_temp = new List<Vector2d>();
             if (objects_sizes != null)
                 for (int i = 0; i < objects_sizes.Count; i++)
                     objects_size_temp.Add(objects_sizes[i]);
@@ -179,9 +177,9 @@ namespace PlacingRectangle
 
             sr.ReadLine(); // Размеры объектов размещения.
             string[] s = sr.ReadLine().Split(' ');
-            objects_sizes = new List<Vector>();
+            objects_sizes = new List<Vector2d>();
             for (int i = 0; i < s.Length; i += 2)
-                objects_sizes.Add(new Vector { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
+                objects_sizes.Add(new Vector2d { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
 
             sr.ReadLine(); // Лучшее размещение.
             placement_opt = Placement.Create(this, objects_sizes);

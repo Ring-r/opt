@@ -12,7 +12,7 @@ namespace Opt.Algorithms
         {
             vertex.Prev.Somes.CircleDelone = circle_delone;
             vertex.Somes.CircleDelone = circle_delone;
-            vertex.Next.Somes.CircleDelone = circle_delone;            
+            vertex.Next.Somes.CircleDelone = circle_delone;
         }
         public static List<Vertex<Geometric2d>> GetTriples(this Vertex<Geometric2d> vertex)
         {

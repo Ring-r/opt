@@ -3,7 +3,7 @@
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.ClosenessModel
-{    
+{
     public partial class Vertex<DataType>
     {
         /// <summary>

@@ -244,7 +244,7 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #region Шаг 1. Метод последовательного одиночного размещения. Для каждого круга...
             for (int i = 0; i < circles.Length; i++)
             {
-                System.Threading.Thread.Sleep(15);
+                System.Threading.Thread.Sleep(100);
                 #region Шаг 1.1. Устанавливаем начальное значение для точки размещения текущего объекта и связанной с ней вершиной.
                 Point2d point_global = new Point2d { X = double.PositiveInfinity };
                 Vertex<Geometric2d> vertex_global = null;

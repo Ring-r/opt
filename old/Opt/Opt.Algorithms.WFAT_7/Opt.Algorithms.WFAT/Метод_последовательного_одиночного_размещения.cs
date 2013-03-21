@@ -182,14 +182,12 @@ namespace Opt.Algorithms.Метод_последовательного_один�
         }
         protected List<Vertex<Geometric2d>> triples;
 
-        //protected Vertex<Geometric2d> vt;
-
         public PlacingWithCloseModel(double height, Circle[] circles, double eps)
             : base(height, 0, circles, eps)
         {
             length = 2 * height;
 
-            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника. !!!Потом переделать на полосу!!!            
+            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника. !!!Потом переделать на полосу!!!
             Geometric2d border_1 = new Plane2d { ID = -1, Pole = new Point2d { X = 0, Y = 2 * height / 2 }, Normal = new Vector2d { X = 0, Y = -1 } };
             Geometric2d border_2 = new Plane2d { ID = -2, Pole = new Point2d { X = 0, Y = 1 * height / 2 }, Normal = new Vector2d { X = 1, Y = 0 } };
             Geometric2d border_3 = new Plane2d { ID = -3, Pole = new Point2d { X = 0, Y = 0 * height / 2 }, Normal = new Vector2d { X = 0, Y = +1 } };
@@ -205,10 +203,8 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             vertex.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = length - height / 2, Y = height / 2 }, Value = height / 2 });
 
             vertex.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = -height / 2, Y = height / 2 }, Value = 0 });
-            vertex.Cros.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X =double.PositiveInfinity /*length + height / 2*/, Y = height / 2 }, Value = 0 });
+            vertex.Cros.Prev.Cros.SetCircleDelone(new Circle { Pole = new Point2d { X = double.PositiveInfinity /*length + height / 2*/, Y = height / 2 }, Value = 0 });
             #endregion
-
-            //vt = vertex.Cros.Prev.Cros.Prev;
 
             length = 0;
 
@@ -311,7 +307,6 @@ namespace Opt.Algorithms.Метод_последовательного_один�
                 {
                     ((Plane2d)(this.vertex.DataInVertex)).Pole.X = length + 2 * height;
                     this.vertex.Somes.CircleDelone.Pole.X = length + 2 * height - height / 2;
-                    //this.vt.Somes.CircleDelone.Pole.X = length + 2 * height + height / 2;
                 }
                 #endregion
             }
@@ -320,7 +315,6 @@ namespace Opt.Algorithms.Метод_последовательного_один�
             #region Шаг 2. Изменение расположения полуплоскости, которая определяет правую границу полосы.
             (this.vertex.DataInVertex as Plane2d).Pole.X = length;
             this.vertex.Somes.CircleDelone.Pole.X = length - height / 2;
-            //this.vt.Somes.CircleDelone.Pole.X = length + height / 2;
 
             Vertex<Geometric2d> vertex_t = this.vertex;
 

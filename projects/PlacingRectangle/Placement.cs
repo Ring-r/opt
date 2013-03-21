@@ -1,10 +1,9 @@
 ﻿using System;
-using System.IO;
-//using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
-
-using Opt.Geometrics;
+using System.IO;
+using System.Windows.Forms;
+using Opt.Geometrics.Geometrics2d;
+using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector;
 
 namespace PlacingRectangle
 {
@@ -12,8 +11,8 @@ namespace PlacingRectangle
     {
         private Task task;
 
-        private Vector region_size;
-        public Vector RegionSize
+        private Vector2d region_size;
+        public Vector2d RegionSize
         {
             get
             {
@@ -21,11 +20,11 @@ namespace PlacingRectangle
             }
         }
 
-        private List<Vector> objects_sizes;
+        private List<Vector2d> objects_sizes;
         private List<int> sort;
         private List<int> objects_busy_numbers;
-        private List<int> objects_free_numbers; 
-        private List<Point> objects_busy_points;
+        private List<int> objects_free_numbers;
+        private List<Point2d> objects_busy_points;
         public BindingSource Objects_BindingSource()
         {
             BindingSource bs = new BindingSource();
@@ -37,7 +36,7 @@ namespace PlacingRectangle
         {
             BindingSource bs = new BindingSource();
             for (int i = 0; i < objects_busy_numbers.Count; i++)
-                bs.Add(new Rectangle { Pole = objects_busy_points[i].Copy, Size = objects_sizes[objects_busy_numbers[i]].Copy });
+                bs.Add(new Rectangle { Pole = objects_busy_points[i].Copy, Vector = objects_sizes[objects_busy_numbers[i]].Copy });
             return bs;
         }
         public BindingSource ObjectsFree_BindingSource()
@@ -75,9 +74,9 @@ namespace PlacingRectangle
 
         protected Placement()
         {
-            region_size = new Vector();
+            region_size = new Vector2d();
         }
-        public static Placement Create(Task task, List<Vector> objects_sizes)
+        public static Placement Create(Task task, List<Vector2d> objects_sizes)
         {
             if (task != null)
             {
@@ -96,7 +95,7 @@ namespace PlacingRectangle
                 placement.sort = new List<int>();
                 placement.objects_busy_numbers = new List<int>();
                 placement.objects_free_numbers = new List<int>();
-                placement.objects_busy_points = new List<Point>();
+                placement.objects_busy_points = new List<Point2d>();
                 placement.objects_busy_square = 0;
 
                 placement.object_function = double.NaN;
@@ -126,19 +125,19 @@ namespace PlacingRectangle
             }
         }
 
-        private bool CheckIntersectWithRegion(Point point, Vector size)
+        private bool CheckIntersectWithRegion(Point2d point, Vector2d size)
         {
             double eps = 1e-4f;
             return point.X + size.X <= task.RegionWidth + eps && point.Y + size.Y <= task.RegionHeight + eps;
         }
-        private bool CheckIntersectWithRectangles(Point point, Vector size)
+        private bool CheckIntersectWithRectangles(Point2d point, Vector2d size)
         {
             bool without_intersect = true;
             for (int i = 0; i < objects_busy_numbers.Count && without_intersect; i++)
                 without_intersect = without_intersect && CheckIntersectBetweenRectangles(point, size, objects_busy_points[i], objects_sizes[objects_busy_numbers[i]]);
             return without_intersect;
         }
-        private bool CheckIntersectBetweenRectangles(Point point_i, Vector size_i, Point point_j, Vector size_j)
+        private bool CheckIntersectBetweenRectangles(Point2d point_i, Vector2d size_i, Point2d point_j, Vector2d size_j)
         {
             double eps = 1e-4f;
             return
@@ -150,8 +149,8 @@ namespace PlacingRectangle
         public void Calculate()
         {
             #region Создание списка точек размещения и добавление первой точки.
-            List<Point> point_of_placement = new List<Point>();
-            point_of_placement.Add(new Point());
+            List<Point2d> point_of_placement = new List<Point2d>();
+            point_of_placement.Add(new Point2d());
             #endregion
 
             objects_busy_square = 0;
@@ -159,9 +158,9 @@ namespace PlacingRectangle
             #region Для каждого объекта размещения...
             for (int i = 0; i < sort.Count; i++)
             {
-                Vector size = objects_sizes[sort[i]];
+                Vector2d size = objects_sizes[sort[i]];
                 #region Определение начального значения точки размещения текущего объекта размещения и соответствующих ей занятой части области размещения и её площади (используется для определения лучшей точки размещения).
-                Point point = new Point { X = double.PositiveInfinity, Y = double.PositiveInfinity };
+                Point2d point = new Point2d { X = double.PositiveInfinity, Y = double.PositiveInfinity };
                 double width = Math.Max(region_size.X, point.X + size.X);
                 double height = Math.Max(region_size.Y, point.Y + size.Y);
                 double object_function = width * height;
@@ -170,7 +169,7 @@ namespace PlacingRectangle
                 #region Для каждой точки размещения...
                 for (int j = 0; j < point_of_placement.Count; j++)
                 {
-                    Point point_temp = point_of_placement[j];
+                    Point2d point_temp = point_of_placement[j];
                     #region Проверка попадания текущего объекта размещения в текущей точке размещения в область размещения.
                     if (CheckIntersectWithRegion(point_temp, size))
                         #region Проверка непересечения текущего объекта размещения в текущей точке размещения со всеми размещёнными объектами.
@@ -223,12 +222,12 @@ namespace PlacingRectangle
                     #endregion
 
                     #region Оперделение и добавление новых точек размещения.
-                    point_of_placement.Add(new Point { X = 0, Y = point.Y + size.Y });
-                    point_of_placement.Add(new Point { X = point.X + size.X, Y = 0 });
+                    point_of_placement.Add(new Point2d { X = 0, Y = point.Y + size.Y });
+                    point_of_placement.Add(new Point2d { X = point.X + size.X, Y = 0 });
                     for (int j = 0; j < objects_busy_numbers.Count - 1; j++)
                     {
-                        point_of_placement.Add(new Point { X = point.X + size.X, Y = objects_busy_points[j].Y + objects_sizes[sort[j]].Y });
-                        point_of_placement.Add(new Point { X = objects_busy_points[j].X + objects_sizes[sort[j]].X, Y = point.Y + size.Y });
+                        point_of_placement.Add(new Point2d { X = point.X + size.X, Y = objects_busy_points[j].Y + objects_sizes[sort[j]].Y });
+                        point_of_placement.Add(new Point2d { X = objects_busy_points[j].X + objects_sizes[sort[j]].X, Y = point.Y + size.Y });
                     }
                     #endregion
                 }
@@ -250,10 +249,10 @@ namespace PlacingRectangle
             graphics.DrawRectangle(pen_region, 0, 0, (float)Math.Min(Width, task.RegionWidth), (float)Math.Min(Height, task.RegionHeight));
             for (int i = 0; i < objects_busy_numbers.Count; i++)
             {
-                Rectangle rect = new Rectangle { Pole = objects_busy_points[i].Copy, Size = objects_sizes[objects_busy_numbers[i]].Copy };
-                graphics.FillRectangle(brush_objects, (float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Pole.X + rect.Size.X), (float)(rect.Pole.X + rect.Size.Y));
-                graphics.DrawRectangle(pen_objects, (float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Pole.X + rect.Size.X), (float)(rect.Pole.X + rect.Size.Y));
-                graphics.DrawString(i.ToString(), my_font, brush_text, new System.Drawing.RectangleF((float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Size.X), (float)(rect.Size.Y)));
+                Rectangle rect = new Rectangle { Pole = objects_busy_points[i].Copy, Vector = objects_sizes[objects_busy_numbers[i]].Copy };
+                graphics.FillRectangle(brush_objects, (float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Pole.X + rect.Vector.X), (float)(rect.Pole.X + rect.Vector.Y));
+                graphics.DrawRectangle(pen_objects, (float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Pole.X + rect.Vector.X), (float)(rect.Pole.X + rect.Vector.Y));
+                graphics.DrawString(i.ToString(), my_font, brush_text, new System.Drawing.RectangleF((float)rect.Pole.X, (float)rect.Pole.Y, (float)(rect.Vector.X), (float)(rect.Vector.Y)));
             }
         }
         public void ReadLine(StreamReader sr)
@@ -285,9 +284,9 @@ namespace PlacingRectangle
 
             sr.ReadLine(); // Точки размещения размещённых объектов.
             s = sr.ReadLine().Split(' ');
-            objects_busy_points = new List<Point>();            
+            objects_busy_points = new List<Point2d>();
             for (int i = 0; i < s.Length; i += 2)
-                objects_busy_points.Add(new Point { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
+                objects_busy_points.Add(new Point2d { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
 
             objects_busy_square = 0;
             for (int i = 0; i < objects_busy_numbers.Count; i++)

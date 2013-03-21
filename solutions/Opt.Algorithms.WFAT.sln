@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Algorithms.WFAT", "..\projects\Opt.Algorithms.WFAT\Opt.Algorithms.WFAT.csproj", "{65C22E4B-614C-442D-9CD7-FEBE42C7828A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Geometrics", "..\projects\Opt.Geometrics\Opt.Geometrics.csproj", "{890D3682-B64D-451A-8485-D61665D5EA25}"

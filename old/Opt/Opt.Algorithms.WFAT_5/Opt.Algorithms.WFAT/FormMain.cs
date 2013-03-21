@@ -5,7 +5,6 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Opt.ClosenessModel;
-using Opt.Geometrics;
 using Opt.Geometrics.Extentions;
 using Opt.Geometrics.Geometrics2d;
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
@@ -55,7 +54,7 @@ namespace Opt.Algorithms.WFAT
 
         private void tsmiLoad_Click(object sender, EventArgs e)
         {
-            StreamReader sr=new StreamReader("data.txt");
+            StreamReader sr = new StreamReader("data.txt");
             miClear_Click(null, null);
             height = double.Parse(sr.ReadLine());
             int n = int.Parse(sr.ReadLine());
@@ -546,7 +545,7 @@ namespace Opt.Algorithms.WFAT
                             {
                                 Circle circle_next = vertex_temp.Next.DataInVertex as Circle;
                                 //if (CircleExt.Расширенное_расстояние(circle, circle_next) < 1e-3)
-                                    e.Graphics.DrawLine(System.Drawing.Pens.Red, (float)circle.Pole.X, (float)circle.Pole.Y, (float)circle_next.Pole.X, (float)circle_next.Pole.Y);
+                                e.Graphics.DrawLine(System.Drawing.Pens.Red, (float)circle.Pole.X, (float)circle.Pole.Y, (float)circle_next.Pole.X, (float)circle_next.Pole.Y);
                             }
                         }
 

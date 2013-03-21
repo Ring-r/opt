@@ -4,7 +4,7 @@ namespace Opt.ClosenessModel
 {
     [Serializable]
     public partial class Vertex<DataType>
-    {        
+    {
         #region Скрытые поля и свойства.
         /// <summary>
         /// Ссылка на предыдущий узел в тройке.
@@ -134,7 +134,7 @@ namespace Opt.ClosenessModel
             prev.prev = next;
             next.next = prev;
 
-            somes = new SomesClass(this);            
+            somes = new SomesClass(this);
         }
         #endregion
 

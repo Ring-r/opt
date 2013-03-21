@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-//using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 using System.IO;
-using Opt.Geometrics;
+using System.Windows.Forms;
+using Opt.Geometrics.Geometrics2d;
 
 namespace PlacingRectangle
 {
@@ -50,7 +43,7 @@ namespace PlacingRectangle
                         tbRegionWidth.Text = task.RegionWidth.ToString();
                         break;
                 }
-                is_new_task = true; 
+                is_new_task = true;
                 nudTaskUpgradeNumber.Value = task.NumberOfUpgrade;
                 dgvObjects.DataSource = task.Objects_BindingSource();
                 if (form_placement_opt != null && !form_placement_opt.IsDisposed)
@@ -80,7 +73,7 @@ namespace PlacingRectangle
             try
             {
                 string[] s = form_temp.String.Split(' ');
-                task.ObjectsSizesAdd(task.ObjectsCount, new Vector { X = double.Parse(s[0]), Y = double.Parse(s[1]) });
+                task.ObjectsSizesAdd(task.ObjectsCount, new Vector2d { X = double.Parse(s[0]), Y = double.Parse(s[1]) });
                 dgvObjects.DataSource = task.Objects_BindingSource();
                 if (form_placement_opt != null && !form_placement_opt.IsDisposed)
                     form_placement_opt.Placement = task.PlacementOpt;
@@ -96,7 +89,7 @@ namespace PlacingRectangle
             try
             {
                 string[] s = form_temp.String.Split(' ');
-                task.ObjectsSizesAdd(int.Parse(s[0]), new Vector { X = double.Parse(s[1]), Y = double.Parse(s[2]) });
+                task.ObjectsSizesAdd(int.Parse(s[0]), new Vector2d { X = double.Parse(s[1]), Y = double.Parse(s[2]) });
                 dgvObjects.DataSource = task.Objects_BindingSource();
                 if (form_placement_opt != null && !form_placement_opt.IsDisposed)
                     form_placement_opt.Placement = task.PlacementOpt;
@@ -117,7 +110,7 @@ namespace PlacingRectangle
                 float min = float.Parse(s[1]);
                 float max = float.Parse(s[2]);
                 for (int i = 0; i < n; i++)
-                    task.ObjectsSizesAdd(task.ObjectsCount, new Vector { X = (max - min) * rand.NextDouble() + min, Y = (max - min) * rand.NextDouble() + min });
+                    task.ObjectsSizesAdd(task.ObjectsCount, new Vector2d { X = (max - min) * rand.NextDouble() + min, Y = (max - min) * rand.NextDouble() + min });
                 dgvObjects.DataSource = task.Objects_BindingSource();
                 if (form_placement_opt != null && !form_placement_opt.IsDisposed)
                     form_placement_opt.Placement = task.PlacementOpt;
@@ -143,7 +136,7 @@ namespace PlacingRectangle
                     sr.ReadLine();
                     string[] s = sr.ReadLine().Split(' ');
                     for (int i = 0; i < s.Length; i += 2)
-                        task.ObjectsSizesAdd(task.ObjectsCount, new Vector { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
+                        task.ObjectsSizesAdd(task.ObjectsCount, new Vector2d { X = double.Parse(s[i]), Y = double.Parse(s[i + 1]) });
                     dgvObjects.DataSource = task.Objects_BindingSource();
                     if (form_placement_opt != null && !form_placement_opt.IsDisposed)
                         form_placement_opt.Placement = task.PlacementOpt;
@@ -214,7 +207,7 @@ namespace PlacingRectangle
             switch (cbTaskIndex.SelectedIndex)
             {
                 case 0:
-                    if(is_new_task)
+                    if (is_new_task)
                         task.TaskIndex = Task.TaskEnum.RectangleHall;
                     gbRegionHeight.Hide();
                     gbRegionWidth.Hide();
@@ -245,7 +238,7 @@ namespace PlacingRectangle
         {
             try
             {
-                if(is_new_task)
+                if (is_new_task)
                     task.RegionHeight = int.Parse(tbRegionHeight.Text);
                 if (form_placement_opt != null && !form_placement_opt.IsDisposed)
                     form_placement_opt.Placement = task.PlacementOpt;
@@ -400,7 +393,7 @@ namespace PlacingRectangle
                     Task task = new Task();
                     // Создание объектов.
                     for (int i = 0; i < count_of_objects; i++)
-                        task.ObjectsSizesAdd(0, new Vector { X = (max_of_objects - min_of_objects) * rand.NextDouble() + min_of_objects, Y = (max_of_objects - min_of_objects) * rand.NextDouble() + min_of_objects });
+                        task.ObjectsSizesAdd(0, new Vector2d { X = (max_of_objects - min_of_objects) * rand.NextDouble() + min_of_objects, Y = (max_of_objects - min_of_objects) * rand.NextDouble() + min_of_objects });
                     task.TaskIndex = this.task.TaskIndex;
                     task.RegionWidth = (max_of_region - min_of_region) * (float)rand.NextDouble() + min_of_region;
                     task.RegionHeight = (max_of_region - min_of_region) * (float)rand.NextDouble() + min_of_region;

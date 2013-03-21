@@ -622,7 +622,7 @@ namespace Opt.Algorithms.WFAT
                 if (point != null && !double.IsNaN(point.X) && !double.IsNaN(point.Y))
                     points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
             }
-            
+
             return points;
         }
     }

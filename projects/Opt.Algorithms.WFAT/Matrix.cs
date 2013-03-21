@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Opt.Algorithms
+﻿namespace Opt.Algorithms
 {
     public static class Matrix
     {

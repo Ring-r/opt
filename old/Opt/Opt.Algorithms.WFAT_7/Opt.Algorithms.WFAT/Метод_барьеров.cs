@@ -196,7 +196,7 @@ namespace Opt.Algorithms.Метод_барьеров
         protected double[][] Gs;
 
         public PlacingAll(double height, double length, Circle[] circles, double mu, double beta, double eps)
-            :base(height, length, circles, mu, beta, eps)
+            : base(height, length, circles, mu, beta, eps)
         {
             #region Временный код.
             for (int i = 0; i < circles.Length; i++)
@@ -229,7 +229,7 @@ namespace Opt.Algorithms.Метод_барьеров
                 return res;
             }
         }
-        
+
         /// <summary>
         /// Определение дополнительной части функции цели в заданной точке.
         /// </summary>
@@ -249,7 +249,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
             return res;
         }
-        
+
         /// <summary>
         /// Определение градиента дополнительной части функции цели в заданной точке.
         /// </summary>
@@ -630,7 +630,7 @@ namespace Opt.Algorithms.Метод_барьеров
                         #endregion
                         triple.Somes.LastChecked = data;
                     }
-                    if ((triple.Prev.DataInVertex is Circle) && (triple.Next.DataInVertex is Plane2d) )
+                    if ((triple.Prev.DataInVertex is Circle) && (triple.Next.DataInVertex is Plane2d))
                     {
                         int s = triple.Prev.DataInVertex.ID;
                         #region Шаг 1.1. Проверяем и суммируем ограничения (G >= 0) по полосе.
@@ -674,10 +674,10 @@ namespace Opt.Algorithms.Метод_барьеров
             for (int i = 0; i < triples.Count; i++)
             {
                 triples[i].Somes.LastChecked = DateTime.Today;
-            }            
+            }
             #region // мои изменения проход всех ребер вместо двойного цикла, кажется даже работает
 
-           
+
 
             for (int i = 0; i < triples.Count; i++)// проверяем и суммируем ограничения между кругами
             {
@@ -829,13 +829,13 @@ namespace Opt.Algorithms.Метод_барьеров
                     do
                     {
                         //if (vertex_temp.DataInVertex is Circle)
-                            while (GeometricExt.Расширенное_расстояние(vertex_temp.DataInVertex, vertex_temp.Cros.Somes.CircleDelone) < 0)
-                            {
-                                vertex_temp.Rebuild();
+                        while (GeometricExt.Расширенное_расстояние(vertex_temp.DataInVertex, vertex_temp.Cros.Somes.CircleDelone) < 0)
+                        {
+                            vertex_temp.Rebuild();
 
-                                vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
-                                vertex_temp.Next.Cros.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Next.Cros.Prev.DataInVertex, vertex_temp.Next.Cros.DataInVertex, vertex_temp.Next.Cros.Next.DataInVertex));
-                            }
+                            vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
+                            vertex_temp.Next.Cros.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Next.Cros.Prev.DataInVertex, vertex_temp.Next.Cros.DataInVertex, vertex_temp.Next.Cros.Next.DataInVertex));
+                        }
 
                         vertex_temp = vertex_temp.Next.Cros.Next;
                     } while (vertex_temp != triples[i]);

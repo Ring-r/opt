@@ -199,7 +199,7 @@ namespace Opt.Algorithms.Метод_барьеров
         protected double[][] Gs;
 
         public PlacingAll(double height, double length, Circle[] circles, double mu, double beta, double eps)
-            :base(height, length, circles, mu, beta, eps)
+            : base(height, length, circles, mu, beta, eps)
         {
             #region Временный код.
             //for (int i = 0; i < circles.Length; i++)
@@ -232,7 +232,7 @@ namespace Opt.Algorithms.Метод_барьеров
                 return res;
             }
         }
-        
+
         /// <summary>
         /// Определение дополнительной части функции цели в заданной точке.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Opt.Algorithms.Метод_барьеров
 
             return res;
         }
-        
+
         /// <summary>
         /// Определение градиента дополнительной части функции цели в заданной точке.
         /// </summary>
@@ -549,7 +549,7 @@ namespace Opt.Algorithms.Метод_барьеров
     }
 
     public class PlacingOptWithCloseModel : PlacingOpt, Opt.Algorithms.IWithClosenessModel
-    {        
+    {
         protected Vertex<Geometric2d> vertex;
         public Vertex<Geometric2d> Vertex
         {
@@ -614,7 +614,7 @@ namespace Opt.Algorithms.Метод_барьеров
                                 j = vertex.Prev.DataInVertex.Id;
                                 is_right = true;
                             }
-                            if ((vertex.Next.DataInVertex is Plane) && (vertex.Prev.DataInVertex is Circle))
+                            if ((vertex.Next.DataInVertex is Plane2d) && (vertex.Prev.DataInVertex is Circle))
                             {
                                 i = vertex.Prev.DataInVertex.Id;
                                 j = vertex.Next.DataInVertex.Id;
@@ -739,11 +739,11 @@ namespace Opt.Algorithms.Метод_барьеров
             //                else
             //                    return double.PositiveInfinity;
             //            }
-            //            if ((vertex_temp.Next.DataInVertex is Circle) && (vertex_temp.Prev.DataInVertex is Plane))
+            //            if ((vertex_temp.Next.DataInVertex is Circle) && (vertex_temp.Prev.DataInVertex is Plane2d))
             //            {
             //                // TODO: Расчитать ограничение для круга и полуплоскости.
             //            }
-            //            if ((vertex_temp.Next.DataInVertex is Plane) && (vertex_temp.Prev.DataInVertex is Circle))
+            //            if ((vertex_temp.Next.DataInVertex is Plane2d) && (vertex_temp.Prev.DataInVertex is Circle))
             //            {
             //                // TODO: Расчитать ограничение для круга и полуплоскости.
             //            }
@@ -924,16 +924,16 @@ namespace Opt.Algorithms.Метод_барьеров
             //                x = 2 * (X[2 * ID_Next] - X[2 * ID_Prev]) * value;
             //                res[2 * ID_Next] += x;
             //                res[2 * ID_Prev] += -x;
-                            
+
             //                y = 2 * (X[2 * ID_Next + 1] - X[2 * ID_Prev + 1]) * value;
             //                res[2 * ID_Next + 1] += y;
             //                res[2 * ID_Prev + 1] += -y;
             //            }
-            //            if ((vertex_temp.Next.DataInVertex is Circle) && (vertex_temp.Prev.DataInVertex is Plane))
+            //            if ((vertex_temp.Next.DataInVertex is Circle) && (vertex_temp.Prev.DataInVertex is Plane2d))
             //            {
             //                // TODO: Расчитать ограничение для круга и полуплоскости.
             //            }
-            //            if ((vertex_temp.Next.DataInVertex is Plane) && (vertex_temp.Prev.DataInVertex is Circle))
+            //            if ((vertex_temp.Next.DataInVertex is Plane2d) && (vertex_temp.Prev.DataInVertex is Circle))
             //            {
             //                // TODO: Расчитать ограничение для круга и полуплоскости.
             //            }
@@ -1124,13 +1124,13 @@ namespace Opt.Algorithms.Метод_барьеров
                     do
                     {
                         //if (vertex_temp.DataInVertex is Circle)
-                            while (GeometricExt.Расширенное_расстояние(vertex_temp.DataInVertex, vertex_temp.Cros.Somes.CircleDelone) < 0)
-                            {
-                                vertex_temp.Rebuild();
+                        while (GeometricExt.Расширенное_расстояние(vertex_temp.DataInVertex, vertex_temp.Cros.Somes.CircleDelone) < 0)
+                        {
+                            vertex_temp.Rebuild();
 
-                                vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
-                                vertex_temp.Next.Cros.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Next.Cros.Prev.DataInVertex, vertex_temp.Next.Cros.DataInVertex, vertex_temp.Next.Cros.Next.DataInVertex));
-                            }
+                            vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
+                            vertex_temp.Next.Cros.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Next.Cros.Prev.DataInVertex, vertex_temp.Next.Cros.DataInVertex, vertex_temp.Next.Cros.Next.DataInVertex));
+                        }
 
                         vertex_temp = vertex_temp.Next.Cros.Next;
                     } while (vertex_temp != triples[i]);

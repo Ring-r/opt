@@ -920,6 +920,11 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
+        <member name="P:Opt.Geometrics.Geometrics.IGeometricWithId.Id">
+            <summary>
+            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector">
             <summary>
             Параллелепипед в трёхмерном пространстве.
@@ -938,11 +943,6 @@
         <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics.IGeometricWithId.Id">
-            <summary>
-            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
             </summary>
         </member>
     </members>

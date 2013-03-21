@@ -1,15 +1,12 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Threading;
-
-using Opt.Geometrics;
-using Opt.Geometrics.Geometrics2d;
-using Opt.Geometrics.Extentions;
+using System.Windows.Forms;
 using Opt.ClosenessModel;
-
+using Opt.Geometrics.Extentions;
+using Opt.Geometrics.Geometrics2d;
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.Algorithms.WFAT
@@ -625,7 +622,7 @@ namespace Opt.Algorithms.WFAT
                 if (point != null && !double.IsNaN(point.X) && !double.IsNaN(point.Y))
                     points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
             }
-            
+
             return points;
         }
     }
