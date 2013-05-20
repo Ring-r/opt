@@ -51,8 +51,8 @@
     <Compile Include="Temp\Plane2d.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPoleVector.cs" />
     <Compile Include="Temp\StripLine.cs" />
-    <Compile Include="Temp\GeometricWithList.cs" />
-    <Compile Include="Temp\Polygon2d.cs" />
+    <Compile Include="Geometrics2d\GeometricWithList.cs" />
+    <Compile Include="Geometrics2d\Polygon2d.cs" />
     <Compile Include="Temp\GeometricExt.cs" />
     <Compile Include="Geometrics2d\Vector2dExt.cs" />
     <Compile Include="Temp\PointExt.cs" />
