@@ -76,7 +76,7 @@ namespace Opt
                     while (vertex.Data != null)
                         vertex = vertex.Next;
                     if (vertex.Next.Data.ExtendedDistance(vertex.Prev.Data) <= 2 * data.R)
-                        points.Add(CircleExtending.PointOfIntersection(new Circle(vertex.Next.Data.R + data.R, vertex.Next.Data.X, vertex.Next.Data.Y), new Circle(vertex.Prev.Data.R + data.R, vertex.Prev.Data.X, vertex.Prev.Data.Y),-1));
+                        points.Add(CircleExtending.PointOfIntersection(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }, -1));
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace Opt
                                 {
                                     StripLine strip_line = new StripLine(vertex.Next.Data.X, vertex.Next.Data.Y, vertex.Prev.Data.X - vertex.Next.Data.X, vertex.Prev.Data.Y - vertex.Next.Data.Y);
                                     if(strip_line.ExtendedDistance(vertex.Delone_Circle.Center)<0)
-                                        points.Add(CircleExtending.PointOfIntersection(new Circle(vertex.Next.Data.R + data.R, vertex.Next.Data.X, vertex.Next.Data.Y), new Circle(vertex.Prev.Data.R + data.R, vertex.Prev.Data.X, vertex.Prev.Data.Y),-1));
+                                        points.Add(CircleExtending.PointOfIntersection(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }, -1));
                                 }
                                 else
                                 {

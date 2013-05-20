@@ -93,7 +93,7 @@ namespace Opt.Geometrics.Geometrics2d
             /// <param name="cor">Количество элементов (может быть отрицательным).</param>
             public void Move(int cor)
             {
-                index += cor;                
+                index += cor;
                 polygon.CheckedIndex(ref index);
             }
             /// <summary>
@@ -161,7 +161,5 @@ namespace Opt.Geometrics.Geometrics2d
         {
         }
         #endregion
-
-
     }
 }

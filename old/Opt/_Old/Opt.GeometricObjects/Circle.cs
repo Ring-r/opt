@@ -26,39 +26,12 @@ namespace Opt
             #region Circle(...)
             public Circle()
             {
-                this.r = 0;
-                this.x = 0;
-                this.y = 0;
             }
             public Circle(Circle circle)
             {
                 this.r = circle.r;
                 this.x = circle.x;
                 this.y = circle.y;
-            }
-            public Circle(double r)
-            {
-                this.r = r;
-                this.x = 0;
-                this.y = 0;
-            }
-            public Circle(double r, Point center)
-            {
-                this.r = r;
-                this.x = center.X;
-                this.y = center.Y;
-            }
-            public Circle(double r, Vector center)
-            {
-                this.r = r;
-                this.x = center.X;
-                this.y = center.Y;
-            }
-            public Circle(double r, double x, double y)
-            {
-                this.r = r;
-                this.x = x;
-                this.y = y;
             }
             #endregion
 
