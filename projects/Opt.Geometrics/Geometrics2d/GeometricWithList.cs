@@ -15,11 +15,12 @@ namespace Opt.Geometrics.Geometrics2d
         /// <summary>
         /// Список элементов, которые содержит кольцевой список.
         /// </summary>
-        protected List<ElementType> list_elements = new List<ElementType>();
+        protected readonly List<ElementType> list_elements = new List<ElementType>();
 
         #endregion
 
         #region Скрытые методы.
+
         /// <summary>
         /// Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
         /// </summary>
@@ -42,9 +43,11 @@ namespace Opt.Geometrics.Geometrics2d
                 return;
             }
         }
+
         #endregion
 
         #region Открытые поля и свойства.
+
         /// <summary>
         /// Получает или устанавливает элемент кольцевого списка по индексу.
         /// </summary>
@@ -67,6 +70,7 @@ namespace Opt.Geometrics.Geometrics2d
                     list_elements[index] = value;
             }
         }
+
         /// <summary>
         /// Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
         /// </summary>
@@ -77,20 +81,20 @@ namespace Opt.Geometrics.Geometrics2d
                 return list_elements.Count;
             }
         }
+
         #endregion
 
         #region Открытые методы.
+
         /// <summary>
         /// Добавляет элемент в контайнер.
         /// </summary>
         /// <param name="element">Элемент.</param>
         public void Add(ElementType element)
         {
-            if (list_elements.Count == 0)
-                list_elements.Insert(0, element);
-            else
-                list_elements.Insert(list_elements.Count, element);
+            list_elements.Insert(list_elements.Count, element);
         }
+
         #endregion
     }
 }

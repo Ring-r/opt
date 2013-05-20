@@ -9,12 +9,14 @@ namespace Opt.Geometrics.Geometrics2d
     public class Polygon2d : Geometrics2dWithList<Point2d>
     {
         #region Необходимые классы.
+
         /// <summary>
         /// Класс, который хранит информацию о определённом многоугольнике и определённой вершине.
         /// </summary>
         public class Iterator
         {
             #region Скрытые поля и свойства.
+
             /// <summary>
             /// Многоугольник, с которым связан итератор. 
             /// </summary>
@@ -23,10 +25,15 @@ namespace Opt.Geometrics.Geometrics2d
             /// Индекс вершины, с которой связан итератор.
             /// </summary>
             protected int index;
+            /// <summary>
+            /// Индекс многоугольника, с которым связан итератор.
+            /// </summary>
             protected int index_polygon;
+
             #endregion
 
             #region Открытые поля и свойства.
+
             /// <summary>
             /// Возвращает индекс, с которым связан итератор.
             /// </summary>
@@ -67,9 +74,11 @@ namespace Opt.Geometrics.Geometrics2d
                     return polygon.Count;
                 }
             }
+
             #endregion
 
             #region Iterator(...)
+
             /// <summary>
             /// Конструктор.
             /// </summary>
@@ -84,9 +93,11 @@ namespace Opt.Geometrics.Geometrics2d
                 this.polygon = polygon;
                 this.index = index;
             }
+
             #endregion
 
             #region Открытые методы.
+
             /// <summary>
             /// Операция сдвига итератора на определённое количество элементов.
             /// </summary>
@@ -125,11 +136,14 @@ namespace Opt.Geometrics.Geometrics2d
                 else
                     return null;
             }
+
             #endregion
         }
+
         #endregion
 
         #region Открытые поля и свойства.
+
         /// <summary>
         /// Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
         /// </summary>
@@ -150,9 +164,11 @@ namespace Opt.Geometrics.Geometrics2d
                     this.Add(value[i].Copy);
             }
         } // !!!Потом возможно переделать!!!
+
         #endregion
 
         #region Polygon(...)
+
         /// <summary>
         /// Конструктор.
         /// </summary>
@@ -160,6 +176,7 @@ namespace Opt.Geometrics.Geometrics2d
             : base()
         {
         }
+
         #endregion
     }
 }
