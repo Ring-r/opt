@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Opt.ClosenessModel.Extentions;
+using Opt.Geometrics;
 using Opt.Geometrics.Extentions;
 using Opt.Geometrics.Extentions.WFA;
 using Opt.Geometrics.Geometrics2d;
@@ -8,15 +10,20 @@ using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.ClosenessModel.WFAT
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private Random rand;
-        private Vertex<Geometric2d> vertex;
-        private List<Vertex<Geometric2d>> triples;
+        private Vertex<Geometric> vertex;
+        private List<Vertex<Geometric>> triples;
+        private List<Vertex<Geometric>> path = null;
 
         private Polygon2d region;
 
-        public Form1()
+        private bool is_delone_circles_show = true;
+        private bool is_path_show = false;
+        private bool is_circles_show = true;
+
+        public MainForm()
         {
             InitializeComponent();
 
@@ -26,11 +33,12 @@ namespace Opt.ClosenessModel.WFAT
             region.Add(new Point2d { X = ClientRectangle.Width, Y = ClientRectangle.Height });
             region.Add(new Point2d { Y = ClientRectangle.Height });
 
-            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника. !!!Потом переделать на многольник!!!
+            #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоугольника.
+            // TODO: Переделать на многольник.
             List<Plane2d> borders = new List<Plane2d>();
             for (int i = 0; i < region.Count; i++)
                 borders.Add(new Plane2d { Pole = region[i].Copy, Normal = (region[i + 1] - region[i])._I_(false) });
-            vertex = Vertex<Geometric2d>.CreateClosenessModel(borders[0], borders[1], borders[2]);
+            vertex = Vertex<Geometric>.CreateClosenessModel(borders[0], borders[1], borders[2]);
 
             vertex.BreakCrosBy(borders[3]);
             #endregion
@@ -48,10 +56,10 @@ namespace Opt.ClosenessModel.WFAT
 
             rand = new Random();
 
-            triples = vertex.GetTriples();
+            triples = ClosenessModelExt<Geometric, Circle>.GetTriples(this.vertex);
         }
 
-        private bool PointInTriple(Circle circle, Vertex<Geometric2d> vertex)
+        private bool PointInTriple(Circle circle, Vertex<Geometric> vertex)
         {
             if (vertex.Somes.CircleDelone == null)
                 return false;
@@ -60,7 +68,7 @@ namespace Opt.ClosenessModel.WFAT
             bool point_in_triple = ed < 0;
             if (point_in_triple)
             {
-                Vertex<Geometric2d> vertex_temp = vertex;
+                Vertex<Geometric> vertex_temp = vertex;
                 do
                 {
                     point_in_triple = point_in_triple && CircleExt.Расширенное_расстояние(circle, vertex_temp.Cros.Somes.CircleDelone) > ed;
@@ -71,53 +79,65 @@ namespace Opt.ClosenessModel.WFAT
             return point_in_triple;
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
-            Circle circle = new Circle() { Pole = new Point2d { X = e.X, Y = e.Y } };
-            int k = -1;
-            for (int i = 0; i < triples.Count; i++)
-                if (PointInTriple(circle, triples[i]))
-                    k = i;
-            if (k > -1)
+            for (int index = 0; index < 10; ++index)
             {
-                Vertex<Geometric2d> vertex = triples[k];
+                Vertex<Geometric> vertex = null;
+                Vertex<Geometric> vertex_temp;
 
-                #region Определение радиуса круга.
-                double radius_max = double.PositiveInfinity;
-                Vertex<Geometric2d> vertex_temp = vertex;
-                do
+                #region Заполнение круга.
+                //Circle circle = new Circle() { Pole = new Point2d { X = e.X, Y = e.Y } };
+                Circle circle = new Circle() { Pole = new Point2d { X = this.rand.Next(10, this.ClientSize.Width - 10), Y = this.rand.Next(10, this.ClientSize.Height - 10) } };
+
+                int k = -1;
+                for (int i = 0; i < triples.Count && k == -1; i++)
+                    if (PointInTriple(circle, triples[i]))
+                        k = i;
+                if (k > -1)
                 {
-                    double ed = GeometricExt.Расширенное_расстояние(circle, vertex_temp.DataInVertex);
-                    if (radius_max > ed)
-                        radius_max = ed;
+                    vertex = triples[k];
 
-                    vertex_temp = vertex_temp.Next;
-                } while (vertex_temp != vertex);
-                circle.Value = radius_max * rand.NextDouble();
+                    double radius_max = double.PositiveInfinity;
+
+                    vertex_temp = vertex;
+                    do
+                    {
+                        radius_max = Math.Min(GeometricExt.Расширенное_расстояние(circle, vertex_temp.DataInVertex as Geometric2d), radius_max);
+                        vertex_temp = vertex_temp.Next;
+                    } while (vertex_temp != vertex);
+                    circle.Value = radius_max * rand.NextDouble();
+                }
                 #endregion
 
-                vertex.BreakCrosBy(circle);
-                vertex = vertex.Cros;
-
-                #region Шаг 5.7. Проверяем и переразбиваем модель вокруг вершины, связанной со вставленным объектом.
-                vertex_temp = vertex;
-                do
+                if (vertex != null)
                 {
-                    while (CircleExt.Расширенное_расстояние(vertex_temp.DataInVertex as Circle, vertex_temp.Cros.Somes.CircleDelone) < 0)
-                        vertex_temp.Rebuild();
+                    vertex.BreakCrosBy(circle);
+                    vertex = vertex.Cros;
 
-                    vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex, vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
+                    vertex_temp = vertex;
+                    do
+                    {
+                        while (CircleExt.Расширенное_расстояние(vertex_temp.DataInVertex as Circle, vertex_temp.Cros.Somes.CircleDelone) < 0)
+                        {
+                            vertex_temp.Rebuild();
+                        }
 
-                    vertex_temp = vertex_temp.Next.Cros.Next;
-                } while (vertex_temp != vertex);
-                #endregion
+                        vertex_temp.SetCircleDelone(GeometricExt.Круг_Делоне(vertex_temp.Prev.DataInVertex as Geometric2d, vertex_temp.DataInVertex as Geometric2d, vertex_temp.Next.DataInVertex as Geometric2d));
 
-                triples = this.vertex.GetTriples();
+                        vertex_temp = vertex_temp.Next.Cros.Next;
+                    } while (vertex_temp != vertex);
+
+                    triples = ClosenessModelExt<Geometric, Circle>.GetTriples(this.vertex);
+                }
+
                 Invalidate();
+                this.Refresh();
+                System.Threading.Thread.Sleep(100);
             }
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        private void MainForm_Paint(object sender, PaintEventArgs e)
         {
             if (vertex != null)
             {
@@ -126,9 +146,10 @@ namespace Opt.ClosenessModel.WFAT
 
                 for (int i = 0; i < triples.Count; i++)
                 {
-                    e.Graphics.FillAndDraw(new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(150, 255, 255, 0)), System.Drawing.Pens.Gray, triples[i].Somes.CircleDelone);
+                    if (is_delone_circles_show)
+                        e.Graphics.FillAndDraw(new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(150, 255, 255, 0)), System.Drawing.Pens.Gray, triples[i].Somes.CircleDelone);
 
-                    Vertex<Geometric2d> vertex_temp = triples[i];
+                    Vertex<Geometric> vertex_temp = triples[i];
                     do
                     {
                         //e.Graphics.FillAndDraw(System.Drawing.Brushes.Red, System.Drawing.Pens.Red, AssistantExt.Отрезок_(vertex_temp.DataInVertex, vertex_temp.Next.DataInVertex));
@@ -136,73 +157,70 @@ namespace Opt.ClosenessModel.WFAT
                         if (vertex_temp.Somes.CircleDelone.Value != 0 && vertex_temp.Cros.Somes.CircleDelone.Value != 0)
                             e.Graphics.DrawCurve(System.Drawing.Pens.Red, AssistantExt.Отрезок(vertex_temp).ToArray());
 
-                        e.Graphics.FillAndDraw_(region, System.Drawing.Brushes.Silver, System.Drawing.Pens.Black, vertex_temp.DataInVertex);
+                        if (is_circles_show)
+                            e.Graphics.FillAndDraw_(region, System.Drawing.Brushes.Silver, System.Drawing.Pens.Black, vertex_temp.DataInVertex as Geometric2d);
 
                         vertex_temp = vertex_temp.Next;
                     } while (vertex_temp != triples[i]);
                 }
             }
+
+            if (is_path_show && path != null && path.Count > 2)
+            {
+                System.Drawing.PointF[] points = new System.Drawing.PointF[path.Count];
+                for (int i = 0; i < path.Count; i++)
+                    points[i] = new System.Drawing.PointF((float)path[i].Somes.CircleDelone.Pole.X, (float)path[i].Somes.CircleDelone.Pole.Y);
+                e.Graphics.DrawLines(System.Drawing.Pens.Green, points);
+            }
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void MainForm_Resize(object sender, EventArgs e)
         {
             region[1].X = ClientRectangle.Width;
             region[2].X = ClientRectangle.Width;
             region[2].Y = ClientRectangle.Height;
             region[3].Y = ClientRectangle.Height;
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+            if (e.KeyCode == Keys.F2)
+            {
+                is_delone_circles_show = !is_delone_circles_show;
+                Invalidate();
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                is_path_show = !is_path_show;
+                Invalidate();
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                is_circles_show = !is_circles_show;
+                Invalidate();
+            }
+        }
+
+        private void MainForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.vertex != null)
+            {
+                this.path = ClosenessModelExt<Geometric, Circle>.NearestFullPath(this.vertex, new Circle() { Pole = new Point2d() { X = e.X, Y = e.Y } });
+            }
+
+            this.Invalidate();
+        }
     }
 
     public static class VertexExtention
     {
-        public static void SetCircleDelone(this Vertex<Geometric2d> vertex, Circle circle_delone)
+        public static void SetCircleDelone(this Vertex<Geometric> vertex, Circle circle_delone)
         {
             vertex.Prev.Somes.CircleDelone = circle_delone;
             vertex.Somes.CircleDelone = circle_delone;
             vertex.Next.Somes.CircleDelone = circle_delone;
-        }
-        public static List<Vertex<Geometric2d>> GetTriples(this Vertex<Geometric2d> vertex)
-        {
-            // Поиск всех троек в триангуляции.
-            DateTime dt = DateTime.Now;
-            List<Vertex<Geometric2d>> list = new List<Vertex<Geometric2d>>();
-
-            vertex.Prev.Somes.LastChecked = dt;
-            vertex.Somes.LastChecked = dt;
-            vertex.Next.Somes.LastChecked = dt;
-            list.Add(vertex);
-
-            GetTriples(list, vertex.Cros, dt);
-            return list;
-        }
-        private static void GetTriples(List<Vertex<Geometric2d>> list, Vertex<Geometric2d> vertex, DateTime dt)
-        {
-            if (vertex.Somes.LastChecked != dt)
-            {
-                // Добавляем вершину.
-                list.Add(vertex);
-
-                // Отмечем все тройки.
-                Vertex<Geometric2d> vertex_temp = vertex;
-                do
-                {
-                    vertex_temp.Somes.LastChecked = dt;
-                    vertex_temp = vertex_temp.Next;
-                } while (vertex_temp != vertex);
-
-                // Запускаем для отмеченных.
-                do
-                {
-                    GetTriples(list, vertex_temp.Cros, dt);
-                    vertex_temp = vertex_temp.Next;
-                } while (vertex_temp != vertex);
-            }
-        }
-
-        public static List<Vertex<Geometric2d>> GetTriples_1(this Vertex<Geometric2d> vertex)
-        {
-            // Обход в ширину.
-            throw new NotImplementedException();
         }
     }
 
@@ -226,7 +244,7 @@ namespace Opt.ClosenessModel.WFAT
             return polygon;
         }
 
-        public static Polygon2d Отрезок_(Geometric2d geometric_this, Geometric2d geometric)
+        public static Polygon2d Отрезок_(Geometric geometric_this, Geometric geometric)
         {
             if (geometric_this is Circle)
             {
@@ -243,7 +261,7 @@ namespace Opt.ClosenessModel.WFAT
             return new Polygon2d();
         }
 
-        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric2d> vertex)
+        public static List<System.Drawing.PointF> Отрезок(Vertex<Geometric> vertex)
         {
             List<System.Drawing.PointF> points = new List<System.Drawing.PointF>();
             double ed = CircleExt.Расширенное_расстояние(vertex.Somes.CircleDelone, vertex.Cros.Somes.CircleDelone) / 2;
@@ -258,7 +276,7 @@ namespace Opt.ClosenessModel.WFAT
                 point = CircleExt.Точка_пересечения_границ(circle, circle_cros);
                 if (point != null)
                     points.Add(new System.Drawing.PointF((float)point.X, (float)point.Y));
-            } while (GeometricExt.Расширенное_расстояние(vertex.Prev.DataInVertex, point) > 0 && points.Count < 10000);
+            } while (GeometricExt.Расширенное_расстояние(vertex.Prev.DataInVertex as Geometric2d, point) > 0 && points.Count < 10000);
 
             circle.Value = vertex.Somes.CircleDelone.Value + ed;
             circle_cros.Value = vertex.Cros.Somes.CircleDelone.Value + ed;
@@ -269,7 +287,7 @@ namespace Opt.ClosenessModel.WFAT
                 point = CircleExt.Точка_пересечения_границ(circle_cros, circle);
                 if (point != null)
                     points.Insert(0, new System.Drawing.PointF((float)point.X, (float)point.Y));
-            } while (GeometricExt.Расширенное_расстояние(vertex.Next.DataInVertex, point) > 0 && points.Count < 10000);
+            } while (GeometricExt.Расширенное_расстояние(vertex.Next.DataInVertex as Geometric2d, point) > 0 && points.Count < 10000);
 
             return points;
         }

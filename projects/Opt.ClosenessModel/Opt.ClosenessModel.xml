@@ -103,21 +103,6 @@
             Возвращает перечислитель.
             </summary>
         </member>
-        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.start">
-            <summary>
-            Начальная вершина.
-            </summary>
-        </member>
-        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.current">
-            <summary>
-            Текущая вершина.
-            </summary>
-        </member>
-        <member name="P:Opt.ClosenessModel.Vertex`1.EnumeratorClass.Current">
-            <summary>
-            Получить и текущую вершину.
-            </summary>
-        </member>
         <member name="T:Opt.ClosenessModel.Vertex`1.SomesClass">
             <summary>
             Класс вспомогательных данных для вершины модели близости.
@@ -151,6 +136,21 @@
         <member name="P:Opt.ClosenessModel.Vertex`1.SomesClass.LastChecked">
             <summary>
             Задаёт или получает отметку-время вершины.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.start">
+            <summary>
+            Начальная вершина.
+            </summary>
+        </member>
+        <member name="F:Opt.ClosenessModel.Vertex`1.EnumeratorClass.current">
+            <summary>
+            Текущая вершина.
+            </summary>
+        </member>
+        <member name="P:Opt.ClosenessModel.Vertex`1.EnumeratorClass.Current">
+            <summary>
+            Получить и текущую вершину.
             </summary>
         </member>
     </members>

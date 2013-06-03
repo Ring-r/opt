@@ -467,6 +467,40 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
+            <summary>
+            Кольцевой список, основаный на List.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.list_elements">
+            <summary>
+            Список элементов, которые содержит кольцевой список.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.CheckedIndex(System.Int32@)">
+            <summary>
+            Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
+            </summary>
+            <param name="index">Индекс.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Add(`0)">
+            <summary>
+            Добавляет элемент в контайнер.
+            </summary>
+            <param name="element">Элемент.</param>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Item(System.Int32)">
+            <summary>
+            Получает или устанавливает элемент кольцевого списка по индексу.
+            </summary>
+            <param name="index">Индекс.</param>
+            <returns>Элемент кольцевого списка с заданным индексом.</returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
+            <summary>
+            Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Point2d">
             <summary>
             Точка в двухмерном пространстве.
@@ -583,40 +617,6 @@
             Многоугольник в двухмерном пространстве.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
-            <summary>
-            Кольцевой список, основаный на List.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.list_elements">
-            <summary>
-            Список элементов, которые содержит кольцевой список.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.CheckedIndex(System.Int32@)">
-            <summary>
-            Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
-            </summary>
-            <param name="index">Индекс.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Add(`0)">
-            <summary>
-            Добавляет элемент в контайнер.
-            </summary>
-            <param name="element">Элемент.</param>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Item(System.Int32)">
-            <summary>
-            Получает или устанавливает элемент кольцевого списка по индексу.
-            </summary>
-            <param name="index">Индекс.</param>
-            <returns>Элемент кольцевого списка с заданным индексом.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
-            <summary>
-            Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
-            </summary>
-        </member>
         <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.#ctor">
             <summary>
             Конструктор.
@@ -640,6 +640,11 @@
         <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.index">
             <summary>
             Индекс вершины, с которой связан итератор.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.index_polygon">
+            <summary>
+            Индекс многоугольника, с которым связан итератор.
             </summary>
         </member>
         <member name="M:Opt.Geometrics.Geometrics2d.Polygon2d.Iterator.#ctor(System.Int32,Opt.Geometrics.Geometrics2d.Polygon2d,System.Int32)">

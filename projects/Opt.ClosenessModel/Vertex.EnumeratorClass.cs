@@ -25,7 +25,7 @@ namespace Opt.ClosenessModel
             {
                 get
                 {
-                    return current;
+                    return this.current;
                 }
             }
             #endregion
@@ -33,29 +33,30 @@ namespace Opt.ClosenessModel
             #region EnumeratorClass(...)
             public EnumeratorClass(Vertex<DataType> vertex)
             {
-                start = vertex;
-                current = vertex;
+                this.start = vertex;
+                this.current = vertex;
             }
             #endregion
 
             public void Reset()
             {
-                current = start;
+                this.current = this.start;
             }
             public bool MoveNext()
             {
+                // TODO: Использовать алгоритм поиска в ширину или в глубину.
                 throw new NotImplementedException();
                 return current != start;
             }
             public bool MoveNextInNode()
             {
-                current = current.next.cros.next;
-                return current != start;
+                this.current = this.current.next.cros.next;
+                return this.current != this.start;
             }
             public bool MoveNextInTriple()
             {
-                current = current.next;
-                return current != start;
+                this.current = this.current.next;
+                return this.current != this.start;
             }
         }
     }

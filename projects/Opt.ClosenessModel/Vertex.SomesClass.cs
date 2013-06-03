@@ -1,5 +1,6 @@
 ﻿using System;
 
+// TODO: Использовать CircleDelone.
 using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
 
 namespace Opt.ClosenessModel
@@ -35,7 +36,7 @@ namespace Opt.ClosenessModel
             {
                 get
                 {
-                    return vertex;
+                    return this.vertex;
                 }
             }
             /// <summary>
@@ -45,11 +46,11 @@ namespace Opt.ClosenessModel
             {
                 get
                 {
-                    return circle_delone;
+                    return this.circle_delone;
                 }
                 set
                 {
-                    circle_delone = value;
+                    this.circle_delone = value;
                 }
             }
             /// <summary>
@@ -59,16 +60,16 @@ namespace Opt.ClosenessModel
             {
                 get
                 {
-                    return last_checked;
+                    return this.last_checked;
                 }
                 set
                 {
-                    last_checked = value;
+                    this.last_checked = value;
                 }
             }
             #endregion
 
-            #region Somes(...)
+            #region SomesClass(...)
             public SomesClass(Vertex<DataType> vertex)
             {
                 this.vertex = vertex;

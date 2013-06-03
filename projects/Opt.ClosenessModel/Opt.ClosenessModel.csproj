@@ -37,12 +37,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enumerator.cs" />
+    <Compile Include="Vertex.EnumeratorClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vertex.Somes.cs" />
-    <Compile Include="Old\Triple.cs" />
+    <Compile Include="Vertex.SomesClass.cs" />
     <Compile Include="Vertex.cs" />
-    <Compile Include="Old\ClosenessModel.cs" />
+    <Compile Include="ClosenessModelExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Opt.Geometrics\Opt.Geometrics.csproj">

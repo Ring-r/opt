@@ -36,7 +36,7 @@ namespace Opt.ClosenessModel
         {
             get
             {
-                return prev;
+                return this.prev;
             }
         }
         /// <summary>
@@ -46,7 +46,7 @@ namespace Opt.ClosenessModel
         {
             get
             {
-                return cros;
+                return this.cros;
             }
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Opt.ClosenessModel
         {
             get
             {
-                return next;
+                return this.next;
             }
         }
         /// <summary>
@@ -82,11 +82,11 @@ namespace Opt.ClosenessModel
         {
             get
             {
-                return data;
+                return this.data;
             }
             set
             {
-                data = value;
+                this.data = value;
             }
         }
         /// <summary>
@@ -96,7 +96,7 @@ namespace Opt.ClosenessModel
         {
             get
             {
-                return somes;
+                return this.somes;
             }
         }
         /// <summary>
@@ -117,7 +117,7 @@ namespace Opt.ClosenessModel
         /// </summary>
         protected Vertex()
         {
-            somes = new SomesClass(this);
+            this.somes = new SomesClass(this);
         }
         /// <summary>
         /// Конструктор.
@@ -127,14 +127,15 @@ namespace Opt.ClosenessModel
         /// <param name="data_next"></param>
         protected Vertex(DataType data_prev, DataType data_curr, DataType data_next)
         {
-            prev = new Vertex<DataType>() { next = this, data = data_prev };
-            data = data_curr;
-            next = new Vertex<DataType>() { prev = this, data = data_next };
+            // TODO: Передавать один параметр?
+            this.prev = new Vertex<DataType>() { next = this, data = data_prev };
+            this.data = data_curr;
+            this.next = new Vertex<DataType>() { prev = this, data = data_next };
 
-            prev.prev = next;
-            next.next = prev;
+            this.prev.prev = this.next;
+            this.next.next = this.prev;
 
-            somes = new SomesClass(this);
+            this.somes = new SomesClass(this);
         }
         #endregion
 
@@ -154,9 +155,9 @@ namespace Opt.ClosenessModel
         /// <param name="data">Вставляемый объект.</param>
         public void BreakCrosBy(DataType data)
         {
-            // Создаём две противоположнонаправленные тройки.
-            Vertex<DataType> vertex_n = new Vertex<DataType>(next.data, data, prev.data) { cros = this };
-            Vertex<DataType> vertex_f = new Vertex<DataType>(prev.data, data, next.data) { cros = this.cros };
+            // Создаём две противоположнонаправленные тройки (near and far).
+            Vertex<DataType> vertex_n = new Vertex<DataType>(this.next.data, data, this.prev.data) { cros = this };
+            Vertex<DataType> vertex_f = new Vertex<DataType>(this.prev.data, data, this.next.data) { cros = this.cros };
 
             // Устанавливаем связи между созданными тройками.
             vertex_n.prev.SetCros(vertex_f.next);
@@ -172,21 +173,20 @@ namespace Opt.ClosenessModel
         /// </summary>
         public bool Rebuild()
         {
-            Vertex<DataType> v_i = this;
-            Vertex<DataType> v_j = cros;
+            Vertex<DataType> vertex_i = this;
+            Vertex<DataType> vertex_j = this.cros;
 
-            v_i.prev.data = v_j.data;
-            v_j.prev.data = v_i.data;
+            vertex_i.prev.data = vertex_j.data;
+            vertex_j.prev.data = vertex_i.data;
 
-            v_i.SetCros(v_j.next.cros);
-            v_j.SetCros(v_i.next.cros);
-            v_i.next.SetCros(v_j.next);
-            v_j.next.SetCros(v_i.next);
+            vertex_i.SetCros(vertex_j.next.cros);
+            vertex_j.SetCros(vertex_i.next.cros);
+            vertex_i.next.SetCros(vertex_j.next);
+            vertex_j.next.SetCros(vertex_i.next);
 
             return true;
         }
 
-        #region Создание ClosenessModel.
         /// <summary>
         /// Создание модели близости по трём объектам.
         /// </summary>
@@ -206,11 +206,11 @@ namespace Opt.ClosenessModel
 
             return vertex_prev;
         }
-        #endregion
 
         public override string ToString()
         {
-            return prev.data.ToString() + " | " + data.ToString() + " | " + next.data.ToString();
+            // TODO: Тестовый вариант.
+            return this.prev.data.ToString() + " | " + this.data.ToString() + " | " + this.next.data.ToString();
         }
     }
 }
