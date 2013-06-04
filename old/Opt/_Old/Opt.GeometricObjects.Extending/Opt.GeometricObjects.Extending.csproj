@@ -38,13 +38,6 @@
     <Compile Include="CircleExtending.cs" />
     <Compile Include="PolygonExtending.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StripLineExtending.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Opt.GeometricObjects\Opt.GeometricObjects.csproj">
-      <Project>{1BDD560B-A6C9-45AE-BDBA-7C8BE6D1F683}</Project>
-      <Name>Opt.GeometricObjects</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

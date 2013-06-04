@@ -77,10 +77,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Opt.GeometricObjects\Opt.GeometricObjects.csproj">
-      <Project>{1BDD560B-A6C9-45AE-BDBA-7C8BE6D1F683}</Project>
-      <Name>Opt.GeometricObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Opt.VD.TestAlgorithms\Opt.VD.TestAlgorithms.csproj">
       <Project>{696BEFB4-EE06-4614-9DC5-E60AD2BC52C6}</Project>
       <Name>Opt.VD.TestAlgorithms</Name>

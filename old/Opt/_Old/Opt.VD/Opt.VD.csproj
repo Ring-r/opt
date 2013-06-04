@@ -42,12 +42,6 @@
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Opt.GeometricObjects\Opt.GeometricObjects.csproj">
-      <Project>{1BDD560B-A6C9-45AE-BDBA-7C8BE6D1F683}</Project>
-      <Name>Opt.GeometricObjects</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

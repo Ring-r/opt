@@ -5,17 +5,17 @@ namespace DeloneCircleCalculator
     public class Circle
     {
         /// <summary>
-        /// Радиус гиперсферы (radius).
+        /// Центр гиперсферы.
         /// </summary>
-        public Double R { get; set; }
+        public Double[] Point { get; set; }
         /// <summary>
-        /// Центр гиперсферы (position).
+        /// Радиус гиперсферы.
         /// </summary>
-        public Double[] P { get; set; }
+        public Double Value { get; set; }
 
-        public Circle(int dimension=2)
+        public Circle(int dimension = 2)
         {
-            P = new Double[dimension];
+            this.Point = new Double[dimension];
         }
     }
 }

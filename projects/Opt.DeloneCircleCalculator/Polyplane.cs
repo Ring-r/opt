@@ -5,18 +5,18 @@ namespace DeloneCircleCalculator
     public class Polyplane
     {
         /// <summary>
-        /// Точка, задающая полупространство (point, position).
+        /// Точка, задающая полупространство.
         /// </summary>
-        public Double[] P { get; set; }
+        public Double[] Point { get; private set; }
         /// <summary>
-        /// Вектор нормали, направленный от полупространства (normal).
+        /// Вектор нормали, направленный от полупространства.
         /// </summary>
-        public Double[] N { get; set; }
+        public Double[] Vector { get; private set; }
 
         public Polyplane(int dimension)
         {
-            P = new Double[dimension];
-            N = new Double[dimension];
+            this.Point = new Double[dimension];
+            this.Vector = new Double[dimension];
         }
     }
 }

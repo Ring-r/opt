@@ -42,10 +42,6 @@
       <Project>{6088B203-3516-4179-9B6B-31422658419C}</Project>
       <Name>Opt.GeometricObjects.Extending</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Opt.GeometricObjects\Opt.GeometricObjects.csproj">
-      <Project>{1BDD560B-A6C9-45AE-BDBA-7C8BE6D1F683}</Project>
-      <Name>Opt.GeometricObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Opt.VD\Opt.VD.csproj">
       <Project>{EEAC795A-02EE-4B78-8FEB-01EFD232D937}</Project>
       <Name>Opt.VD</Name>

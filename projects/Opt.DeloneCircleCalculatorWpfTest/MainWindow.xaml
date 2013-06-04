@@ -9,7 +9,13 @@
                     <EllipseGeometry x:Name="el1" Center="10, 10" RadiusX="10" RadiusY="10"/>
                     <EllipseGeometry x:Name="el2" Center="100, 100" RadiusX="20" RadiusY="20"/>
                     <EllipseGeometry x:Name="el3" Center="150, 20" RadiusX="10" RadiusY="10"/>
-                    <EllipseGeometry x:Name="el4" Center="10, 10" RadiusX="10" RadiusY="10"/>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <Path Fill="Red">
+            <Path.Data>
+                <GeometryGroup>
+                    <EllipseGeometry x:Name="el4" Center="10, 10" RadiusX="0" RadiusY="0"/>
                 </GeometryGroup>
             </Path.Data>
         </Path>
