@@ -9,6 +9,11 @@
             Полуплоскость в двухмерном пространстве.
             </summary>
         </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector">
+            <summary>
+            Прямоугольник в двухмерном пространстве.
+            </summary>
+        </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPole">
             <summary>
             Геометрический объект с полюсом (начало связанной системы координат).
@@ -39,9 +44,19 @@
             Хранит значение полюса (начала связанной системы координат).
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Plane2d.normal">
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.vector">
             <summary>
-            Вектор нормали.
+            Размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Vector">
+            <summary>
+            Получает или задаёт размер.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
         <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
@@ -689,31 +704,6 @@
             Возвращает количество элементов в многоугольнике, с которым связан итератор.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.StripLine2d">
-            <summary>
-            Прямая линия.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.StripLine2d.vector">
-            <summary>
-            Вектор направления.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.StripLine2d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Vector">
-            <summary>
-            Установить или получить вектор направления.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.SpecialGeometrics.PlaneDividing">
             <summary>
             Разделяющая в двухмерном пространстве.
@@ -905,26 +895,6 @@
             <param name="plane_next">Полуплоскость.</param>
             <returns>Серединная полуплоскость.</returns>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector">
-            <summary>
-            Прямоугольник в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.vector">
-            <summary>
-            Размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Vector">
-            <summary>
-            Получает или задаёт размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
         <member name="P:Opt.Geometrics.Geometrics.IGeometricWithId.Id">
             <summary>
             Возвращает и устанавливает некоторый идентификатор геометрического объекта.
@@ -946,6 +916,31 @@
             </summary>
         </member>
         <member name="P:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.StripLine2d">
+            <summary>
+            Прямая линия.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.StripLine2d.vector">
+            <summary>
+            Вектор направления.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.StripLine2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Vector">
+            <summary>
+            Установить или получить вектор направления.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>

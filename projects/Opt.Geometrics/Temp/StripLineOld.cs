@@ -3,31 +3,38 @@
 namespace Opt.Geometrics.Geometrics2d
 {
     /// <summary>
-    /// Полуплоскость в двухмерном пространстве.
+    /// Прямая линия.
     /// </summary>
     [Serializable]
-    public class Plane2d : Geometric2dWithPoleVector
+    public class StripLine2d : Geometric2dWithPole
     {
+        #region Скрытые поля и свойства.
+        /// <summary>
+        /// Вектор направления.
+        /// </summary>
+        protected Vector2d vector;
+        #endregion
+
         #region Открытые поля и свойства.
         /// <summary>
-        /// Получает или задаёт вектор нормали.
+        /// Установить или получить вектор направления.
         /// </summary>
-        public Vector2d Normal
+        public Vector2d Vector
         {
             get
             {
-                return this.vector;
+                return vector;
             }
             set
             {
                 double length = value * value;
                 if (length != 0)
                 {
-                    this.vector = value;
+                    vector = value;
                     if (length != 1)
                     {
                         length = Math.Sqrt(length);
-                        this.vector.Copy /= length;
+                        vector.Copy /= length;
                     }
                 }
             }
@@ -36,38 +43,29 @@ namespace Opt.Geometrics.Geometrics2d
         /// <summary>
         /// Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
         /// </summary>
-        public Plane2d Copy
+        public StripLine2d Copy
         {
             get
             {
-                return new Plane2d() { vector = this.vector.Copy, pole = this.Pole.Copy };
+                return new StripLine2d() { vector = this.vector.Copy, pole = this.Pole.Copy };
             }
             set
             {
-                this.vector.Copy = value.vector;
-                this.pole.Copy = value.pole;
+                vector.Copy = value.vector;
+                pole.Copy = value.pole;
             }
         }
         #endregion
 
-        #region Plane(...)
+        #region StripLine(...)
         /// <summary>
         /// Конструктор.
         /// </summary>
-        public Plane2d()
+        public StripLine2d()
         {
             this.vector = new Vector2d() { X = 1, Y = 0 };
             this.pole = new Point2d();
         }
         #endregion
-
-        /// <summary>
-        /// Возвращает строку-информацию об объекте.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return string.Format("{0}: {1}; {2}", base.ToString(), Pole, Normal);
-        }
     }
 }

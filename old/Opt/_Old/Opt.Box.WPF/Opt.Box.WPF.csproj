@@ -85,9 +85,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Opt.VD.TestAlgorithms\Opt.VD.TestAlgorithms.csproj">
-      <Project>{696BEFB4-EE06-4614-9DC5-E60AD2BC52C6}</Project>
-      <Name>Opt.VD.TestAlgorithms</Name>
+    <ProjectReference Include="..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj">
+      <Project>{890D3682-B64D-451A-8485-D61665D5EA25}</Project>
+      <Name>Opt.Geometrics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Opt.VD\Opt.VD.csproj">
       <Project>{EEAC795A-02EE-4B78-8FEB-01EFD232D937}</Project>

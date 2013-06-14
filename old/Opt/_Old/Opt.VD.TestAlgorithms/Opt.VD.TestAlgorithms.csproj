@@ -38,9 +38,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Opt.GeometricObjects.Extending\Opt.GeometricObjects.Extending.csproj">
-      <Project>{6088B203-3516-4179-9B6B-31422658419C}</Project>
-      <Name>Opt.GeometricObjects.Extending</Name>
+    <ProjectReference Include="..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj">
+      <Project>{890D3682-B64D-451A-8485-D61665D5EA25}</Project>
+      <Name>Opt.Geometrics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Opt.VD\Opt.VD.csproj">
       <Project>{EEAC795A-02EE-4B78-8FEB-01EFD232D937}</Project>

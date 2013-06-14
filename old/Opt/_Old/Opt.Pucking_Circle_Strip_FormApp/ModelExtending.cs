@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Opt.GeometricObjects;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 using Opt.Model;
 
 namespace Opt
@@ -22,7 +23,7 @@ namespace Opt
                     else
                         return ExtendedDistance.Calc(object_i as StripLine, object_j as StripLine);
             }
-            public static Point PP(Object object_i, Object object_j, Circle circle)
+            public static Point2d PP(Object object_i, Object object_j, Circle circle)
             {
                 if (object_i is Circle)
                 {

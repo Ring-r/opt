@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Win32;
-using System.IO;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 using Opt.VD;
-using Opt.GeometricObjects;
-using System.Xml;
-using System.Runtime.Serialization;
 
 namespace Opt
 {
@@ -20,7 +19,7 @@ namespace Opt
     {
         List<Circle> ellipses = new List<Circle>();
 
-        List<GeometricObjects.Vector> moves = new List<GeometricObjects.Vector>();
+        List<Vector2d> moves = new List<Vector2d>();
         double step = 10;
 
         VD<Circle, DeloneCircle> vd;
@@ -85,7 +84,7 @@ namespace Opt
                 while (!sr.EndOfStream)
                 {
                     String[] g = sr.ReadLine().Split(' ');
-                    Circle circle = new Circle(double.Parse(g[0]), double.Parse(g[1]), double.Parse(g[2]));
+                    Circle circle = new Circle() { R = double.Parse(g[0]), X = double.Parse(g[1]), Y = double.Parse(g[2]) };
                     ellipses.Add(circle);
                 }
                 sr.Close();
@@ -190,9 +189,9 @@ namespace Opt
             {
                 stack_panel.Children.Remove(item);
                 System.Windows.Point p = e.GetPosition(canvas);
-                Circle t_circle = new Circle(item.Width / 2, p.X, p.Y);
+                Circle t_circle = new Circle() { R = item.Width / 2, X = p.X, Y = p.Y };
                 ellipses.Add(t_circle);
-                moves.Add(new GeometricObjects.Vector(100 * rand.NextDouble(), 100 * rand.NextDouble()));
+                moves.Add(new Vector2d() { X = 100 * rand.NextDouble(), Y = 100 * rand.NextDouble() });
                 if (ellipses.Count == 2)
                 {
                     vd = new VD<Circle, DeloneCircle>(ellipses[0], ellipses[1], null);
@@ -221,9 +220,9 @@ namespace Opt
                 Circle t_circle;
                 System.Windows.Point p = e.GetPosition(sender as IInputElement);
                 if (item == null)
-                    t_circle = new Circle(0, p.X, p.Y);
+                    t_circle = new Circle() { X = p.X, Y = p.Y };
                 else
-                    t_circle = new Circle(item.Width / 2, p.X, p.Y);
+                    t_circle = new Circle() { R = item.Width / 2, X = p.X, Y = p.Y };
                 (visual_item.Data as EllipseGeometry).Center = new System.Windows.Point(t_circle.X, t_circle.Y);
                 (visual_item.Data as EllipseGeometry).RadiusX = t_circle.R;
                 (visual_item.Data as EllipseGeometry).RadiusY = t_circle.R;
@@ -259,7 +258,7 @@ namespace Opt
 
         System.Windows.Shapes.Path FrontierPointsPath;
         private void FindFrontierPoints(object sender, RoutedEventArgs e)
-        {            
+        {
             if (FrontierPointsPath != null)
             {
                 canvas.Children.Remove(FrontierPointsPath);
@@ -268,7 +267,7 @@ namespace Opt
             else
                 if (item != null)
                 {
-                    Circle t_circle = new Circle(item.Width / 2);
+                    Circle t_circle = new Circle() { R = item.Width / 2 };
 
                     Triple<Circle, DeloneCircle> t_triple = vd.NextTriple(vd.NullTriple);
                     while (!double.IsPositiveInfinity(t_triple.Delone_Circle.R))
@@ -277,7 +276,7 @@ namespace Opt
                     while (t_vertex.Data != null)
                         t_vertex = t_vertex.Next;
 
-                    List<Opt.GeometricObjects.Point> points = TestAlgorithms.Точки_плотного_размещения(vd, t_circle);
+                    List<Point2d> points = TestAlgorithms.Точки_плотного_размещения(vd, t_circle);
                     FrontierPointsPath = new System.Windows.Shapes.Path();
                     FrontierPointsPath.Name = "frontiers";
                     FrontierPointsPath.Data = new GeometryGroup();

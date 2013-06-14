@@ -1,5 +1,6 @@
 ﻿using System;
-using Opt.GeometricObjects;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 
 namespace Opt
 {
@@ -43,11 +44,11 @@ namespace Opt
                     vy = value;
                 }
             }
-            public new Vector CenterVector
+            public new Vector2d CenterVector
             {
                 get
                 {
-                    return new Vector(vx, vy);
+                    return new Vector2d() { X = vx, Y = vy };
                 }
                 set
                 {
@@ -58,7 +59,7 @@ namespace Opt
 
             public void Calculate(Circle prev_circle, Circle next_circle)
             {
-                r = double.PositiveInfinity;
+                this.R = double.PositiveInfinity;
 
                 double xnp = next_circle.X - prev_circle.X;
                 double ynp = next_circle.Y - prev_circle.Y;
@@ -66,11 +67,11 @@ namespace Opt
                 xnp /= length;
                 ynp /= length;
 
-                x = prev_circle.X - prev_circle.R * ynp;
-                y = prev_circle.Y + prev_circle.R * xnp;
+                this.X = prev_circle.X - prev_circle.R * ynp;
+                this.Y = prev_circle.Y + prev_circle.R * xnp;
 
-                vx = next_circle.X - next_circle.R * ynp - x;
-                vy = next_circle.Y + next_circle.R * xnp - y;
+                vx = next_circle.X - next_circle.R * ynp - this.X;
+                vy = next_circle.Y + next_circle.R * xnp - this.Y;
 
                 length = Math.Sqrt(vx * vx + vy * vy);
 
@@ -108,29 +109,29 @@ namespace Opt
                 double R1 = (-B - Math.Sqrt(D)) / A;
                 double R2 = (-B + Math.Sqrt(D)) / A;
 
-                x = Ax * R1 + Bx + curr_circle.X;
-                y = Ay * R1 + By + curr_circle.Y;
-                r = R1 - curr_circle.R;
+                this.X = Ax * R1 + Bx + curr_circle.X;
+                this.Y = Ay * R1 + By + curr_circle.Y;
+                this.R = R1 - curr_circle.R;
 
 
                 // Проверка на правильный обход круга.
                 double R;
-                if (r > 0)
-                    R = r;
+                if (this.R > 0)
+                    R = this.R;
                 else
-                    R = -r;
-                double xp = (prev_circle.X - x) / (prev_circle.R + R);
-                double yp = (prev_circle.Y - y) / (prev_circle.R + R);
-                double xc = (curr_circle.X - x) / (curr_circle.R + R);
-                double yc = (curr_circle.Y - y) / (curr_circle.R + R);
-                double xn = (next_circle.X - x) / (next_circle.R + R);
-                double yn = (next_circle.Y - y) / (next_circle.R + R);
+                    R = -this.R;
+                double xp = (prev_circle.X - this.X) / (prev_circle.R + R);
+                double yp = (prev_circle.Y - this.Y) / (prev_circle.R + R);
+                double xc = (curr_circle.X - this.X) / (curr_circle.R + R);
+                double yc = (curr_circle.Y - this.Y) / (curr_circle.R + R);
+                double xn = (next_circle.X - this.X) / (next_circle.R + R);
+                double yn = (next_circle.Y - this.Y) / (next_circle.R + R);
                 double s = xp * (yc - yn) + xc * (yn - yp) + xn * (yp - yc);
-                if ((r > 0 && s < 0) || (r < 0 && s > 0))
+                if ((this.R > 0 && s < 0) || (this.R < 0 && s > 0))
                 {
-                    x = Ax * R2 + Bx + curr_circle.X;
-                    y = Ay * R2 + By + curr_circle.Y;
-                    r = R2 - curr_circle.R;
+                    this.X = Ax * R2 + Bx + curr_circle.X;
+                    this.Y = Ay * R2 + By + curr_circle.Y;
+                    this.R = R2 - curr_circle.R;
                 }
             }
             public void Calculate(Circle prev_circle, Circle curr_circle, StripLine next_strip_line)
@@ -148,7 +149,7 @@ namespace Opt
                 double XY = xnc * ypc - xpc * ync;
                 if (XY == 0)
                     return; // Исключительная ситуация!!! Убрать!!!
-                                
+
                 double Ax = (ync * rpc - ypc * rnc) / XY;
                 double Ay = -(xnc * rpc - xpc * rnc) / XY;
                 double Bx = -(ync * zpc - ypc * znc) / XY;
@@ -163,29 +164,29 @@ namespace Opt
                 double R1 = (-B - Math.Sqrt(D)) / A;
                 double R2 = (-B + Math.Sqrt(D)) / A;
 
-                x = Ax * R1 + Bx + curr_circle.X;
-                y = Ay * R1 + By + curr_circle.Y;
-                r = R1 - curr_circle.R;
+                this.X = Ax * R1 + Bx + curr_circle.X;
+                this.Y = Ay * R1 + By + curr_circle.Y;
+                this.R = R1 - curr_circle.R;
 
 
                 // Проверка на правильный обход круга. //!!!Изменить!!!
                 double R;
-                if (r > 0)
-                    R = r;
+                if (this.R > 0)
+                    R = this.R;
                 else
-                    R = -r;
-                double xp = (prev_circle.X - x) / (prev_circle.R + R);
-                double yp = (prev_circle.Y - y) / (prev_circle.R + R);
-                double xc = (curr_circle.X - x) / (curr_circle.R + R);
-                double yc = (curr_circle.Y - y) / (curr_circle.R + R);
+                    R = -this.R;
+                double xp = (prev_circle.X - this.X) / (prev_circle.R + R);
+                double yp = (prev_circle.Y - this.Y) / (prev_circle.R + R);
+                double xc = (curr_circle.X - this.X) / (curr_circle.R + R);
+                double yc = (curr_circle.Y - this.Y) / (curr_circle.R + R);
                 double xn = next_strip_line.VX;
                 double yn = next_strip_line.VY;
                 double s = xp * (yc - yn) + xc * (yn - yp) + xn * (yp - yc);
-                if ((r > 0 && s < 0) || (r < 0 && s > 0))
+                if ((this.R > 0 && s < 0) || (this.R < 0 && s > 0))
                 {
-                    x = Ax * R2 + Bx + curr_circle.X;
-                    y = Ay * R2 + By + curr_circle.Y;
-                    r = R2 - curr_circle.R;
+                    this.X = Ax * R2 + Bx + curr_circle.X;
+                    this.Y = Ay * R2 + By + curr_circle.Y;
+                    this.R = R2 - curr_circle.R;
                 }
             }
             public void Calculate(StripLine prev_strip_line, Circle curr_circle, StripLine next_strip_line)
@@ -218,29 +219,29 @@ namespace Opt
                 double R1 = (-B - Math.Sqrt(D)) / A;
                 double R2 = (-B + Math.Sqrt(D)) / A;
 
-                x = Ax * R1 + Bx + curr_circle.X;
-                y = Ay * R1 + By + curr_circle.Y;
-                r = R1 - curr_circle.R;
+                this.X = Ax * R1 + Bx + curr_circle.X;
+                this.Y = Ay * R1 + By + curr_circle.Y;
+                this.R = R1 - curr_circle.R;
 
 
                 // Проверка на правильный обход круга. //!!!Изменить!!!
                 double R;
-                if (r > 0)
-                    R = r;
+                if (this.R > 0)
+                    R = this.R;
                 else
-                    R = -r;
+                    R = -this.R;
                 double xp = prev_strip_line.VX;
                 double yp = prev_strip_line.VY;
-                double xc = (curr_circle.X - x) / (curr_circle.R + R);
-                double yc = (curr_circle.Y - y) / (curr_circle.R + R);
+                double xc = (curr_circle.X - this.X) / (curr_circle.R + R);
+                double yc = (curr_circle.Y - this.Y) / (curr_circle.R + R);
                 double xn = next_strip_line.VX;
                 double yn = next_strip_line.VX;
                 double s = xp * (yc - yn) + xc * (yn - yp) + xn * (yp - yc);
-                if ((r > 0 && s < 0) || (r < 0 && s > 0))
+                if ((this.R > 0 && s < 0) || (this.R < 0 && s > 0))
                 {
-                    x = Ax * R2 + Bx + curr_circle.X;
-                    y = Ay * R2 + By + curr_circle.Y;
-                    r = R2 - curr_circle.R;
+                    this.X = Ax * R2 + Bx + curr_circle.X;
+                    this.Y = Ay * R2 + By + curr_circle.Y;
+                    this.R = R2 - curr_circle.R;
                 }
             }
             public void Calculate(StripLine prev_strip_line, StripLine curr_strip_line, StripLine next_strip_line)
@@ -268,31 +269,31 @@ namespace Opt
                 double B = Bx * curr_strip_line.VX + By * curr_strip_line.VX;
 
                 double r = B / A;
-                x = Ax * r + Bx + curr_strip_line.PX;
-                y = Ay * r + By + curr_strip_line.PY;
+                this.X = Ax * r + Bx + curr_strip_line.PX;
+                this.Y = Ay * r + By + curr_strip_line.PY;
                 // Проверка на правильный обход круга не нужна.
             }
 
             public new double ExtendedDistance(Circle circle)
             {
-                if (double.IsInfinity(r))
+                if (double.IsInfinity(this.R))
                 {
                     if (circle == null)
                         return 0;
-                    return (circle.X - x) * vy - (circle.Y - y) * vx - circle.R;
+                    return (circle.X - this.X) * vy - (circle.Y - this.Y) * vx - circle.R;
                 }
                 else
-                    if (r > 0)
+                    if (this.R > 0)
                     {
                         if (circle == null)
                             return double.PositiveInfinity;
-                        return Math.Sqrt(Math.Pow(circle.X - x, 2.0f) + Math.Pow(circle.Y - y, 2.0f)) - (circle.R + r);
+                        return Math.Sqrt(Math.Pow(circle.X - this.X, 2.0f) + Math.Pow(circle.Y - this.Y, 2.0f)) - (circle.R + this.R);
                     }
                     else
                     {
                         if (circle == null)
                             return double.NegativeInfinity;
-                        return circle.R - r - Math.Sqrt(Math.Pow(circle.X - x, 2.0f) + Math.Pow(circle.Y - y, 2.0f));
+                        return circle.R - this.R - Math.Sqrt(Math.Pow(circle.X - this.X, 2.0f) + Math.Pow(circle.Y - this.Y, 2.0f));
                     }
             }
         }

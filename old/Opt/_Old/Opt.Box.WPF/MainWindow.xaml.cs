@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Windows.Controls;
-
+using System.Windows.Media;
+using Opt.Geometrics.Geometrics2d.Temp;
 using Opt.VD;
-using Opt.GeometricObjects;
 
 namespace Opt.Box.WPF
 {
@@ -26,7 +24,7 @@ namespace Opt.Box.WPF
 
             rand = new Random(7);
 
-            vd = new VD<Circle, DeloneCircle>(new Circle(100, 150, 200), null, new Circle(50, 300, 300));
+            vd = new VD<Circle, DeloneCircle>(new Circle() { R = 100, X = 150, Y = 200 }, null, new Circle() { R = 50, X = 300, Y = 300 });
 
             GeometryGroup gg = gVD as GeometryGroup;
             gg.Children.Add(new EllipseGeometry(new System.Windows.Point(300, 300), 50, 50));
@@ -151,7 +149,7 @@ namespace Opt.Box.WPF
             if (data.Count == 4)
             {
                 double r = Math.Sqrt((data[2] - data[0]) * (data[2] - data[0]) + (data[3] - data[1]) * (data[3] - data[1]));
-                Circle circle = new Circle(r, data[0], data[1]);
+                Circle circle = new Circle() { R = r, X = data[0], Y = data[1] };
                 EllipseGeometry ellipse = new EllipseGeometry(new System.Windows.Point(circle.X, circle.Y), circle.R, circle.R);
                 vd.Insert(circle);
                 (gVD as GeometryGroup).Children.Add(ellipse);

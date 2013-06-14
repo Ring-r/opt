@@ -1,4 +1,6 @@
-﻿namespace Opt.Geometrics.Geometrics2d.Temp
+﻿using Opt.Geometrics.Geometrics2d;
+
+namespace Opt.GeometricObjects.Extending
 {
     public class StripLine : Plane2d
     {

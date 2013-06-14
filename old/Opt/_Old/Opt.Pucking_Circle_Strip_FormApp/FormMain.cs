@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using System.IO;
-
-using Opt.GeometricObjects;
+using System.Windows.Forms;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 using Opt.Model;
 
 namespace Opt
@@ -60,15 +60,15 @@ namespace Opt
                 }
 
                 #region Шаг 1. Создаём начальную модель, состоящую из сторон прямоуольника. !!!Потом переделать на полосу!!!
-                VertexClass vertex = VertexClass.CreateModel(new StripLine(0, height, 0, -1), new StripLine(0, 0, 1, 0), new StripLine(0, 0, 0, 1), new StripLine(2 * height, 0, -1, 0));
+                VertexClass vertex = VertexClass.CreateModel(new StripLine() { PY = height, VY = -1 }, new StripLine() { VX = 1 }, new StripLine() { VY = 1 }, new StripLine() { PX = 2 * height, VX = -1 });
                 #endregion
                 #region Шаг 2. Связываем перекрёстные вершины с тройками и добавляем их в список.  !!Необязательно. Убрать класс троек.
                 triple.Add(new TripleClass(vertex));
                 triple.Add(new TripleClass(vertex.Cros));
                 #endregion
                 #region Шаг 3. Устанавливаем для полученных троек круги Делоне. !!!Задать правильные круги Делоне!!!
-                vertex.Triple.Data = new Circle(height / 2, height / 2, height / 2);
-                vertex.Cros.Triple.Data = new Circle(height / 2, height / 2, height / 2);
+                vertex.Triple.Data = new Circle() { R = height / 2, X = height / 2, Y = height / 2 };
+                vertex.Cros.Triple.Data = new Circle() { R = height / 2, X = height / 2, Y = height / 2 };
                 #endregion
 
                 Invalidate();
@@ -79,7 +79,7 @@ namespace Opt
                 ft.ShowDialog(this);
                 try
                 {
-                    circles.Add(new Circle(double.Parse(ft.Info)));
+                    circles.Add(new Circle() { R = double.Parse(ft.Info) });
                 }
                 catch
                 {
@@ -97,7 +97,7 @@ namespace Opt
                     double min = double.Parse(s[1]);
                     double max = double.Parse(s[2]);
                     for (int i = 0; i < n; i++)
-                        circles.Add(new Circle(min + (max - min) * rand.NextDouble()));
+                        circles.Add(new Circle() { R = min + (max - min) * rand.NextDouble() });
                 }
                 catch
                 {
@@ -112,9 +112,9 @@ namespace Opt
                     return false;
                 #endregion
                 #region Шаг-2. Создание списка точек возможных размещений и добавление двух начальных точек.
-                List<Opt.GeometricObjects.Point> points = new List<Opt.GeometricObjects.Point>();
-                points.Add(new Opt.GeometricObjects.Point(circles[current_index].R, circles[current_index].R));
-                points.Add(new Opt.GeometricObjects.Point(circles[current_index].R, height - circles[current_index].R));
+                List<Point2d> points = new List<Point2d>();
+                points.Add(new Point2d() { X = circles[current_index].R, Y = circles[current_index].R });
+                points.Add(new Point2d() { X = circles[current_index].R, Y = height - circles[current_index].R });
                 #endregion
                 #region Шаг-3. Создание и заполнение списка годографов.
                 List<Circle> godographs = new List<Circle>(circles.Count);
@@ -129,11 +129,11 @@ namespace Opt
                     {
                         double x = circles[current_index].R - godographs[i].X;
                         double y = Math.Sqrt(godographs[i].R * godographs[i].R - x * x);
-                        Opt.GeometricObjects.Point point;
-                        point = new Opt.GeometricObjects.Point(circles[current_index].R, godographs[i].Y - y);
+                        Point2d point;
+                        point = new Point2d() { X = circles[current_index].R, Y = godographs[i].Y - y };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
-                        point = new Opt.GeometricObjects.Point(circles[current_index].R, godographs[i].Y + y);
+                        point = new Point2d() { X = circles[current_index].R, Y = godographs[i].Y + y };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
                     }
@@ -143,11 +143,11 @@ namespace Opt
                     {
                         double y = circles[current_index].R - godographs[i].Y;
                         double x = Math.Sqrt(godographs[i].R * godographs[i].R - y * y);
-                        Opt.GeometricObjects.Point point;
-                        point = new Opt.GeometricObjects.Point(godographs[i].X - x, circles[current_index].R);
+                        Point2d point;
+                        point = new Point2d() { X = godographs[i].X - x, Y = circles[current_index].R };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
-                        point = new Opt.GeometricObjects.Point(godographs[i].X + x, circles[current_index].R);
+                        point = new Point2d() { X = godographs[i].X + x, Y = circles[current_index].R };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
                     }
@@ -157,11 +157,11 @@ namespace Opt
                     {
                         double y = height - circles[current_index].R - godographs[i].Y;
                         double x = Math.Sqrt(godographs[i].R * godographs[i].R - y * y);
-                        Opt.GeometricObjects.Point point;
-                        point = new Opt.GeometricObjects.Point(godographs[i].X - x, height - circles[current_index].R);
+                        Point2d point;
+                        point = new Point2d() { X = godographs[i].X - x, Y = height - circles[current_index].R };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
-                        point = new Opt.GeometricObjects.Point(godographs[i].X + x, height - circles[current_index].R);
+                        point = new Point2d() { X = godographs[i].X + x, Y = height - circles[current_index].R };
                         if (IsCheckedStrip(point, circles[current_index], height))
                             points.Add(point);
                     }
@@ -172,7 +172,7 @@ namespace Opt
                 for (int i = 0; i < godographs.Count - 1; i++)
                     for (int j = i + 1; j < godographs.Count; j++)
                     {
-                        Opt.GeometricObjects.Point point;
+                        Point2d point;
 
                         point = PlacingPoint.Calc(godographs[i], godographs[j]);
                         if (point != null && IsCheckedStrip(point, circles[current_index], height))
@@ -188,7 +188,7 @@ namespace Opt
                     for (int j = i + 1; j < points.Count; j++)
                         if (points[i].X > points[j].X || (points[i].X == points[j].X && points[i].Y > points[j].Y))
                         {
-                            Opt.GeometricObjects.Point temp_point = points[i];
+                            Point2d temp_point = points[i];
                             points[i] = points[j];
                             points[j] = temp_point;
                         }
@@ -198,7 +198,7 @@ namespace Opt
                 do
                 {
                     p++;
-                    circles[current_index].Set(points[p].X, points[p].Y);
+                    circles[current_index].Pole.Copy = points[p];
                 } while (!ModelExtending.IsCheckedCircles(circles[current_index], placed_circles, 0.0001));
                 #endregion
                 #region Шаг-8. Пересчёт ширины занятой части полосы.
@@ -248,7 +248,7 @@ namespace Opt
                     return false;
                 #endregion
                 #region Шаг 5.2. Устанавливаем начальное значение для точки размещения текущего объекта и связанной с ней вершиной.
-                Opt.GeometricObjects.Point point_global = new Opt.GeometricObjects.Point() { X = double.PositiveInfinity };
+                Point2d point_global = new Point2d() { X = double.PositiveInfinity };
                 VertexClass vertex_global = null;
                 #endregion
                 #region Шаг 5.3. Для каждой тройки (кроме NullTriple) выполняем следующее...
@@ -263,7 +263,7 @@ namespace Opt
                         VertexClass.Enumerator en_vertexes = en_triples.Curren.Vertex.GetEnumerator();
                         do
                         {
-                            Opt.GeometricObjects.Point point_temp = new Opt.GeometricObjects.Point(double.PositiveInfinity, double.PositiveInfinity);
+                            Point2d point_temp = new Point2d() { X = double.PositiveInfinity, Y = double.PositiveInfinity };
                             #region Шаг 5.3.1.1.1. Если выполняются все условия существования точки плотного размещения второго рода, то находим её.
                             bool is_exist;
                             if (en_vertexes.Current.Cros.Triple.Data.R <= circles[current_index].R)
@@ -365,7 +365,7 @@ namespace Opt
             /// <param name="circle">Круг.</param>
             /// <param name="height">Высота полосы.</param>
             /// <returns>Возвращает True, если круг полностью лежит внутри полосы. False - в противном случае.</returns>
-            private bool IsCheckedStrip(Opt.GeometricObjects.Point point, Circle circle, double height)
+            private bool IsCheckedStrip(Point2d point, Circle circle, double height)
             {
                 return (point.Y + circle.R <= height) && (point.X - circle.R >= 0) && (point.Y - circle.R >= 0); //!!! Необходимо учитывать погрешность.
             }
@@ -589,23 +589,23 @@ namespace Opt
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
 
                 sw.WriteLine();
-                dc.Calculate(placed_circles[0], placed_circles[1], new StripLine(0, 0, 0, 1));
+                dc.Calculate(placed_circles[0], placed_circles[1], new StripLine() { VY = 1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(placed_circles[0], placed_circles[2], new StripLine(0, 0, -1, 0));
+                dc.Calculate(placed_circles[0], placed_circles[2], new StripLine() { VX = -1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(placed_circles[1], placed_circles[3], new StripLine(0, 100, 1, 0));
+                dc.Calculate(placed_circles[1], placed_circles[3], new StripLine() { PY = 100, VX = 1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(placed_circles[2], placed_circles[4], new StripLine(0, 0, -1, 0));
+                dc.Calculate(placed_circles[2], placed_circles[4], new StripLine() { VX = -1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(placed_circles[3], placed_circles[4], new StripLine(0, 100, 1, 0));
+                dc.Calculate(placed_circles[3], placed_circles[4], new StripLine() { PY = 100, VX = 1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
 
                 sw.WriteLine();
-                dc.Calculate(new StripLine(0, 0, 0, 1), placed_circles[0], new StripLine(0, 0, -1, 0));
+                dc.Calculate(new StripLine() { VY = 1 }, placed_circles[0], new StripLine() { VX = -1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(new StripLine(0, 0, 0, 1), placed_circles[1], new StripLine(0, 100, 1, 0));
+                dc.Calculate(new StripLine() { VY = 1 }, placed_circles[1], new StripLine() { PY = 100, VX = 1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
-                dc.Calculate(new StripLine(0, 100, 1, 0), placed_circles[4], new StripLine(0, 0, -1, 0));
+                dc.Calculate(new StripLine() { PY = 100, VX = 1 }, placed_circles[4], new StripLine() { VX = -1 });
                 sw.WriteLine("{0} {1} {2}", dc.R, dc.X, dc.Y);
 
                 sw.Close();

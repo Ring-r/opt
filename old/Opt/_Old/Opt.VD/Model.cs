@@ -1,5 +1,7 @@
 ﻿using System;
-using Opt.GeometricObjects;
+using Opt.Geometrics.Extentions;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 
 namespace Opt.Model
 {
@@ -29,9 +31,9 @@ namespace Opt.Model
     }
     public static class PlacingPoint
     {
-        public static Point Calc(Circle circle_i, Circle circle_j)
+        public static Point2d Calc(Circle circle_i, Circle circle_j)
         {
-            Vector vector = new Vector(circle_j.X - circle_i.X, circle_j.Y - circle_i.Y);
+            Vector2d vector = circle_j.Pole - circle_i.Pole;
 
             double d = Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
 
@@ -40,7 +42,7 @@ namespace Opt.Model
 
             vector /= d; // Заменить на метод, не изменяющий ссылки объекта.
 
-            Vector vector_ = new Vector(-vector.Y, vector.X);
+            Vector2d vector_ = vector._I_(false);
 
             double a = (d - (circle_j.R * circle_j.R - circle_i.R * circle_i.R) / d) / 2;
             double h = Math.Sqrt(circle_i.R * circle_i.R - a * a);
@@ -50,18 +52,18 @@ namespace Opt.Model
 
             return circle_i.Center + vector + vector_; // Заменить на метод, не изменяющий ссылки объекта.
         }
-        public static Point Calc(Circle circle, StripLine strip_line)
+        public static Point2d Calc(Circle circle, StripLine strip_line)
         {
             return null;
         } // !!!Дописать!!!
-        public static Point Calc(StripLine strip_line, Circle circle)
+        public static Point2d Calc(StripLine strip_line, Circle circle)
         {
             return null;
         } // !!!Дописать!!!
-        public static Point Calc(StripLine strip_line_i, StripLine strip_line_j)
+        public static Point2d Calc(StripLine strip_line_i, StripLine strip_line_j)
         {
-            Vector vector_i = strip_line_i.Vector;
-            Vector vector_j_ = new Vector(-strip_line_j.VY, strip_line_j.VX);
+            Vector2d vector_i = strip_line_i.Vector;
+            Vector2d vector_j_ = new Vector2d() { X = -strip_line_j.VY, Y = strip_line_j.VX };
             double d = vector_i * vector_j_;
             if (d == 0)
                 return null;
@@ -241,9 +243,9 @@ namespace Opt.Model
         }
         protected VertexClass(Object data_prev, Object data_curr, Object data_next)
         {
-            prev = new VertexClass() { next = this, data=data_prev };
+            prev = new VertexClass() { next = this, data = data_prev };
             data = data_curr;
-            next = new VertexClass() { prev = this,data=data_next };
+            next = new VertexClass() { prev = this, data = data_next };
 
             prev.prev = next;
             next.next = prev;
@@ -256,7 +258,7 @@ namespace Opt.Model
         public void BreakCrosBy(Object data)
         {
             // Создаём две противоположнонаправленные тройки.
-            VertexClass vertex_n = new VertexClass(next.data, data, prev.data) { cros = this};
+            VertexClass vertex_n = new VertexClass(next.data, data, prev.data) { cros = this };
             VertexClass vertex_f = new VertexClass(prev.data, data, next.data) { cros = this.cros };
 
             // Устанавливаем связи между созданными тройками.
@@ -266,7 +268,7 @@ namespace Opt.Model
             // Устанавливаем связи со всем графом.
             vertex_n.cros.cros = vertex_n;
             vertex_f.cros.cros = vertex_f;
-            
+
         }
 
         public delegate bool CheckedBoolFunction(VertexClass vertex);
@@ -422,21 +424,21 @@ namespace Opt.Model
         // 5. Создание Model по набору объектов (и неявно заданном объекте на бесконечности). Количество объектов n0. !Создаются 2*(n0-1) тройки.
     }
 
-            //    private bool TheoryCheck(VertexClass vertex, Circle circle)
-            //{
-            //    bool is_exist;
-            //    // Проверяется один раз для всей тройки.
-            //    if (((vertex.DataExt as TripleClass).Data as Circle).R < circle.R)
-            //        is_exist = false;
-            //    else
-            //    if (vertex.Cros.Triple.Data.R <= circle.R)
-            //        is_exist = true;
-            //    else
-            //        if (MonotonCheck(vertex, circle)) // Проверка монотонности функции. !!!Дописать!!!
-            //            is_exist = false;
-            //        else
-            //            is_exist = (ModelExtending.ED(vertex.Prev.Data, vertex.Next.Data) <= 2 * circle.R);
-            //    return is_exist;
-            //}
+    //    private bool TheoryCheck(VertexClass vertex, Circle circle)
+    //{
+    //    bool is_exist;
+    //    // Проверяется один раз для всей тройки.
+    //    if (((vertex.DataExt as TripleClass).Data as Circle).R < circle.R)
+    //        is_exist = false;
+    //    else
+    //    if (vertex.Cros.Triple.Data.R <= circle.R)
+    //        is_exist = true;
+    //    else
+    //        if (MonotonCheck(vertex, circle)) // Проверка монотонности функции. !!!Дописать!!!
+    //            is_exist = false;
+    //        else
+    //            is_exist = (ModelExtending.ED(vertex.Prev.Data, vertex.Next.Data) <= 2 * circle.R);
+    //    return is_exist;
+    //}
 
 }

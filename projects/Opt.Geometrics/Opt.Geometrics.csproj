@@ -48,9 +48,11 @@
     <Compile Include="Geometrics2d\Geometric2dWithPole.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPoleValue.cs" />
     <Compile Include="Geometrics\GeometricWithId.cs" />
+    <Compile Include="Temp\Circle.cs" />
     <Compile Include="Temp\Plane2d.cs" />
     <Compile Include="Geometrics2d\Geometric2dWithPoleVector.cs" />
     <Compile Include="Temp\StripLine.cs" />
+    <Compile Include="Temp\StripLineOld.cs" />
     <Compile Include="Geometrics2d\GeometricWithList.cs" />
     <Compile Include="Geometrics2d\Polygon2d.cs" />
     <Compile Include="Temp\GeometricExt.cs" />

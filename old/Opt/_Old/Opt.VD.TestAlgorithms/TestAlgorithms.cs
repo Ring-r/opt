@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Opt.GeometricObjects;
-using Opt.GeometricObjects.Extending;
+﻿using System.Collections.Generic;
+using Opt.Geometrics.Extentions;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 
 namespace Opt
 {
@@ -16,8 +15,8 @@ namespace Opt
             }
             public static Vertex<Circle, DeloneCircle> Близжайшая_вершина(Triple<Circle, DeloneCircle> triple, Circle data)
             {
-                double prev_distance = data.ExtendedDistance(triple.Vertex.Prev.Data);
-                double next_distance = data.ExtendedDistance(triple.Vertex.Next.Data);
+                double prev_distance = CircleExt.Расширенное_расстояние(data, triple.Vertex.Prev.Data);
+                double next_distance = CircleExt.Расширенное_расстояние(data, triple.Vertex.Next.Data);
                 Vertex<Circle, DeloneCircle> minimal_vertex;
                 double minimal_distance;
                 if (prev_distance < next_distance)
@@ -31,7 +30,7 @@ namespace Opt
                     minimal_distance = next_distance;
                 }
 
-                if (minimal_distance > data.ExtendedDistance(triple.Vertex.Data))
+                if (minimal_distance > CircleExt.Расширенное_расстояние(data, triple.Vertex.Data))
                     return triple.Vertex;
 
                 return minimal_vertex;
@@ -53,9 +52,9 @@ namespace Opt
                 return minimal_triple;
             }
 
-            public static List<Point> Точки_плотного_размещения(VD<Circle, DeloneCircle> vd, Circle data)
+            public static List<Point2d> Точки_плотного_размещения(VD<Circle, DeloneCircle> vd, Circle data)
             {
-                List<Point> points = new List<Point>();
+                List<Point2d> points = new List<Point2d>();
 
                 Triple<Circle, DeloneCircle> triple = vd.NextTriple(vd.NullTriple);
                 while (triple != vd.NullTriple)
@@ -66,17 +65,17 @@ namespace Opt
 
                 return points;
             }
-            public static List<Point> Точки_плотного_размещения(Triple<Circle, DeloneCircle> triple, Circle data)
+            public static List<Point2d> Точки_плотного_размещения(Triple<Circle, DeloneCircle> triple, Circle data)
             {
-                List<Point> points = new List<Point>();
+                List<Point2d> points = new List<Point2d>();
 
                 if (double.IsInfinity(triple.Delone_Circle.R))
                 {
                     Vertex<Circle, DeloneCircle> vertex = triple.Vertex;
                     while (vertex.Data != null)
                         vertex = vertex.Next;
-                    if (vertex.Next.Data.ExtendedDistance(vertex.Prev.Data) <= 2 * data.R)
-                        points.Add(CircleExtending.PointOfIntersection(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }, -1));
+                    if (CircleExt.Расширенное_расстояние(vertex.Next.Data, vertex.Prev.Data) <= 2 * data.R)
+                        points.Add(CircleExt.Точка_пересечения_границ(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }));
                 }
                 else
                 {
@@ -86,25 +85,25 @@ namespace Opt
                         do
                         {
 
-                            if (vertex.Next.Data.ExtendedDistance(vertex.Prev.Data) <= 2 * data.R)
+                            if (CircleExt.Расширенное_расстояние(vertex.Next.Data, vertex.Prev.Data) <= 2 * data.R)
                             {
                                 if (double.IsInfinity(vertex.Cros.Delone_Circle.R))
                                 {
-                                    StripLine strip_line = new StripLine(vertex.Next.Data.X, vertex.Next.Data.Y, vertex.Prev.Data.X - vertex.Next.Data.X, vertex.Prev.Data.Y - vertex.Next.Data.Y);
-                                    if(strip_line.ExtendedDistance(vertex.Delone_Circle.Center)<0)
-                                        points.Add(CircleExtending.PointOfIntersection(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }, -1));
+                                    StripLine strip_line = new StripLine() { PX = vertex.Next.Data.X, PY = vertex.Next.Data.Y, VX = vertex.Prev.Data.X - vertex.Next.Data.X, VY = vertex.Prev.Data.Y - vertex.Next.Data.Y };
+                                    if (PlaneExt.Расширенное_расстояние(strip_line, vertex.Delone_Circle.Center) < 0)
+                                        points.Add(CircleExt.Точка_пересечения_границ(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }));
                                 }
                                 else
                                 {
-                                    StripLine strip_line = new StripLine(vertex.Next.Data.X, vertex.Next.Data.Y, vertex.Prev.Data.X - vertex.Next.Data.X, vertex.Prev.Data.Y - vertex.Next.Data.Y);
-                                    double r = strip_line.ExtendedDistance(vertex.Delone_Circle.Center);
-                                    double rr = strip_line.ExtendedDistance(vertex.Cros.Delone_Circle.Center);
+                                    StripLine strip_line = new StripLine() { PX = vertex.Next.Data.X, PY = vertex.Next.Data.Y, VX = vertex.Prev.Data.X - vertex.Next.Data.X, VY = vertex.Prev.Data.Y - vertex.Next.Data.Y };
+                                    double r = PlaneExt.Расширенное_расстояние(strip_line, vertex.Delone_Circle.Center);
+                                    double rr = PlaneExt.Расширенное_расстояние(strip_line, vertex.Cros.Delone_Circle.Center);
 
                                     if (r * rr < 0)
-                                        points.Add(CircleExtending.PointOfIntersection(new Circle(vertex.Next.Data.R + data.R, vertex.Next.Data.X, vertex.Next.Data.Y), new Circle(vertex.Prev.Data.R + data.R, vertex.Prev.Data.X, vertex.Prev.Data.Y),-1));
+                                        points.Add(CircleExt.Точка_пересечения_границ(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }));
                                     else
                                         if (vertex.Cros.Delone_Circle.R < data.R)
-                                            points.Add(CircleExtending.PointOfIntersection(new Circle(vertex.Next.Data.R + data.R, vertex.Next.Data.X, vertex.Next.Data.Y), new Circle(vertex.Prev.Data.R + data.R, vertex.Prev.Data.X, vertex.Prev.Data.Y),-1));
+                                            points.Add(CircleExt.Точка_пересечения_границ(new Circle() { R = vertex.Next.Data.R + data.R, X = vertex.Next.Data.X, Y = vertex.Next.Data.Y }, new Circle() { R = vertex.Prev.Data.R + data.R, X = vertex.Prev.Data.X, Y = vertex.Prev.Data.Y }));
                                 }
                             }
                             vertex = vertex.Next;

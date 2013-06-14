@@ -95,6 +95,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\projects\Opt.Geometrics\Opt.Geometrics.csproj">
+      <Project>{890D3682-B64D-451A-8485-D61665D5EA25}</Project>
+      <Name>Opt.Geometrics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Opt.VD\Opt.VD.csproj">
       <Project>{EEAC795A-02EE-4B78-8FEB-01EFD232D937}</Project>
       <Name>Opt.VD</Name>

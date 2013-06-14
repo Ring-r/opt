@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 using System.IO;
-
-using Opt.GeometricObjects;
+using System.Windows.Forms;
+using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Temp;
 using Opt.VD;
 
 namespace TestOptVDFormApplication
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         Random rand;
         List<Circle> circles;
@@ -22,15 +17,15 @@ namespace TestOptVDFormApplication
         VD<Circle, DeloneCircle> vd;
         Brush brush_object;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
 
             rand = new Random();
 
             circles = new List<Circle>();
-            circles.Add(new Circle(20, 10, 50));
-            circles.Add(new Circle(40, 150, 50));
+            circles.Add(new Circle() { R = 20, X = 10, Y = 50 });
+            circles.Add(new Circle() { R = 40, X = 150, Y = 50 });
 
             vd = new VD<Circle, DeloneCircle>(circles[0], null, circles[1]);
 
@@ -48,7 +43,7 @@ namespace TestOptVDFormApplication
                 while (!sr.EndOfStream)
                 {
                     String[] g = sr.ReadLine().Split(' ');
-                    Circle circle = new Circle(double.Parse(g[0]), double.Parse(g[1]), double.Parse(g[2]));
+                    Circle circle = new Circle() { R = double.Parse(g[0]), X = double.Parse(g[1]), Y = double.Parse(g[2]) };
                     circles.Add(circle);
                 }
                 sr.Close();
@@ -79,14 +74,14 @@ namespace TestOptVDFormApplication
                         catch
                         {
                         }
-                        else
-                        {
-                            e.Graphics.DrawLine(Pens.Silver,
-                                (float)(triple.Delone_Circle.X - 1000 * triple.Delone_Circle.VX),
-                                (float)(triple.Delone_Circle.Y - 1000 * triple.Delone_Circle.VY),
-                                (float)(triple.Delone_Circle.X + 1000 * triple.Delone_Circle.VX),
-                                (float)(triple.Delone_Circle.Y + 1000 * triple.Delone_Circle.VY));
-                        }
+                    else
+                    {
+                        e.Graphics.DrawLine(Pens.Silver,
+                            (float)(triple.Delone_Circle.X - 1000 * triple.Delone_Circle.VX),
+                            (float)(triple.Delone_Circle.Y - 1000 * triple.Delone_Circle.VY),
+                            (float)(triple.Delone_Circle.X + 1000 * triple.Delone_Circle.VX),
+                            (float)(triple.Delone_Circle.Y + 1000 * triple.Delone_Circle.VY));
+                    }
 
                     triple = vd.NextTriple(triple);
                 }
@@ -104,11 +99,11 @@ namespace TestOptVDFormApplication
             }
         }
 
-        List<Opt.GeometricObjects.Point> points = new List<Opt.GeometricObjects.Point>();
+        List<Point2d> points = new List<Point2d>();
         Circle data;
         private void алгоритмПоискаТочекРазмещенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            data = new Circle(20, 0, 0);
+            data = new Circle() { R = 20 };
             points = TestAlgorithms.Точки_плотного_размещения(vd, data);
             data.Center = points[0];
             circles.Add(data);
@@ -127,7 +122,7 @@ namespace TestOptVDFormApplication
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            data = new Circle(rand.Next(10, 50), e.X, e.Y);
+            data = new Circle() { R = rand.Next(10, 50), X = e.X, Y = e.Y };
             circles.Add(data);
             vd.Insert(data);
             Invalidate();
