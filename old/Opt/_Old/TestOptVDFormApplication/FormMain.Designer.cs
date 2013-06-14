@@ -98,7 +98,6 @@
             this.алгоритмПоискаТочекРазмещенияToolStripMenuItem.Name = "алгоритмПоискаТочекРазмещенияToolStripMenuItem";
             this.алгоритмПоискаТочекРазмещенияToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.алгоритмПоискаТочекРазмещенияToolStripMenuItem.Text = "Алгоритм поиска точек размещения";
-            this.алгоритмПоискаТочекРазмещенияToolStripMenuItem.Click += new System.EventHandler(this.алгоритмПоискаТочекРазмещенияToolStripMenuItem_Click);
             // 
             // FormMain
             // 

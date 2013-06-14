@@ -11,25 +11,32 @@ namespace TestOptVDFormApplication
 {
     public partial class FormMain : Form
     {
-        Random rand;
-        List<Circle> circles;
+        private Random rand = new Random();
 
-        VD<Circle, DeloneCircle> vd;
-        Brush brush_object;
+        private List<Circle> circles = new List<Circle>();
+        private VD<Circle, DeloneCircle> vd = null;
+
+        private Brush brush_object = new SolidBrush(Color.FromArgb(100, 0, 0, 0));
 
         public FormMain()
         {
             InitializeComponent();
 
-            rand = new Random();
+            InitializeVD();
+        }
 
-            circles = new List<Circle>();
-            circles.Add(new Circle() { R = 20, X = 10, Y = 50 });
-            circles.Add(new Circle() { R = 40, X = 150, Y = 50 });
+        private void InitializeVD()
+        {
+            Circle circle_i = new Circle() { X = this.rand.Next(this.ClientSize.Width), Y = this.rand.Next(this.ClientSize.Height) };
+            Circle circle_j = new Circle() { X = this.rand.Next(this.ClientSize.Width), Y = this.rand.Next(this.ClientSize.Height) };
+            Vector2d distanceVector = circle_j.Pole - circle_i.Pole;
+            double distance = Math.Sqrt(distanceVector * distanceVector);
+            circle_i.R = this.rand.NextDouble() * distance / 2;
+            circle_j.R = this.rand.NextDouble() * distance / 2;
+            this.circles.Add(circle_i);
+            this.circles.Add(circle_j);
 
-            vd = new VD<Circle, DeloneCircle>(circles[0], null, circles[1]);
-
-            brush_object = new SolidBrush(Color.FromArgb(100, 0, 0, 0));
+            this.vd = new VD<Circle, DeloneCircle>(circles[0], null, circles[1]);
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,35 +106,25 @@ namespace TestOptVDFormApplication
             }
         }
 
-        List<Point2d> points = new List<Point2d>();
-        Circle data;
-        private void алгоритмПоискаТочекРазмещенияToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            data = new Circle() { R = 20 };
-            points = TestAlgorithms.Точки_плотного_размещения(vd, data);
-            data.Center = points[0];
-            circles.Add(data);
-
-
-            vd.Insert(data);
-
-
-            Invalidate();
-        }
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            алгоритмПоискаТочекРазмещенияToolStripMenuItem_Click(null, EventArgs.Empty);
+            if (e.KeyData == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            data = new Circle() { R = rand.Next(10, 50), X = e.X, Y = e.Y };
-            circles.Add(data);
-            vd.Insert(data);
+            Circle data = new Circle() { R = rand.Next(10, 100), X = e.X, Y = e.Y };
+            List<Point2d> points = TestAlgorithms.Точки_плотного_размещения(vd, data);
+            if (points.Count > 0)
+            {
+                data.Center = points[0];
+            }
+            this.circles.Add(data);
+            this.vd.Insert(data);
             Invalidate();
-
-
         }
     }
 }

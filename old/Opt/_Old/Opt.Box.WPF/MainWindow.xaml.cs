@@ -13,18 +13,15 @@ namespace Opt.Box.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private VD<Circle, DeloneCircle> vd;
-        private Vertex<Circle, DeloneCircle> vertex;
-
-        Random rand;
+        private Random rand = new Random();
+        private VD<Circle, DeloneCircle> vd = null;
+        private Vertex<Circle, DeloneCircle> vertex = null;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            rand = new Random(7);
-
-            vd = new VD<Circle, DeloneCircle>(new Circle() { R = 100, X = 150, Y = 200 }, null, new Circle() { R = 50, X = 300, Y = 300 });
+            this.vd = new VD<Circle, DeloneCircle>(new Circle() { R = 100, X = 150, Y = 200 }, null, new Circle() { R = 50, X = 300, Y = 300 });
 
             GeometryGroup gg = gVD as GeometryGroup;
             gg.Children.Add(new EllipseGeometry(new System.Windows.Point(300, 300), 50, 50));
@@ -32,7 +29,7 @@ namespace Opt.Box.WPF
 
             CreateDeloneCirclesGeometric();
 
-            vertex = vd.NextTriple(vd.NullTriple).Vertex;
+            this.vertex = vd.NextTriple(vd.NullTriple).Vertex;
         }
 
         private void rg_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -92,7 +89,6 @@ namespace Opt.Box.WPF
             vertex = vd.NextTriple(vd.NullTriple).Vertex;
             CreateGeometrics();
         }
-
         private void GoToPrevTriple_Click(object sender, RoutedEventArgs e)
         {
             vertex = vd.PrevTriple(vertex.Triple).Vertex;
@@ -100,37 +96,31 @@ namespace Opt.Box.WPF
                 vertex = vd.PrevTriple(vd.NullTriple).Vertex;
             CreateGeometrics();
         }
-
         private void GoToNCNVertex_Click(object sender, RoutedEventArgs e)
         {
             vertex = vertex.Next.Cros.Next;
             CreateGeometrics();
         }
-
         private void GoToPrevVertex_Click(object sender, RoutedEventArgs e)
         {
             vertex = vertex.Prev;
             CreateGeometrics();
         }
-
         private void GoToCrosVertex_Click(object sender, RoutedEventArgs e)
         {
             vertex = vertex.Cros;
             CreateGeometrics();
         }
-
         private void GoToNextVertex_Click(object sender, RoutedEventArgs e)
         {
             vertex = vertex.Next;
             CreateGeometrics();
         }
-
         private void GoToPCPVertex_Click(object sender, RoutedEventArgs e)
         {
             vertex = vertex.Prev.Cros.Prev;
             CreateGeometrics();
         }
-
         private void GoToNextTriple_Click(object sender, RoutedEventArgs e)
         {
             vertex = vd.NextTriple(vertex.Triple).Vertex;
@@ -139,25 +129,27 @@ namespace Opt.Box.WPF
             CreateGeometrics();
         }
 
-        private List<double> data = new List<double>();
 
+        private List<double> data = new List<double>();
         private void Canvas_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            System.Windows.Point point = e.GetPosition(canvas);
+            Point point = e.GetPosition(canvas);
             data.Add(point.X);
             data.Add(point.Y);
             if (data.Count == 4)
             {
                 double r = Math.Sqrt((data[2] - data[0]) * (data[2] - data[0]) + (data[3] - data[1]) * (data[3] - data[1]));
                 Circle circle = new Circle() { R = r, X = data[0], Y = data[1] };
-                EllipseGeometry ellipse = new EllipseGeometry(new System.Windows.Point(circle.X, circle.Y), circle.R, circle.R);
-                vd.Insert(circle);
-                (gVD as GeometryGroup).Children.Add(ellipse);
+                this.vd.Insert(circle);
+
+                EllipseGeometry ellipse = new EllipseGeometry(new Point(circle.X, circle.Y), circle.R, circle.R);
+                (this.gVD as GeometryGroup).Children.Add(ellipse);
+
                 CreateDeloneCirclesGeometric();
+
                 data.Clear();
             }
         }
-
         private void Canvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (data.Count == 2)
