@@ -1,6 +1,5 @@
-﻿using System;
-using Opt.Geometrics.Extentions;
-using Opt.Geometrics.Geometrics2d;
+﻿using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Extentions;
 
 namespace Opt.Geometrics.SpecialGeometrics
 {
@@ -45,22 +44,22 @@ namespace Opt.Geometrics.SpecialGeometrics
             double ed_next = -1;
             for (int i = 0; i < iterator_plane.Count && ed_curr < 0; i++)
             {
-                ed_curr = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
-                ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(1));
+                ed_curr = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
+                ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(1));
                 int k;
                 if (ed_curr > ed_next)
                     k = 1;
                 else
                 {
                     ed_curr = ed_next;
-                    ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(-1));
+                    ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(-1));
                     k = -1;
                 }
                 while (ed_curr >= 0 && ed_curr > ed_next)
                 {
                     iterator_point.Move(k);
                     ed_curr = ed_next;
-                    ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
+                    ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
                 }
                 if (ed_curr < 0)
                     iterator_plane.Move(1);
@@ -73,15 +72,15 @@ namespace Opt.Geometrics.SpecialGeometrics
 
                 for (int i = 0; i < iterator_plane.Count && ed_curr < 0; i++)
                 {
-                    ed_curr = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
-                    ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(1));
+                    ed_curr = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
+                    ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(1));
                     int k;
                     if (ed_curr > ed_next)
                         k = 1;
                     else
                     {
                         ed_curr = ed_next;
-                        ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(-1));
+                        ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(-1));
                         k = -1;
                         iterator_point.Move(1);
                     }
@@ -89,7 +88,7 @@ namespace Opt.Geometrics.SpecialGeometrics
                     {
                         iterator_point.Move(k);
                         ed_curr = ed_next;
-                        ed_next = PlaneExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
+                        ed_next = Plane2dExt.Расширенное_расстояние(iterator_plane.Plane(0), iterator_point.Point(0));
                     }
                     if (ed_curr < 0)
                         iterator_plane.Move(1);

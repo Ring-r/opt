@@ -4,82 +4,6 @@
         <name>Opt.Geometrics</name>
     </assembly>
     <members>
-        <member name="T:Opt.Geometrics.Geometrics2d.Plane2d">
-            <summary>
-            Полуплоскость в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector">
-            <summary>
-            Прямоугольник в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPole">
-            <summary>
-            Геометрический объект с полюсом (начало связанной системы координат).
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2d">
-            <summary>
-            Геометрический объект в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometric">
-            <summary>
-            Геометрический объект.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2d.Dim">
-            <summary>
-            Возвращает размерность пространства, в котором задан геометрический объект.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPole.Pole">
-            <summary>
-            Хранит значение полюса (начала связанной системы координат).
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.vector">
-            <summary>
-            Размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Vector">
-            <summary>
-            Получает или задаёт размер.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Normal">
-            <summary>
-            Получает или задаёт вектор нормали.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithId">
             <summary>
             Геометрический объект в двухмерном пространстве с идентификатором.
@@ -105,115 +29,66 @@
             Возвращает и устанавливает некоторый идентификатор геометрического объекта.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Extentions.CircleExt">
+        <member name="T:Opt.Geometrics.Geometrics2d.Plane2d">
             <summary>
-            Расширения для круга.
+            Полуплоскость в двухмерном пространстве.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Point2d)">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPointVector">
             <summary>
-            Получить расширенное расстояние от круга до точки.
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="point">Точка.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить расширенное расстояние от круга до круга.
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="circle">Круг.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить годограф функции плотного размещения круга возле круга.
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="circle">Круг.</param>
-            <returns>Годограф функции плотного размещения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить точку пересечения границ круга и круга.
-            </summary>
-            <param name="circle_prev">Круг.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Точка пересечения (одна из двух).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить точку пересечения границ круга и полуплоскости.
-            </summary>
-            <param name="circle_prev">Круг.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Точка пересечения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить точку близости второго рода для круга и множества (круг, круг).
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="circle_prev">Круг.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Точка близости (одна из двух).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить точку близости второго рода для круга и множества (полуплоскость, круг).
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="circle_prev">Круг.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Точка близости (одна из двух).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить точку близости второго рода для круга и множества (полуплоскость, круг).
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Точка близости (одна из двух).</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить точку близости второго рода для круга и множества (полуплоскость, полуплоскость).
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Точка близости.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить серединную полуплоскость круга и круга.
-            </summary>
-            <param name="circle_prev">Круг.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Серединная полуплоскость.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.CircleExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить серединную полуплоскость круга и полуплоскости.
-            </summary>
-            <param name="circle_prev">Круг.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Серединная полуплоскость.</returns>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.Vector2dExt">
-            <summary>
-            Расширения для вектора.
+            Прямоугольник в двухмерном пространстве.
             </summary>
         </member>
-        <member name="M:Opt.Geometrics.Extentions.Vector2dExt._I_(Opt.Geometrics.Geometrics2d.Vector2d,System.Boolean)">
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2d">
             <summary>
-            Получить перпендикулярный вектор.
+            Геометрический объект в двухмерном пространстве.
             </summary>
-            <param name="vector_this">Вектор.</param>
-            <param name="isRight">true - если происходит поворот по часовой стрелке и false - если против.</param>
-            <returns>Перпендикулярный вектор.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometric">
+            <summary>
+            Геометрический объект.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometric.Id">
+            <summary>
+            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2d.Dim">
+            <summary>
+            Возвращает размерность пространства, в котором задан геометрический объект.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoint.Pole">
+            <summary>
+            Хранит значение полюса (начала связанной системы координат).
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPointVector.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Plane2d.ToString">
+            <summary>
+            Возвращает строку-информацию об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Normal">
+            <summary>
+            Получает или задаёт вектор нормали.
+            </summary>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Plane2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
         </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Vector2d">
             <summary>
@@ -316,6 +191,56 @@
             </summary>
         </member>
         <member name="P:Opt.Geometrics.Geometrics2d.Vector2d.Copy">
+            <summary>
+            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
+            <summary>
+            Кольцевой список, основаный на List.
+            </summary>
+        </member>
+        <member name="F:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.list_elements">
+            <summary>
+            Список элементов, которые содержит кольцевой список.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.CheckedIndex(System.Int32@)">
+            <summary>
+            Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
+            </summary>
+            <param name="index">Индекс.</param>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Add(`0)">
+            <summary>
+            Добавляет элемент в контайнер.
+            </summary>
+            <param name="element">Элемент.</param>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Item(System.Int32)">
+            <summary>
+            Получает или устанавливает элемент кольцевого списка по индексу.
+            </summary>
+            <param name="index">Индекс.</param>
+            <returns>Элемент кольцевого списка с заданным индексом.</returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
+            <summary>
+            Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
+            </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar">
+            <summary>
+            Сфера (круг) в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar.ToString">
+            <summary>
+            Возвращает строку-информацию об объекте.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
@@ -456,66 +381,6 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue">
-            <summary>
-            Сфера (круг) в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.value">
-            <summary>
-            Радиус.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.ToString">
-            <summary>
-            Возвращает строку-информацию об объекте.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.Value">
-            <summary>
-            Получает или задаёт радиус.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue.Copy">
-            <summary>
-            Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1">
-            <summary>
-            Кольцевой список, основаный на List.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.list_elements">
-            <summary>
-            Список элементов, которые содержит кольцевой список.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.CheckedIndex(System.Int32@)">
-            <summary>
-            Корректирует индекс таким образом, чтобы он не выходил за границы внутреннего списка.
-            </summary>
-            <param name="index">Индекс.</param>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Add(`0)">
-            <summary>
-            Добавляет элемент в контайнер.
-            </summary>
-            <param name="element">Элемент.</param>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Item(System.Int32)">
-            <summary>
-            Получает или устанавливает элемент кольцевого списка по индексу.
-            </summary>
-            <param name="index">Индекс.</param>
-            <returns>Элемент кольцевого списка с заданным индексом.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.Geometrics2dWithList`1.Count">
-            <summary>
-            Возвращает количество элементов, которые содержаться в кольцевом списке. Возвращает -1, если кольцевой список пуст.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Point2d">
             <summary>
             Точка в двухмерном пространстве.
@@ -580,52 +445,6 @@
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.GeometricExt">
-            <summary>
-            Расширения для геометрического объекта.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
-            <summary>
-            Получить расширенное расстояние от геометрического объекта до геометрического объекта.
-            </summary>
-            <param name="geometric_this">Геометрический объект.</param>
-            <param name="geometric">Геометрический объект.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить годограф функции плотного размещения круга и геометрического объекта.
-            </summary>
-            <param name="geometric_this">Геометрический объект.</param>
-            <param name="circle">Круг.</param>
-            <returns>Годограф функции плотного размещения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
-            <summary>
-            Получить точку пересечения геометрического объекта и геометрического объекта.
-            </summary>
-            <param name="geometric_prev">Геометрический объект.</param>
-            <param name="geometric_next">Геометрический объект.</param>
-            <returns>Точка пересечения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue,Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
-            <summary>
-            Получить точку близости второго рода для круга и множества (геометрический объект, геометрический объект).
-            </summary>
-            <param name="circle_this">Круг.</param>
-            <param name="geometric_prev">Геометрический объект.</param>
-            <param name="geometric_next">Геометрический объект.</param>
-            <returns>Точка близости.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.GeometricExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
-            <summary>
-            Получить серединную полуплоскость геометрического объекта и геометрического объекта.
-            </summary>
-            <param name="geometric_prev">Геометрический объект.</param>
-            <param name="geometric_next">Геометрический объект.</param>
-            <returns>Серединная полуплоскость.</returns>
         </member>
         <member name="T:Opt.Geometrics.Geometrics2d.Polygon2d">
             <summary>
@@ -709,53 +528,6 @@
             Разделяющая в двухмерном пространстве.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.SpecialGeometrics.CircleDelone2d">
-            <summary>
-            Круг Делоне в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="F:Opt.Geometrics.SpecialGeometrics.CircleDelone2d.normal">
-            <summary>
-            Вектор нормали.
-            </summary>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.PolygonExt">
-            <summary>
-            Расширения для многоугольника в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PolygonExt.ToRectangle(Opt.Geometrics.Geometrics2d.Polygon2d)">
-            <summary>
-            Преобразование многоугольника в прямоугольник.
-            </summary>
-            <param name="polygon">Многоугольник.</param>
-            <returns>Прямоугольник.</returns>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.RectangleExt">
-            <summary>
-            Расширения для прямоугольника в двухмерном пространстве.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.RectangleExt.ToPolygon(Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector)">
-            <summary>
-            Преобразование прямоугольника в многоугольник.
-            </summary>
-            <param name="rectangle"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Opt.Geometrics.Extentions.PointExt">
-            <summary>
-            Расширения для полуплоскости.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PointExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Point2d)">
-            <summary>
-            Получить расширенное расстояние от точки до точки.
-            </summary>
-            <param name="point_this">Точка.</param>
-            <param name="point">Точка.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Point3d">
             <summary>
             Точка в трёхмерном пространстве.
@@ -826,80 +598,6 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Extentions.PlaneExt">
-            <summary>
-            Расширения для точки.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Point2d)">
-            <summary>
-            Получить расширенное расстояние от полуплоскости до точки.
-            </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="point">Точка.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить расширенное расстояние от полуплоскости до круга.
-            </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="circle">Круг.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить расширенное расстояние от полуплоскости до полуплоскости.
-            </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="plane">Полуплоскость.</param>
-            <returns>Расширенное расстояние.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить годограф функции плотного размещения круга возле полуплоскости.
-            </summary>
-            <param name="plane_this">Полуплоскость.</param>
-            <param name="circle">Круг.</param>
-            <returns>Годограф функции плотного размещения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить точку пересечения границ полуплоскости и круга.
-            </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Точка пересечения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить точку пересечения полуплоскости и полуплоскости.
-            </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Точка пересечения.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue)">
-            <summary>
-            Получить серединную полуплоскость полуплоскости и круга.
-            </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="circle_next">Круг.</param>
-            <returns>Серединная полуплоскость.</returns>
-        </member>
-        <member name="M:Opt.Geometrics.Extentions.PlaneExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
-            <summary>
-            Получить серединную полуплоскость полуплоскости и полуплоскости.
-            </summary>
-            <param name="plane_prev">Полуплоскость.</param>
-            <param name="plane_next">Полуплоскость.</param>
-            <returns>Серединная полуплоскость.</returns>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics.IGeometricWithId.Id">
-            <summary>
-            Возвращает и устанавливает некоторый идентификатор геометрического объекта.
-            </summary>
-        </member>
         <member name="T:Opt.Geometrics.Geometrics3d.Geometric3dWithPoleVector">
             <summary>
             Параллелепипед в трёхмерном пространстве.
@@ -920,30 +618,277 @@
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
         </member>
-        <member name="T:Opt.Geometrics.Geometrics2d.StripLine2d">
+        <member name="T:Opt.Geometrics.SpecialGeometrics.DeloneCircle2d">
             <summary>
-            Прямая линия.
+            Круг Делоне в двухмерном пространстве.
             </summary>
         </member>
-        <member name="F:Opt.Geometrics.Geometrics2d.StripLine2d.vector">
-            <summary>
-            Вектор направления.
-            </summary>
-        </member>
-        <member name="M:Opt.Geometrics.Geometrics2d.StripLine2d.#ctor">
-            <summary>
-            Конструктор.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Vector">
-            <summary>
-            Установить или получить вектор направления.
-            </summary>
-        </member>
-        <member name="P:Opt.Geometrics.Geometrics2d.StripLine2d.Copy">
+        <member name="P:Opt.Geometrics.SpecialGeometrics.DeloneCircle2d.Copy">
             <summary>
             Получить копию объекта или установить значения свойств, не изменяя ссылку на объект.
             </summary>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt">
+            <summary>
+            Расширения для круга.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Point2d)">
+            <summary>
+            Получить расширенное расстояние от круга до точки.
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="point">Точка.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить расширенное расстояние от круга до круга.
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="circle">Круг.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить годограф функции плотного размещения круга возле круга.
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="circle">Круг.</param>
+            <returns>Годограф функции плотного размещения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить точку пересечения границ круга и круга.
+            </summary>
+            <param name="circle_prev">Круг.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Точка пересечения (одна из двух).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить точку пересечения границ круга и полуплоскости.
+            </summary>
+            <param name="circle_prev">Круг.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить точку близости второго рода для круга и множества (круг, круг).
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="circle_prev">Круг.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Точка близости (одна из двух).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить точку близости второго рода для круга и множества (полуплоскость, круг).
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="circle_prev">Круг.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Точка близости (одна из двух).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить точку близости второго рода для круга и множества (полуплоскость, круг).
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Точка близости (одна из двух).</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить точку близости второго рода для круга и множества (полуплоскость, полуплоскость).
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Точка близости.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить серединную полуплоскость круга и круга.
+            </summary>
+            <param name="circle_prev">Круг.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Circle2dExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить серединную полуплоскость круга и полуплоскости.
+            </summary>
+            <param name="circle_prev">Круг.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Point2dExt">
+            <summary>
+            Расширения для полуплоскости.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Point2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Point2d,Opt.Geometrics.Geometrics2d.Point2d)">
+            <summary>
+            Получить расширенное расстояние от точки до точки.
+            </summary>
+            <param name="point_this">Точка.</param>
+            <param name="point">Точка.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Vector2dExt">
+            <summary>
+            Расширения для вектора.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Vector2dExt._I_(Opt.Geometrics.Geometrics2d.Vector2d,System.Boolean)">
+            <summary>
+            Получить перпендикулярный вектор.
+            </summary>
+            <param name="vector_this">Вектор.</param>
+            <param name="isRight">true - если происходит поворот по часовой стрелке и false - если против.</param>
+            <returns>Перпендикулярный вектор.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Polygon2dExt">
+            <summary>
+            Расширения для многоугольника в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Polygon2dExt.ToRectangle(Opt.Geometrics.Geometrics2d.Polygon2d)">
+            <summary>
+            Преобразование многоугольника в прямоугольник.
+            </summary>
+            <param name="polygon">Многоугольник.</param>
+            <returns>Прямоугольник.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Rectangle2dExt">
+            <summary>
+            Расширения для прямоугольника в двухмерном пространстве.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Rectangle2dExt.ToPolygon(Opt.Geometrics.Geometrics2d.Geometric2dWithPointVector)">
+            <summary>
+            Преобразование прямоугольника в многоугольник.
+            </summary>
+            <param name="rectangle"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt">
+            <summary>
+            Расширения для точки.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Point2d)">
+            <summary>
+            Получить расширенное расстояние от полуплоскости до точки.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="point">Точка.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить расширенное расстояние от полуплоскости до круга.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="circle">Круг.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить расширенное расстояние от полуплоскости до полуплоскости.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="plane">Полуплоскость.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить годограф функции плотного размещения круга возле полуплоскости.
+            </summary>
+            <param name="plane_this">Полуплоскость.</param>
+            <param name="circle">Круг.</param>
+            <returns>Годограф функции плотного размещения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить точку пересечения границ полуплоскости и круга.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить точку пересечения полуплоскости и полуплоскости.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить серединную полуплоскость полуплоскости и круга.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="circle_next">Круг.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Plane2dExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Plane2d,Opt.Geometrics.Geometrics2d.Plane2d)">
+            <summary>
+            Получить серединную полуплоскость полуплоскости и полуплоскости.
+            </summary>
+            <param name="plane_prev">Полуплоскость.</param>
+            <param name="plane_next">Полуплоскость.</param>
+            <returns>Серединная полуплоскость.</returns>
+        </member>
+        <member name="T:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt">
+            <summary>
+            Расширения для геометрического объекта.
+            </summary>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt.Расширенное_расстояние(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
+            <summary>
+            Получить расширенное расстояние от геометрического объекта до геометрического объекта.
+            </summary>
+            <param name="geometric_this">Геометрический объект.</param>
+            <param name="geometric">Геометрический объект.</param>
+            <returns>Расширенное расстояние.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt.Годограф_функции_плотного_размещения(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar)">
+            <summary>
+            Получить годограф функции плотного размещения круга и геометрического объекта.
+            </summary>
+            <param name="geometric_this">Геометрический объект.</param>
+            <param name="circle">Круг.</param>
+            <returns>Годограф функции плотного размещения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt.Точка_пересечения_границ(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
+            <summary>
+            Получить точку пересечения геометрического объекта и геометрического объекта.
+            </summary>
+            <param name="geometric_prev">Геометрический объект.</param>
+            <param name="geometric_next">Геометрический объект.</param>
+            <returns>Точка пересечения.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt.Точка_близости_второго_рода(Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar,Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
+            <summary>
+            Получить точку близости второго рода для круга и множества (геометрический объект, геометрический объект).
+            </summary>
+            <param name="circle_this">Круг.</param>
+            <param name="geometric_prev">Геометрический объект.</param>
+            <param name="geometric_next">Геометрический объект.</param>
+            <returns>Точка близости.</returns>
+        </member>
+        <member name="M:Opt.Geometrics.Geometrics2d.Extentions.Geometric2dExt.Серединная_полуплоскость(Opt.Geometrics.Geometrics2d.Geometric2d,Opt.Geometrics.Geometrics2d.Geometric2d)">
+            <summary>
+            Получить серединную полуплоскость геометрического объекта и геометрического объекта.
+            </summary>
+            <param name="geometric_prev">Геометрический объект.</param>
+            <param name="geometric_next">Геометрический объект.</param>
+            <returns>Серединная полуплоскость.</returns>
         </member>
     </members>
 </doc>

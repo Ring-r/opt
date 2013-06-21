@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Opt.Geometrics.Extentions;
 using Opt.Geometrics.Geometrics2d;
+using Opt.Geometrics.Geometrics2d.Extentions;
 
 namespace Opt.ClosenessModel.Extentions
 {
@@ -13,9 +13,9 @@ namespace Opt.ClosenessModel.Extentions
         public static Vertex<VertexDataType> Nearest(Vertex<VertexDataType> vertex, DataType data)
         {
             Vertex<VertexDataType> minim_vertex = vertex;
-            double minim_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Somes.CircleDelone, data);
+            double minim_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Somes.CircleDelone, data);
 
-            double temp_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Cros.Somes.CircleDelone, data);
+            double temp_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Cros.Somes.CircleDelone, data);
             if (minim_dist > temp_dist)
             {
                 minim_vertex = minim_vertex.Cros;
@@ -25,8 +25,8 @@ namespace Opt.ClosenessModel.Extentions
             while (!is_end)
             {
                 is_end = true;
-                double prev_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Prev.Cros.Somes.CircleDelone, data);
-                double next_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Next.Cros.Somes.CircleDelone, data);
+                double prev_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Prev.Cros.Somes.CircleDelone, data);
+                double next_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Next.Cros.Somes.CircleDelone, data);
                 if (prev_dist < next_dist && prev_dist < minim_dist)
                 {
                     minim_dist = prev_dist;
@@ -48,11 +48,11 @@ namespace Opt.ClosenessModel.Extentions
             List<Vertex<VertexDataType>> res = new List<Vertex<VertexDataType>>(); // Изменить при поиске только последней тройки.
 
             Vertex<VertexDataType> minim_vertex = vertex;
-            double minim_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Somes.CircleDelone, data);
+            double minim_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Somes.CircleDelone, data);
 
             res.Add(minim_vertex);
 
-            double temp_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Cros.Somes.CircleDelone, data);
+            double temp_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Cros.Somes.CircleDelone, data);
             if (minim_dist > temp_dist)
             {
                 minim_vertex = minim_vertex.Cros;
@@ -63,8 +63,8 @@ namespace Opt.ClosenessModel.Extentions
             while (!is_end)
             {
                 is_end = true;
-                double prev_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Prev.Cros.Somes.CircleDelone, data);
-                double next_dist = GeometricExt.Расширенное_расстояние(minim_vertex.Next.Cros.Somes.CircleDelone, data);
+                double prev_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Prev.Cros.Somes.CircleDelone, data);
+                double next_dist = Geometric2dExt.Расширенное_расстояние(minim_vertex.Next.Cros.Somes.CircleDelone, data);
                 if (prev_dist < next_dist && prev_dist < minim_dist)
                 {
                     minim_dist = prev_dist;

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Opt.Geometrics.Geometrics2d;
-using Opt.Geometrics.Extentions;
-
-using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleVector;
+using Rectangle = Opt.Geometrics.Geometrics2d.Geometric2dWithPointVector;
 
 namespace Opt.Algorithms
 {

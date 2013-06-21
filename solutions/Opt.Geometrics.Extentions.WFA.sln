@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Geometrics.Extentions.WFA", "..\projects\Opt.Geometrics.Extentions.WFA\Opt.Geometrics.Extentions.WFA.csproj", "{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Geometrics", "..\projects\Opt.Geometrics\Opt.Geometrics.csproj", "{890D3682-B64D-451A-8485-D61665D5EA25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Geometrics.Extentions.Wfa", "..\projects\Opt.Geometrics.Extentions.Wfa\Opt.Geometrics.Extentions.Wfa.csproj", "{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{890D3682-B64D-451A-8485-D61665D5EA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{890D3682-B64D-451A-8485-D61665D5EA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

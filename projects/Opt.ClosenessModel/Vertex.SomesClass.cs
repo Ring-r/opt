@@ -1,7 +1,7 @@
 ﻿using System;
 
 // TODO: Использовать CircleDelone.
-using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPoleValue;
+using Circle = Opt.Geometrics.Geometrics2d.Geometric2dWithPointScalar;
 
 namespace Opt.ClosenessModel
 {

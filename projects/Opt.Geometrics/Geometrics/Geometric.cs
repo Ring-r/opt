@@ -8,5 +8,9 @@ namespace Opt.Geometrics
     [Serializable]
     public abstract class Geometric
     {
+        /// <summary>
+        /// Возвращает и устанавливает некоторый идентификатор геометрического объекта.
+        /// </summary>
+        public int Id { get; set; }
     }
 }

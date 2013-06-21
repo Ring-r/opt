@@ -8,8 +8,8 @@
     <ProjectGuid>{8EB6209F-D185-4A3B-BEA1-7248ABADEE0B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Opt.Geometrics.Extentions.WFA</RootNamespace>
-    <AssemblyName>Opt.Geometrics.Extentions.WFA</AssemblyName>
+    <RootNamespace>Opt.Geometrics.Extentions.Wfa</RootNamespace>
+    <AssemblyName>Opt.Geometrics.Extentions.Wfa</AssemblyName>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,8 +34,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertExtention.cs" />
-    <Compile Include="FillAndDrawExtention.cs" />
+    <Compile Include="WfaHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
