@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Test.Algorithms.Wfa", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Test.ClosenessModel.Wfa", "..\projects\Opt.Test.ClosenessModel.Wfa\Opt.Test.ClosenessModel.Wfa.csproj", "{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Test.DeloneCircle.Wpf", "..\projects\Opt.Test.DeloneCircle.Wpf\Opt.Test.DeloneCircle.Wpf.csproj", "{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Test.Geometrics.Wfa", "..\projects\Opt.Test.Geometrics.Wfa\Opt.Test.Geometrics.Wfa.csproj", "{E3E4C7E2-6A28-4F16-8197-23397F2CB71B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opt.Test.Geometrics.Wpf", "..\projects\Opt.Test.Geometrics.Wpf\Opt.Test.Geometrics.Wpf.csproj", "{8B9490F8-7E66-4661-89AC-CAFC90417D91}"
@@ -127,16 +125,6 @@ Global
 		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|x86.ActiveCfg = Release|x86
 		{DE5AECC7-5BED-4D0F-A9AC-09FFD944B5DA}.Release|x86.Build.0 = Release|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Debug|x86.ActiveCfg = Debug|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Debug|x86.Build.0 = Debug|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Release|Any CPU.ActiveCfg = Release|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Release|Mixed Platforms.Build.0 = Release|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Release|x86.ActiveCfg = Release|x86
-		{EFC2122C-3F09-45CA-8C7E-CF41B0DF920C}.Release|x86.Build.0 = Release|x86
 		{E3E4C7E2-6A28-4F16-8197-23397F2CB71B}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{E3E4C7E2-6A28-4F16-8197-23397F2CB71B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{E3E4C7E2-6A28-4F16-8197-23397F2CB71B}.Debug|Mixed Platforms.Build.0 = Debug|x86
